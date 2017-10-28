@@ -22,12 +22,15 @@ http://github.com/IhFisk/Smash-bros
 
 ## Sources
 - Documentation de la bibliothèque MLV-2.0.2 :
+
   http://www-igm.univ-mlv.fr/~boussica/mlv/api/French/html/index.html
 
 - Pour le Tile Mapping (entre autre) :
+  
   https://openclassrooms.com/courses/tile-mapping
 
 - Pour la gestion des sauts :
+
   https://pub.phyks.me/sdz/sdz/les-sauts-2d-en-c.html
 
 ## Compilation
