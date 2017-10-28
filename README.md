@@ -1,15 +1,15 @@
 # New Super Smash Bros Brawl Melee C Edition
 http://github.com/IhFisk/Smash-bros
 
-Projet de programmation de L2 Info UJM
+[C][FR]Projet de programmation de L2 Info UJM
 
-## Développement
+## Auteurs
 **MARNAT Lorenzo** : *met tes infos la si t'as envie*
 
 **MOHAMED Hugo** : *http://github.com/ihfisk*
 
 ## Téléchargement
-git clone https://github.com/IhFisk/Smash-Bros.git
+'git clone https://github.com/IhFisk/Smash-Bros.git'
 
 ## Prérequis
 - GCC
