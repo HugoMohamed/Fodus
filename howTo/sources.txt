@@ -2,3 +2,9 @@ Sources interessante pour la réalisation :
 
 - Documentation de la bibliothèque MLV-2.0.2 :
 http://www-igm.univ-mlv.fr/~boussica/mlv/api/French/html/index.html
+
+- Pour le Tile Mapping (ya aussi d'autre truc qui seront surement utile) :
+https://openclassrooms.com/courses/tile-mapping
+
+- Pour la gestion des sauts :
+https://pub.phyks.me/sdz/sdz/les-sauts-2d-en-c.html
