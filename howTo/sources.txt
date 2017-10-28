@@ -1,0 +1,4 @@
+Sources interessante pour la réalisation :
+
+- Documentation de la bibliothèque MLV-2.0.2 :
+http://www-igm.univ-mlv.fr/~boussica/mlv/api/French/html/index.html
