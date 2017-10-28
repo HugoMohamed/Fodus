@@ -28,5 +28,5 @@ git clone https://github.com/IhFisk/Smash-Bros.git
 - Pour la gestion des sauts :
   https://pub.phyks.me/sdz/sdz/les-sauts-2d-en-c.html
 
-## Makefile
+## Compilation
 *a faire*
