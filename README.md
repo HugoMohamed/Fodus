@@ -3,6 +3,7 @@ Projet de programmation de L2 Info UJM
 
 ## Développement :
 **MARNAT Lorenzo** : *met tes infos la si t'as envie*
+
 **MOHAMED Hugo** : *http://github.com/ihfisk*
 
 
