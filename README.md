@@ -13,6 +13,7 @@ http://github.com/IhFisk/Smash-bros
 
 ## Prérequis
 - GCC
+
   `sudo apt-get install build-essential`
 
 - MLV
