@@ -9,11 +9,11 @@ http://github.com/IhFisk/Smash-bros
 **MOHAMED Hugo** : *http://github.com/ihfisk*
 
 ## Téléchargement
-'git clone https://github.com/IhFisk/Smash-Bros.git'
+`git clone https://github.com/IhFisk/Smash-Bros.git`
 
 ## Prérequis
 - GCC
-  sudo apt-get install build-essential
+  `sudo apt-get install build-essential`
 
 - MLV
   http://www-igm.univ-mlv.fr/~boussica/mlv/api/French/html/download.html
