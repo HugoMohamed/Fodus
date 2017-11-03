@@ -1,0 +1,8 @@
+le module perso sert a gerer les diffrentes choses qui définissent un perso
+et ce qu'il peut faire, genre :
+- vie
+- dégats
+- se déplacer (gauche/droite)
+- sauter (plus dur)
+- ptet rajouter d'autre truc genre roulade et tout (mais plus tard)
+

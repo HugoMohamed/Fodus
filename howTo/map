@@ -1,0 +1,15 @@
+le module map servira a gerer la map (non jure)
+
+-utilisation du tile mapping ?
+-fond animé ? (c'est plus stylé)
+-ya differents trucs sur la map :
+    -perso
+    -sol
+    -autres blocs
+
+-on passera surement par un fichier texte pour creer une map de type :
+
+0000000
+0001000
+1000001
+1111111		avec 1 les blocs de sol et 0 les blocs d'air
