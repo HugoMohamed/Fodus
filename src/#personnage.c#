@@ -27,6 +27,7 @@ coordonnees perso_deplacer(map m, coordonnees c, int direction)
 
 
 
+
     
 	
 
