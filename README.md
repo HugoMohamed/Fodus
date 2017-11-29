@@ -6,7 +6,7 @@ http://github.com/IhFisk/Smash-bros
 ## Auteurs
 **MARNAT Lorenzo** : *met tes infos la si t'as envie*
 
-**MOHAMED Hugo** : *http://github.com/ihfisk*
+**MOHAMED Hugo** : *https://twitter.com/IhFisk*
 
 ## Téléchargement
 `git clone https://github.com/IhFisk/Smash-Bros.git`
