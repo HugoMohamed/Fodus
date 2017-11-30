@@ -11,12 +11,12 @@ typedef enum
 {
     air,
     sol
-}blocs;
+} blocs;
 
 typedef int map[TMAX][TMAX];
 
 // Permet de charger la map depuis un fichier
-void map_chargerMap(char *chemin,map *m);
+void map_chargerMap(char *chemin,map m);
 
 // Permet d'afficher la map
 void map_afficherMap(map m);

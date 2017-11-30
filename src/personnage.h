@@ -1,6 +1,6 @@
 #ifndef PERSO_H
 #define PERSO_H
-
+#include "map.h"
 #include <MLV/MLV_all.h>
 
 #define VIE 100
@@ -17,7 +17,7 @@ typedef struct
     int vie;
     int dmg;
     coord pos
-}perso;
+} perso;
 
 // Un tir a une position (qui évolue) et un tireur (pour les dmg)
 

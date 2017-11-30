@@ -15,7 +15,6 @@ LDFLAGS = `pkg-config --libs-only-other --libs-only-L MLV`
 #
 LDLIBS=`pkg-config --libs-only-l MLV`
 
- 
 ###############################################################################
 CC=gcc
 

@@ -1,6 +1,6 @@
 #include "map.h"
 
-void map_chargerMap(char *chemin,map *m)
+void map_chargerMap(char *chemin,map m)
 {
     FILE* fileMap = NULL;
     int i,j;
