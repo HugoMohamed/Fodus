@@ -1,16 +1,4 @@
 #
-# Mettre ici le nom de votre programme 
-# (il faut que dans OBJECTS il y ait au moins un objet de même nom que TARGET.
-#
-TARGET= main
-
-#
-# Mettre ici l'ensemble des fichiers objets nécessaires aux programmes 
-# (les fichiers peuvent être situés dans des répertoires)
-#
-OBJECTS=  main.o map.o
-
-#
 # Mettre ici vos options de compilation.
 #
 CFLAGS= -DDEBUG -g -Wall `pkg-config --cflags MLV`
@@ -29,21 +17,23 @@ LDLIBS=`pkg-config --libs-only-l MLV`
 
  
 ###############################################################################
+CC=gcc
 
-DEPENDS=$(OBJECTS:.o=.d)
-INCLUDE_DEPENDS=$(foreach i,$(DEPENDS),$(wildcard $(i)))
- 
-all: $(TARGET)
- 
-$(TARGET): $(DEPENDS) $(OBJECTS)
-	$(CC) -o $@ $(LDFLAGS) $(OBJECTS) $(LDLIBS)
- 
-%.d:%.c
-	$(CC) -M $(CFLAGS) -MT '$(shell echo "$&lt;" |sed 's,\($*\)\.c,\1.o $@,' )'  < > $@
- 
-include $(INCLUDE_DEPENDS)
- 
+main: main.o map.o personnage.o
+	$(CC) main.o map.o personnage.o -o main $(LDFLAGS) $(LDLIBS)
+
+map.o : map.c map.h
+	$(CC) $(CFLAGS) -c map.c
+
+personnage.o : personnage.c personnage.h
+	$(CC) $(CFLAGS) -c personnage.c
+
+main.o: main.c map.h personnage.h
+	$(CC) $(CFLAGS) -c main.c
+
+map.o: map.c map.h
+
 clean:
-	-rm -f $(TARGET)
-	-rm -f $(OBJECTS)
-	-rm -f $(DEPENDS)
+	rm -rf *.o *.~ main
+
+
