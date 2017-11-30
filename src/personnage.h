@@ -1,5 +1,6 @@
-#ifndef PERSO_H_INCLUDED
-#define PERSO_H_INCLUDED
+#ifndef PERSO_H
+#define PERSO_H
+
 #include <MLV/MLV_all.h>
 
 #define VIE 100
@@ -9,17 +10,20 @@ typedef struct
 {
     int x;
     int y
-} coordonnees;
+} coord;
 
-//Crée un personnage à une position par défaut
-coordonnees perso_creerPerso();
+typedef struct
+{
+    int vie;
+    int dmg;
+    coord pos
+}perso;
 
+//Initialise un perso
+void perso_creerPerso(perso *p,coord *c, int vie, int dmg);
 
-//Prend les coordonnes initiales et renvoi les nouvelles
-coordonnees perso_deplacer(map m, coordonnees c, int direction);
-
-
-
+//Deplace le perso p a d'une case a gauche ou a droite
+void perso_deplacer(map m, perso *p, int direction)
 
 
 #endif
