@@ -1,9 +1,12 @@
+#ifndef MAP_C
+#define MAP_C
+
 #include "map.h"
 
 void map_chargerMap(char *chemin,map m)
 {
     FILE* fileMap = NULL;
-    int i,j;
+    int i,j,c;
     fileMap = fopen(chemin,"r");
     if(fileMap == NULL)
     {
@@ -13,7 +16,9 @@ void map_chargerMap(char *chemin,map m)
 
     for(i=0;i<27;i++)
 	for(j=0;j<18;j++)
-	    m[i][j]=fgetc(fileMap);
+	    m[i][j] = fgetc(fileMap);
     
     fclose(fileMap);
 }
+
+#endif MAP_C
