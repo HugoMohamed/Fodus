@@ -19,11 +19,15 @@ typedef struct
     coord pos
 }perso;
 
-//Initialise un perso
+// Un tir a une position (qui évolue) et un tireur (pour les dmg)
+
+// Initialise un perso
 void perso_creerPerso(perso *p,coord *c, int vie, int dmg);
 
-//Deplace le perso p a d'une case a gauche ou a droite
-void perso_deplacer(map m, perso *p, int direction)
+// Deplace le perso p d'une case a gauche/droite/haut/bas
+void perso_deplacer(map m, perso *p, int direction);
 
+// Le perso p attaque en c
+void perso_attaque(perso *p1,perso *p2,coord *c);
 
 #endif
