@@ -1,15 +1,20 @@
 #ifndef MAIN_C
 #define MAIN_C
 
-#include "map.h"
+#include "personnage.h"
 
 int main()
 {
     map m;
+    coord c;
+    perso p;
+    c.x = 40;
+    c.y = 40;
     MLV_create_window("jeux", "jeux", 1040, 720);
     
     map_chargerMap("../map/map.txt",m);
     map_afficherMap(m);
+    perso_creerPerso(&p,&c,100,10);
 
     MLV_actualise_window();
     MLV_wait_seconds( 20 );
