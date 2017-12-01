@@ -7,7 +7,7 @@ void perso_creerPerso(perso *p,coord *c, int vie, int dmg)
     p->vie = vie;
     p->dmg = dmg;
     
-    MLV_draw_rectangle( c->x, c->y, 2, 2, MLV_COLOR_BLUE );
+    MLV_draw_filled_rectangle( c->x, c->y,40,40, MLV_COLOR_BLUE );
 }
 
 
