@@ -16,7 +16,7 @@ void map_chargerMap(char *chemin,map m)
 
     for(i=0;i<27;i++)
 	for(j=0;j<18;j++)
-	    m[i][j] = fgetc(fileMap);
+	  if(fgetc(fileMap);
     
     fclose(fileMap);
 }

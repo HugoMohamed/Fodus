@@ -9,14 +9,14 @@
 typedef struct
 {
     int x;
-    int y
+  int y;
 } coord;
 
 typedef struct
 {
     int vie;
     int dmg;
-    coord pos
+  coord pos;
 } perso;
 
 // Un tir a une position (qui évolue) et un tireur (pour les dmg)
