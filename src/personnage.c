@@ -12,7 +12,7 @@ void perso_creerPerso(perso *p,coord *c, int vie, int dmg)
 }
 
 
-void perso_deplacer(map m, perso *p, int direction)
+void perso_deplacer(map *m, perso *p, int direction)
 {
     if(direction == 0 && m[p->pos.x - 1][p->pos.y] == 0)//gauche
 	p->pos.x --;
