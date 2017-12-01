@@ -18,8 +18,8 @@ LDLIBS=`pkg-config --libs-only-l MLV`
 ###############################################################################
 CC=gcc
 
-fodus: main.o map.o personnage.o
-	$(CC) main.o map.o personnage.o -o fodus $(LDFLAGS) $(LDLIBS)
+fodus: main.o map.o personnage.o jeux.o
+	$(CC) main.o map.o personnage.o jeux.o -o fodus $(LDFLAGS) $(LDLIBS)
 
 map.o: map.c map.h
 	$(CC) $(CFLAGS) -c map.c
@@ -27,10 +27,11 @@ map.o: map.c map.h
 personnage.o: personnage.c personnage.h
 	$(CC) $(CFLAGS) -c personnage.c
 
+jeux.o: jeux.c jeux.h
+	$(CC) $(CFLAGS) -c jeux.c
+
 main.o: main.c map.h personnage.h
 	$(CC) $(CFLAGS) -c main.c
-
-map.o: map.c map.h
 
 clean:
 	rm -rf *.o *.~ fodus

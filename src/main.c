@@ -1,7 +1,7 @@
 #ifndef MAIN_C
 #define MAIN_C
 
-#include "personnage.h"
+#include "jeux.h"
 
 int main()
 {
@@ -20,7 +20,7 @@ int main()
     MLV_wait_seconds( 20 );
 
     exit(0);
-	
+
 }
 
 #endif
