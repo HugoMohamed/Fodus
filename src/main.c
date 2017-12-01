@@ -10,7 +10,7 @@ int main()
     perso p;
     c.x = 40;
     c.y = 40;
-    MLV_create_window("jeux", "jeux", 1040, 720);
+    MLV_create_window("fodus", "fodus", 1040, 720);
     
     map_chargerMap("../map/map.txt",m);
     map_afficherMap(m);
