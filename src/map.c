@@ -39,5 +39,4 @@ void map_afficherMap(map m)
     }
 }
 
-
 #endif

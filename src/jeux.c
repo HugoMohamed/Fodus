@@ -36,15 +36,15 @@ void jeux_tour(perso *p, map m)
 	    // On affiche en surbrillance les cases ou il peut attaquer
 	    for(i=1;i<=3;i++)
 	    {
-		m[p->pos.x+i][p->pos.y] = 2;
-		m[p->pos.x][p->pos.y+i] = 2;
+		m[p->pos.x+i][p->pos.y] = '2';
+		m[p->pos.x][p->pos.y+i] ='2';
 		MLV_draw_filled_rectangle((p->pos.x+i)*40,p->pos.y*40,40,40,MLV_COLOR_GREEN);
 		MLV_draw_filled_rectangle(p->pos.x*40,(p->pos.y+i)*40,40,40,MLV_COLOR_GREEN);
 	    }
 	    for(i=-3;i<=1;i++)
 	    {
-		m[p->pos.x+i][p->pos.y] = 2;
-		m[p->pos.x][p->pos.y+i] = 2;
+		m[p->pos.x+i][p->pos.y] = '2';
+		m[p->pos.x][p->pos.y+i] = '2';
 		MLV_draw_filled_rectangle((p->pos.x+i)*40,p->pos.y*40,40,40,MLV_COLOR_GREEN);
 		MLV_draw_filled_rectangle(p->pos.x*40,(p->pos.y+i)*40,40,40,MLV_COLOR_GREEN);
 	    }
@@ -56,12 +56,13 @@ void jeux_tour(perso *p, map m)
 		MLV_wait_mouse(&mouseX,&mouseY);
 		mouseX /= 40;
 		mouseY /= 40;
-	    }while(m[mouseX][mouseY] != 2);
+		fprintf(stdout,"%d %d\n",mouseX,mouseY);
+	    }while(m[mouseX][mouseY] != '2');
 
 	    // Le perso attaque sur la case selectionnée
 
 
-	    pa --;
+	    //pa --;
     	}
 	// on repete l'operation tant qu'il a le droit de bouger
     	pm --;

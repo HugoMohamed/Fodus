@@ -30,5 +30,6 @@ void perso_deplacer(map m, perso *p, int direction);
 
 // Le perso p attaque en c
 void perso_attaque(perso *p1,persoTab pT,coord *c,int nbJoueur);
+void perso_nettoyerDeplacement(int x,int y);
 
 #endif

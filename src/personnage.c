@@ -17,26 +17,26 @@ void perso_deplacer(map m, perso *p, int direction)
 
     if(direction == 0 && m[p->pos.x - 1][p->pos.y] == '0')//gauche
     {
-	MLV_draw_rectangle( (p->pos.x)*40, (p->pos.y)*40,40,40, MLV_COLOR_WHITE );
+	perso_nettoyerDeplacement((p->pos.x)*40,(p->pos.y)*40);
 	p->pos.x --;
     }
     
     if(direction == 1 && m[p->pos.x + 1][p->pos.y] == '0') //droite
     {
-	MLV_draw_rectangle( (p->pos.x)*40, (p->pos.y)*40,40,40, MLV_COLOR_WHITE );
+	perso_nettoyerDeplacement((p->pos.x)*40,(p->pos.y)*40);
 	p->pos.x ++;
 
     }
 
     if(direction == 2 && m[p->pos.x][p->pos.y - 1] == '0') //haut
     {
-	MLV_draw_rectangle( (p->pos.x)*40, (p->pos.y)*40,40,40, MLV_COLOR_WHITE );
+	perso_nettoyerDeplacement((p->pos.x)*40,(p->pos.y)*40);
 	p->pos.y --;
     }
 
     if(direction == 3 && m[p->pos.x][p->pos.y + 1] == '0') //bas
     {
-	MLV_draw_rectangle( (p->pos.x)*40, (p->pos.y)*40,40,40, MLV_COLOR_WHITE );
+        perso_nettoyerDeplacement((p->pos.x)*40,(p->pos.y)*40);
 	p->pos.y ++;
     }
 
@@ -52,4 +52,11 @@ void perso_attaque(perso *p1,persoTab pT,coord *c,int nbJoueur)
     for(i=0;i<nbJoueur;i++)
 	if(c->x == pT[i].pos.x && c->y == pT[i].pos.y)
 	    pT[i].vie -= p1->dmg;
+}
+
+void perso_nettoyerDeplacement(int x,int y)
+{
+    MLV_draw_filled_rectangle(x,y,40,40, MLV_COLOR_BLACK);
+    MLV_draw_rectangle(x,y,40,40, MLV_COLOR_WHITE);
+    MLV_actualise_window();
 }
