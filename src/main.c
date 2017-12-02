@@ -6,25 +6,38 @@
 int main()
 {
     map m;
-    coord c;
-    perso p;
-    c.x = 2;
-    c.y = 2;
+	persoTab joueurs;
+    perso p1;
+	perso p2;
+	int nbJoueurs = 2;
+	int gagnant = 0;
+	coord c1;
+	coord c2;
+	c1.x = 2;
+    c1.y = 2;
+	c2.x = 12;
+	c2.y = 12;
+
+	// On crée et on affiche le terrain
     MLV_create_window("Fodus Ultimate Battle", "Fodus", 1040, 680);
 
     map_chargerMap("../map/map.txt",m);
     map_afficherMap(m);
-    /*for(i=0;i<TMAX;i++)
-      {
-	for(j=0;j<TMAX;j++)
-	  fprintf(stdout,"%c",m[i][j]);
-	fprintf(stdout,"\n");
-	}*/
-    
-    perso_creerPerso(&p,&c,100,10);
+
+	// On crée les différents personnages
+    perso_creerPerso(&p1,&c1,10,10,joueurs,1);
+	perso_creerPerso(&p2,&c2,10,10,joueurs,2);
     MLV_actualise_window();
 
-    jeux_tour(&p,m);
+	while((gagnant = jeux_fin(joueurs,m,nbJoueurs)) == 0)
+    {
+		jeux_tour(&p1,joueurs,m,nbJoueurs);
+		if((gagnant = jeux_fin(joueurs,m,nbJoueurs)) != 0)
+			break;
+		jeux_tour(&p2,joueurs,m,nbJoueurs);
+	}
+
+	jeux_afficherGagnant(gagnant);
 
     MLV_wait_seconds( 20 );
 
