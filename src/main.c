@@ -8,8 +8,8 @@ int main()
     map m;
     coord c;
     perso p;
-    c.x = 40;
-    c.y = 40;
+    c.x = 2;
+    c.y = 2;
     MLV_create_window("Fodus Ultimate Battle", "Fodus", 1040, 680);
 
     map_chargerMap("../map/map.txt",m);
@@ -18,6 +18,7 @@ int main()
     MLV_actualise_window();
 
     jeux_tour(&p,m);
+
     MLV_wait_seconds( 20 );
 
     exit(0);

@@ -16,9 +16,9 @@ void jeux_tour(perso *p, map m)
     {
       	// On gere les evenement du clavier
       	touche = 0;
-
-	while(touche != MLV_KEYBOARD_z || touche != MLV_KEYBOARD_s || touche != MLV_KEYBOARD_q || touche != MLV_KEYBOARD_d || touche != MLV_KEYBOARD_a)
-	    MLV_wait_keyboard(&touche,NULL,NULL);
+	MLV_wait_keyboard(&touche,NULL,NULL);
+//	while(touche != MLV_KEYBOARD_z || touche != MLV_KEYBOARD_s || touche != MLV_KEYBOARD_q || touche != MLV_KEYBOARD_d || touche != MLV_KEYBOARD_a)
+	// MLV_wait_keyboard(&touche,NULL,NULL);
 
 	// on deplace le perso
 	if(touche == MLV_KEYBOARD_q)
