@@ -29,7 +29,13 @@ http://github.com/IhFisk/Smash-bros
   
   ### Dans le dossier du jeu :
     `cd src`
+    
+    
     `make`
+    
+    Pour lancer le jeu lancer la commande :
+    
+    `fodus`
     
 
 ## Sources
