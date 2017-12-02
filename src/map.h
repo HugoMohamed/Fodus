@@ -7,9 +7,15 @@
 
 #define TMAX 100
 
+/* map est un tableau d'entier en 2 dimension avec :
+	0 les cases vide
+	1 le sol
+	2 les cases ou le joueur peut attaquer
+	(faudra ptet penser a utiliser des enum pour que ce soit plus propre)
+*/
 typedef int map[TMAX][TMAX];
 
-// Permet de charger la map depuis un fichier
+// Permet de charger la map depuis un fichier map.txt
 void map_chargerMap(char *chemin,map m);
 
 // Permet d'afficher la map

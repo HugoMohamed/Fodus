@@ -19,15 +19,16 @@ typedef struct
     coord pos;
 } perso;
 
-// Un tir a une position (qui évolue) et un tireur (pour les dmg)
+// Pour avoir une liste des joueurs
+typedef perso persoTab[TMAX];
 
 // Initialise un perso
 void perso_creerPerso(perso *p,coord *c, int vie, int dmg);
 
 // Deplace le perso p d'une case a gauche/droite/haut/bas
-void perso_deplacer(map *m, perso *p, int direction);
+void perso_deplacer(map m, perso *p, int direction);
 
 // Le perso p attaque en c
-void perso_attaque(perso *p1,perso *p2,coord *c);
+void perso_attaque(perso *p1,persoTab pT,coord *c,int nbJoueur);
 
 #endif
