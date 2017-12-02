@@ -21,7 +21,13 @@ http://github.com/IhFisk/Smash-bros
   http://www-igm.univ-mlv.fr/~boussica/mlv/api/French/html/download.html
 
 ## Compilation
-*a faire*
+
+  ### Prérequis :
+  - make
+  
+  `sudo apt-get install make`
+  
+  
 
 ## Sources
 - Documentation de la bibliothèque MLV-2.0.2 :
