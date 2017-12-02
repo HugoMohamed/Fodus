@@ -27,7 +27,7 @@ typedef perso persoTab[TMAX];
 void perso_creerPerso(map m,perso *p,coord *c, int vie, int dmg,persoTab joueurs,int numperso);
 
 // Deplace le perso p d'une case a gauche/droite/haut/bas
-void perso_deplacer(map m, perso *p, int direction);
+void perso_deplacer(map m, perso *p, int numJ, persoTab joueurs, int direction);
 
 // Le perso p attaque en c
 void perso_attaque(perso *p1,persoTab joueurs,int x, int y,int nbJoueurs);

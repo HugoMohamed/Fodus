@@ -11,6 +11,7 @@ int main()
     perso p2;
     int nbJoueurs = 2;
     int gagnant = 0;
+    int numJ;
     coord c1;
     coord c2;
     c1.x = 2;
@@ -25,16 +26,18 @@ int main()
     map_afficherMap(m);
 
     // On crée les différents personnages
-    perso_creerPerso(m,&p1,&c1,10,10,joueurs,1);
-    perso_creerPerso(m,&p2,&c2,10,10,joueurs,2);
+    perso_creerPerso(m,&p1,&c1,100,10,joueurs,1);
+    perso_creerPerso(m,&p2,&c2,100,10,joueurs,2);
     MLV_actualise_window();
-
+    
     while((gagnant = jeux_fin(joueurs,m,nbJoueurs)) == 0)
     {
-	jeux_tour(&p1,joueurs,m,nbJoueurs);
+	numJ = 1;
+	jeux_tour(&p1,numJ,joueurs,m,nbJoueurs);
 	if((gagnant = jeux_fin(joueurs,m,nbJoueurs)) != 0)
 	    break;
-	jeux_tour(&p2,joueurs,m,nbJoueurs);
+	numJ = 2;
+	jeux_tour(&p2,numJ,joueurs,m,nbJoueurs);
     }
 
     jeux_afficherGagnant(gagnant);
