@@ -1,22 +1,24 @@
 #include "personnage.h"
 
-void perso_creerPerso(perso *p,coord *c, int vie, int dmg,persoTab joueurs,int numperso)
+void perso_creerPerso(map m,perso *p,coord *c, int vie, int dmg,persoTab joueurs,int numperso)
 {
     p->pos.x = c->x;
     p->pos.y = c->y;
     p->vie = vie;
     p->dmg = dmg;
 
-	joueurs[numperso] = *p;
+    joueurs[numperso] = *p;
 
     MLV_draw_filled_rectangle( (p->pos.x)*40, (p->pos.y)*40,40,40, MLV_COLOR_BLUE );
+    m[p->pos.y][p->pos.x] = '3';
 
 }
 
 
 void perso_deplacer(map m, perso *p, int direction)
 {
-
+    
+    m[p->pos.y][p->pos.x] = '0';
     if(direction == 0 && m[p->pos.y][p->pos.x -1] == '0')//gauche
     {
 		perso_nettoyer((p->pos.x)*40,(p->pos.y)*40);
@@ -42,6 +44,7 @@ void perso_deplacer(map m, perso *p, int direction)
     }
 
     MLV_draw_filled_rectangle( (p->pos.x)*40, (p->pos.y)*40,40,40, MLV_COLOR_BLUE );
+    m[p->pos.y][p->pos.x] = '3';
 
     MLV_actualise_window();
 }
@@ -67,29 +70,55 @@ void perso_nettoyerAttaque(map m,int x,int y)
     int i;
     for(i=1;i<=3;i++)
     {
-		if(m[y][x+i] != '1')
-		{
-		    m[y][x+i] = '0';
-		    perso_nettoyer((x+i)*40,y*40);
-		}
-		if(m[y+i][x] != '1')
-		{
-		    m[y+i][x] = '0';
-		    perso_nettoyer(x*40,(y+i)*40);
-		}
-
-	    }
-	    for(i=-3;i<0;i++)
-	    {
-		if(m[y][x+i] != '1')
-		{
-		    m[y][x+i] = '0';
-		    perso_nettoyer((x+i)*40,y*40);
-		}
-		if(m[y+i][x] != '1')
-		{
-		    m[y+i][x] = '0';
-		    perso_nettoyer(x*40,(y+i)*40);
-		}
+	if(m[y][x+i] == '3')
+	{
+	    MLV_draw_filled_rectangle((x+i)*40,y*40,40,40, MLV_COLOR_BLUE);
+	    MLV_actualise_window();
+	}
+      
+	if(m[y][x+i] == '2')
+	{
+	    m[y][x+i] = '0';
+	    perso_nettoyer((x+i)*40,y*40);
+	}
+	
+	if(m[y+i][x] == '3')
+	{
+	    MLV_draw_filled_rectangle(x*40,(y+i)*40,40,40, MLV_COLOR_BLUE);
+	    MLV_actualise_window();
+	}
+	
+	if(m[y+i][x] == '2')
+	{
+	    m[y+i][x] = '0';
+	    perso_nettoyer(x*40,(y+i)*40);
+	}
+    }
+	
+    for(i=-3;i<0;i++)
+    {
+	if(m[y][x+i] == '3')
+	{
+	    MLV_draw_filled_rectangle((x+i)*40,y*40,40,40, MLV_COLOR_BLUE);
+	    MLV_actualise_window();
+	}
+      
+	if(m[y][x+i] == '2')
+	{
+	    m[y][x+i] = '0';
+	    perso_nettoyer((x+i)*40,y*40);
+	}
+	
+	if(m[y+i][x] == '3')
+	{
+	    MLV_draw_filled_rectangle(x*40,(y+i)*40,40,40, MLV_COLOR_BLUE);
+	    MLV_actualise_window();
+	}
+	
+	if(m[y+i][x] == '2')
+	{
+	    m[y+i][x] = '0';
+	    perso_nettoyer(x*40,(y+i)*40);
+	}
     }
 }

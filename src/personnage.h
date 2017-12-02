@@ -24,7 +24,7 @@ typedef struct
 typedef perso persoTab[TMAX];
 
 // Initialise un perso
-void perso_creerPerso(perso *p,coord *c, int vie, int dmg,persoTab joueurs,int numperso);
+void perso_creerPerso(map m,perso *p,coord *c, int vie, int dmg,persoTab joueurs,int numperso);
 
 // Deplace le perso p d'une case a gauche/droite/haut/bas
 void perso_deplacer(map m, perso *p, int direction);
