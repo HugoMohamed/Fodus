@@ -15,27 +15,28 @@ void perso_creerPerso(perso *p,coord *c, int vie, int dmg)
 void perso_deplacer(map m, perso *p, int direction)
 {
 
-    if(direction == 0 && m[p->pos.x - 1][p->pos.y] == '0')//gauche
+    if(direction == 0 && m[p->pos.y][p->pos.x -1] == '0')//gauche
     {
 	perso_nettoyerDeplacement((p->pos.x)*40,(p->pos.y)*40);
 	p->pos.x --;
     }
     
-    if(direction == 1 && m[p->pos.x + 1][p->pos.y] == '0') //droite
+    if(direction == 1 && m[p->pos.y][p->pos.x +1] == '0') //droite
     {
 	perso_nettoyerDeplacement((p->pos.x)*40,(p->pos.y)*40);
 	p->pos.x ++;
 
     }
 
-    if(direction == 2 && m[p->pos.x][p->pos.y - 1] == '0') //haut
+    if(direction == 2 && m[p->pos.y - 1][p->pos.x] == '0') //haut
     {
 	perso_nettoyerDeplacement((p->pos.x)*40,(p->pos.y)*40);
 	p->pos.y --;
     }
 
-    if(direction == 3 && m[p->pos.x][p->pos.y + 1] == '0') //bas
+    if(direction == 3 && m[p->pos.y + 1][p->pos.x] == '0') //bas
     {
+	fprintf(stdout,"%c\n",m[p->pos.x ][p->pos.y + 1]);
         perso_nettoyerDeplacement((p->pos.x)*40,(p->pos.y)*40);
 	p->pos.y ++;
     }

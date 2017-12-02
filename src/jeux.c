@@ -12,7 +12,7 @@ void jeux_tour(perso *p, map m)
     MLV_Keyboard_button touche;
 
     // Tant que le joueur peut se déplacer
-    while(pm != 0)
+    while(pm != 0 || pa != 0)
     {
       	// On gere les evenement du clavier
       	touche = 0;
@@ -62,7 +62,7 @@ void jeux_tour(perso *p, map m)
 	    // Le perso attaque sur la case selectionnée
 
 
-	    //pa --;
+	    pa --;
     	}
 	// on repete l'operation tant qu'il a le droit de bouger
     	pm --;

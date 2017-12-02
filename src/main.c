@@ -14,6 +14,13 @@ int main()
 
     map_chargerMap("../map/map.txt",m);
     map_afficherMap(m);
+    /*for(i=0;i<TMAX;i++)
+      {
+	for(j=0;j<TMAX;j++)
+	  fprintf(stdout,"%c",m[i][j]);
+	fprintf(stdout,"\n");
+	}*/
+    
     perso_creerPerso(&p,&c,100,10);
     MLV_actualise_window();
 
