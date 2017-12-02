@@ -27,7 +27,10 @@ http://github.com/IhFisk/Smash-bros
   
     `sudo apt-get install make`
   
-  
+  ### Dans le dossier du jeu :
+    `cd src`
+    `make`
+    
 
 ## Sources
 - Documentation de la bibliothèque MLV-2.0.2 :
