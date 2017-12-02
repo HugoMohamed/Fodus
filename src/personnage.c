@@ -36,7 +36,6 @@ void perso_deplacer(map m, perso *p, int direction)
 
     if(direction == 3 && m[p->pos.y + 1][p->pos.x] == '0') //bas
     {
-	fprintf(stdout,"%c\n",m[p->pos.x ][p->pos.y + 1]);
         perso_nettoyerDeplacement((p->pos.x)*40,(p->pos.y)*40);
 	p->pos.y ++;
     }
