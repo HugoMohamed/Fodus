@@ -28,12 +28,11 @@ http://github.com/IhFisk/Smash-bros
     `sudo apt-get install make`
   
   ### Dans le dossier du jeu :
-    `cd src`
+    `$ cd src`
     
+    `$ make`
     
-    `make`
-    
-    Pour lancer le jeu lancer la commande :
+  - Pour lancer le jeu lancer la commande :
     
     `fodus`
     
