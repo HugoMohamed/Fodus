@@ -30,6 +30,10 @@ void perso_deplacer(map m, perso *p, int direction);
 
 // Le perso p attaque en c
 void perso_attaque(perso *p1,persoTab pT,coord *c,int nbJoueur);
-void perso_nettoyerDeplacement(int x,int y);
+
+// Rend la couleur initiale à la case de coordonnées (x,y)
+void perso_nettoyer(int x,int y);
+
+void perso_nettoyerAttaque(map m,int x,int y);
 
 #endif
