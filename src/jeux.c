@@ -79,7 +79,6 @@ void jeux_tour(perso *p,persoTab joueurs,map m,int nbJoueurs)
 	    MLV_wait_mouse(&mouseX,&mouseY);
 	    mouseX /= 40;
 	    mouseY /= 40;
-	    fprintf(stdout,"%c %c\n",m[mouseY][mouseX],m[p->pos.y][p->pos.x]);
 	    if(m[mouseY][mouseX] == '2' || (m[mouseY][mouseX] == '3' && (mouseY != p->pos.y || mouseX != p->pos.x)))
 	    {
 		fprintf(stdout,"Attaque !\n");
