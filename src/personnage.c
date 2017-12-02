@@ -67,16 +67,28 @@ void perso_nettoyerAttaque(map m,int x,int y)
     for(i=1;i<=3;i++)
     {
 	if(m[y][x+i] != '1')
+	{
+	    m[y][x+i] = '0';
 	    perso_nettoyer((x+i)*40,y*40);
+	}
 	if(m[y+i][x] != '1')
+	{
+	    m[y+i][x] = '0';
 	    perso_nettoyer(x*40,(y+i)*40);
+	}
 
     }
     for(i=-3;i<0;i++)
     {
- 	if(m[y][x+i] != '1')
+	if(m[y][x+i] != '1')
+	{
+	    m[y][x+i] = '0';
 	    perso_nettoyer((x+i)*40,y*40);
+	}
 	if(m[y+i][x] != '1')
-	    perso_nettoyer(x*40,(y+i)*40); 
+	{
+	    m[y+i][x] = '0';
+	    perso_nettoyer(x*40,(y+i)*40);
+	}
     }
 }

@@ -17,17 +17,25 @@ void jeux_tour(perso *p, map m)
       	// On gere les evenement du clavier
 	MLV_wait_keyboard(&touche,NULL,NULL);
 	
-	if(pm > 0 && (touche == MLV_KEYBOARD_z || touche == MLV_KEYBOARD_s || touche == MLV_KEYBOARD_q || touche == MLV_KEYBOARD_d || touche == MLV_KEYBOARD_a))
+	// on deplace le perso
+	if(touche == MLV_KEYBOARD_q && pm >0)
 	{
-	    // on deplace le perso
-	    if(touche == MLV_KEYBOARD_q)
-		perso_deplacer(m,p,0);
-	    if(touche == MLV_KEYBOARD_d)
-		perso_deplacer(m,p,1);
-	    if(touche == MLV_KEYBOARD_z)
-		perso_deplacer(m,p,2);
-	    if(touche == MLV_KEYBOARD_s)
-		perso_deplacer(m,p,3);
+	    perso_deplacer(m,p,0);
+	    pm --;	
+	}
+	if(touche == MLV_KEYBOARD_d && pm >0)
+	{
+	    perso_deplacer(m,p,1);
+	    pm --;
+	}
+	if(touche == MLV_KEYBOARD_z && pm >0)
+	{
+	    perso_deplacer(m,p,2);
+	    pm --;
+	}
+	if(touche == MLV_KEYBOARD_s && pm >0)
+	{
+	    perso_deplacer(m,p,3);
 	    pm --;
 	}
 
@@ -79,8 +87,7 @@ void jeux_tour(perso *p, map m)
 	    }
 	    else
 	        perso_nettoyerAttaque(m,p->pos.x,p->pos.y);
-	    
-	    //MLV_actualise_window();	    
+	    	    
 	    // Le perso attaque sur la case selectionnée
 
     	}
