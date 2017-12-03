@@ -24,19 +24,18 @@ void jeux_tour(perso *p,int numJ,persoTab joueurs,map m,int nbJoueurs)
 		pm = 0;
 	    }
 	    // on deplace le perso
+	    // le pm n'est dépenser que si le déplacement est "réussi"
 	    if(touche == MLV_KEYBOARD_q && pm >0)
-		perso_deplacer(m,p,numJ,joueurs,0);
+		pm = perso_deplacer(m,p,numJ,joueurs,0,pm);
 
 	    if(touche == MLV_KEYBOARD_d && pm >0)
-		perso_deplacer(m,p,numJ,joueurs,1);
+		pm = perso_deplacer(m,p,numJ,joueurs,1,pm);
 
 	    if(touche == MLV_KEYBOARD_z && pm >0)
-		perso_deplacer(m,p,numJ,joueurs,2);
+		pm = perso_deplacer(m,p,numJ,joueurs,2,pm);
 
 	    if(touche == MLV_KEYBOARD_s && pm >0)
-		perso_deplacer(m,p,numJ,joueurs,3);
-
-	    pm --;
+		pm = perso_deplacer(m,p,numJ,joueurs,3,pm);
 
 	    // s'il choisi d'attaquer
 	    if(pa > 0 && touche == MLV_KEYBOARD_a)
