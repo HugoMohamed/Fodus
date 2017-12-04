@@ -26,8 +26,8 @@ int main()
     map_afficherMap(m);
 
     // On crée les différents personnages
-    perso_creerPerso(m,&p1,&c1,100,10,joueurs,1);
-    perso_creerPerso(m,&p2,&c2,100,10,joueurs,2);
+    perso_creerPerso(m,&p1,&c1,50,10,joueurs,1);
+    perso_creerPerso(m,&p2,&c2,50,10,joueurs,2);
     MLV_actualise_window();
     
     while((gagnant = jeux_fin(joueurs,m,nbJoueurs)) == 0)
@@ -40,7 +40,7 @@ int main()
 	jeux_tour(&p2,numJ,joueurs,m,nbJoueurs);
     }
 
-    jeux_afficherGagnant(gagnant);
+    jeux_afficherGagnant(numJ);
 
     MLV_wait_seconds( 20 );
 

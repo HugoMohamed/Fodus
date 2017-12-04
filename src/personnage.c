@@ -15,7 +15,7 @@ void perso_creerPerso(map m,perso *p,coord *c, int vie, int dmg,persoTab joueurs
 }
 
 
-void perso_deplacer(map m, perso *p, int numJ, persoTab joueur, int direction)
+int perso_deplacer(map m, perso *p, int numJ, persoTab joueur, int direction, int pm)
 {
     
     m[p->pos.y][p->pos.x] = '0';
@@ -23,24 +23,28 @@ void perso_deplacer(map m, perso *p, int numJ, persoTab joueur, int direction)
     {
 	perso_nettoyer((p->pos.x)*40,(p->pos.y)*40);
 	p->pos.x --;
+	pm --;
     }
 
     if(direction == 1 && m[p->pos.y][p->pos.x +1] == '0') //droite
     {
 	perso_nettoyer((p->pos.x)*40,(p->pos.y)*40);
 	p->pos.x ++;
+	pm --;
     }
 
     if(direction == 2 && m[p->pos.y - 1][p->pos.x] == '0') //haut
     {
 	perso_nettoyer((p->pos.x)*40,(p->pos.y)*40);
 	p->pos.y --;
+	pm --;
     }
 
     if(direction == 3 && m[p->pos.y + 1][p->pos.x] == '0') //bas
     {
         perso_nettoyer((p->pos.x)*40,(p->pos.y)*40);
 	p->pos.y ++;
+	pm --;
     }
 
     MLV_draw_filled_rectangle( (p->pos.x)*40, (p->pos.y)*40,40,40, MLV_COLOR_BLUE );
@@ -49,6 +53,7 @@ void perso_deplacer(map m, perso *p, int numJ, persoTab joueur, int direction)
     joueur[numJ].pos.y = p->pos.y;
     
     MLV_actualise_window();
+    return pm;
 }
 
 void perso_attaque(perso *p1,persoTab joueurs,int x,int y,int nbJoueurs)
