@@ -2,6 +2,7 @@
 #define JEUX_H
 
 #include "personnage.h"
+#include "ia.h"
 
 // Gère le tour d'un joueur
 void jeux_tour(perso *p, int numJ, persoTab joueurs,map m,int nbJoueurs);
