@@ -51,16 +51,16 @@ void jeux_tour(perso *p,int numJ,persoTab joueurs,map m,int nbJoueurs)
         MLV_wait_mouse(&mouseX,&mouseY);
         mouseX /= 40;
         mouseY /= 40;
-        if(m[mouseY][mouseX] == '2')
+        if(m[mouseY][mouseX] == '2' || m[mouseY][mouseX] == '4')
         {
           fprintf(stdout,"Attaque !\n");
           perso_attaque(m,p,joueurs,mouseX,mouseY,nbJoueurs);
           pa --;
-          perso_nettoyerAttaque(m,p->pos.x,p->pos.y);
+          perso_nettoyerAttaque(m,p->pos.x,p->pos.y,joueurs,nbJoueurs);
 
         }
         else
-        perso_nettoyerAttaque(m,p->pos.x,p->pos.y);
+        perso_nettoyerAttaque(m,p->pos.x,p->pos.y,joueurs,nbJoueurs);
 
         // Le perso attaque sur la case selectionnée
       }

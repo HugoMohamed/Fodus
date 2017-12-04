@@ -2,15 +2,15 @@
 
 void perso_creerPerso(map m,perso *p,coord *c, int vie, int dmg,persoTab joueurs,int numperso)
 {
-    p->pos.x = c->x;
-    p->pos.y = c->y;
-    p->vie = vie;
-    p->dmg = dmg;
+  p->pos.x = c->x;
+  p->pos.y = c->y;
+  p->vie = vie;
+  p->dmg = dmg;
 
-    joueurs[numperso] = *p;
+  joueurs[numperso] = *p;
 
-    MLV_draw_filled_rectangle( (p->pos.x)*40, (p->pos.y)*40,40,40, MLV_COLOR_BLUE );
-    m[p->pos.y][p->pos.x] = '3';
+  MLV_draw_filled_rectangle( (p->pos.x)*40, (p->pos.y)*40,40,40, MLV_COLOR_BLUE );
+  m[p->pos.y][p->pos.x] = '3';
 
 }
 
@@ -18,42 +18,42 @@ void perso_creerPerso(map m,perso *p,coord *c, int vie, int dmg,persoTab joueurs
 int perso_deplacer(map m, perso *p, int numJ, persoTab joueur, int direction, int pm)
 {
 
-    m[p->pos.y][p->pos.x] = '0';
-    if(direction == 0 && m[p->pos.y][p->pos.x -1] == '0')//gauche
-    {
-	perso_nettoyer((p->pos.x)*40,(p->pos.y)*40);
-	p->pos.x --;
-	pm --;
-    }
+  m[p->pos.y][p->pos.x] = '0';
+  if(direction == 0 && m[p->pos.y][p->pos.x -1] == '0')//gauche
+  {
+    perso_nettoyer((p->pos.x)*40,(p->pos.y)*40);
+    p->pos.x --;
+    pm --;
+  }
 
-    if(direction == 1 && m[p->pos.y][p->pos.x +1] == '0') //droite
-    {
-	perso_nettoyer((p->pos.x)*40,(p->pos.y)*40);
-	p->pos.x ++;
-	pm --;
-    }
+  if(direction == 1 && m[p->pos.y][p->pos.x +1] == '0') //droite
+  {
+    perso_nettoyer((p->pos.x)*40,(p->pos.y)*40);
+    p->pos.x ++;
+    pm --;
+  }
 
-    if(direction == 2 && m[p->pos.y - 1][p->pos.x] == '0') //haut
-    {
-	perso_nettoyer((p->pos.x)*40,(p->pos.y)*40);
-	p->pos.y --;
-	pm --;
-    }
+  if(direction == 2 && m[p->pos.y - 1][p->pos.x] == '0') //haut
+  {
+    perso_nettoyer((p->pos.x)*40,(p->pos.y)*40);
+    p->pos.y --;
+    pm --;
+  }
 
-    if(direction == 3 && m[p->pos.y + 1][p->pos.x] == '0') //bas
-    {
-        perso_nettoyer((p->pos.x)*40,(p->pos.y)*40);
-	p->pos.y ++;
-	pm --;
-    }
+  if(direction == 3 && m[p->pos.y + 1][p->pos.x] == '0') //bas
+  {
+    perso_nettoyer((p->pos.x)*40,(p->pos.y)*40);
+    p->pos.y ++;
+    pm --;
+  }
 
-    MLV_draw_filled_rectangle( (p->pos.x)*40, (p->pos.y)*40,40,40, MLV_COLOR_BLUE );
-    m[p->pos.y][p->pos.x] = '3';
-    joueur[numJ].pos.x = p->pos.x;
-    joueur[numJ].pos.y = p->pos.y;
+  MLV_draw_filled_rectangle( (p->pos.x)*40, (p->pos.y)*40,40,40, MLV_COLOR_BLUE );
+  m[p->pos.y][p->pos.x] = '3';
+  joueur[numJ].pos.x = p->pos.x;
+  joueur[numJ].pos.y = p->pos.y;
 
-    MLV_actualise_window();
-    return pm;
+  MLV_actualise_window();
+  return pm;
 }
 
 void perso_attaque(map m,perso *p1,persoTab joueurs,int x,int y,int nbJoueurs)
@@ -76,14 +76,15 @@ void perso_nettoyer(int x,int y)
   MLV_actualise_window();
 }
 
-void perso_nettoyerAttaque(map m,int x,int y)
+void perso_nettoyerAttaque(map m,int x,int y,persoTab joueurs,int nbJ)
 {
   int i;
   for(i=1;i<=3;i++)
   {
-    if(m[y][x+i] == '3')
+    if(m[y][x+i] == '4')
     {
       MLV_draw_filled_rectangle((x+i)*40,y*40,40,40, MLV_COLOR_BLUE);
+      m[y][x+i] = '3';
       MLV_actualise_window();
     }
 
@@ -93,9 +94,11 @@ void perso_nettoyerAttaque(map m,int x,int y)
       perso_nettoyer((x+i)*40,y*40);
     }
 
-    if(m[y+i][x] == '3')
+
+    if(m[y+i][x] == '4')
     {
       MLV_draw_filled_rectangle(x*40,(y+i)*40,40,40, MLV_COLOR_BLUE);
+      m[y+i][x] = '3';
       MLV_actualise_window();
     }
 
@@ -108,9 +111,10 @@ void perso_nettoyerAttaque(map m,int x,int y)
 
   for(i=-3;i<0;i++)
   {
-    if(m[y][x+i] == '3')
+    if(m[y][x+i] == '4')
     {
       MLV_draw_filled_rectangle((x+i)*40,y*40,40,40, MLV_COLOR_BLUE);
+      m[y][x+i] = '3';
       MLV_actualise_window();
     }
 
@@ -120,9 +124,11 @@ void perso_nettoyerAttaque(map m,int x,int y)
       perso_nettoyer((x+i)*40,y*40);
     }
 
-    if(m[y+i][x] == '3')
+
+    if(m[y+i][x] == '4')
     {
       MLV_draw_filled_rectangle(x*40,(y+i)*40,40,40, MLV_COLOR_BLUE);
+      m[y+i][x] = '3';
       MLV_actualise_window();
     }
 
@@ -149,7 +155,7 @@ void perso_attaqueA(map m, int x, int y)
     if(m[y][x+i] == '3')
     {
       MLV_draw_rectangle((x+i)*40,y*40,40,40,MLV_COLOR_GREEN);
-      m[y][x+i] = '2';
+      m[y][x+i] = '4';
     }
     i++;
   }
@@ -164,7 +170,7 @@ void perso_attaqueA(map m, int x, int y)
     if(m[y+i][x] == '3')
     {
       MLV_draw_rectangle(x*40,(y+i)*40,40,40,MLV_COLOR_GREEN);
-      m[y+i][x] = '2';
+      m[y+i][x] = '4';
     }
     i++;
   }
@@ -179,7 +185,7 @@ void perso_attaqueA(map m, int x, int y)
     if(m[y][x+i] == '3')
     {
       MLV_draw_rectangle((x+i)*40,y*40,40,40,MLV_COLOR_GREEN);
-      m[y][x+i] = '2';
+      m[y][x+i] = '4';
     }
     i--;
   }
@@ -194,7 +200,7 @@ void perso_attaqueA(map m, int x, int y)
     if(m[y+i][x] == '3')
     {
       MLV_draw_rectangle(x*40,(y+i)*40,40,40,MLV_COLOR_GREEN);
-      m[y+i][x] = '2';
+      m[y+i][x] = '4';
     }
     i--;
   }
