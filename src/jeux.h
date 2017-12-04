@@ -12,4 +12,5 @@ int jeux_fin(persoTab joueurs, map m,int nbJoueurs);
 // Affiche le vainqueur
 void jeux_afficherGagnant(int gagnant);
 
+void jeux_hud(persoTab joueurs, int numJ, int pa, int pm);
 #endif

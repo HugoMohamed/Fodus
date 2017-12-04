@@ -17,7 +17,7 @@ void perso_creerPerso(map m,perso *p,coord *c, int vie, int dmg,persoTab joueurs
 
 int perso_deplacer(map m, perso *p, int numJ, persoTab joueur, int direction, int pm)
 {
-    
+
     m[p->pos.y][p->pos.x] = '0';
     if(direction == 0 && m[p->pos.y][p->pos.x -1] == '0')//gauche
     {
@@ -49,84 +49,153 @@ int perso_deplacer(map m, perso *p, int numJ, persoTab joueur, int direction, in
 
     MLV_draw_filled_rectangle( (p->pos.x)*40, (p->pos.y)*40,40,40, MLV_COLOR_BLUE );
     m[p->pos.y][p->pos.x] = '3';
-    joueur[numJ].pos.x = p->pos.x;  
+    joueur[numJ].pos.x = p->pos.x;
     joueur[numJ].pos.y = p->pos.y;
-    
+
     MLV_actualise_window();
     return pm;
 }
 
-void perso_attaque(perso *p1,persoTab joueurs,int x,int y,int nbJoueurs)
+void perso_attaque(map m,perso *p1,persoTab joueurs,int x,int y,int nbJoueurs)
 {
-    int i;
-    // animation d'attaque au coordonnées c a ajouter
-    for(i=1;i<=nbJoueurs;i++)
-	if(x == joueurs[i].pos.x && y == joueurs[i].pos.y)
-	    joueurs[i].vie -= p1->dmg;
-    
+  int i;
+  // animation d'attaque au coordonnées c a ajouter
+  for(i=1;i<=nbJoueurs;i++)
+  if(x == joueurs[i].pos.x && y == joueurs[i].pos.y)
+  {
+    joueurs[i].vie -= p1->dmg;
+    m[joueurs[i].pos.y][joueurs[i].pos.x] = '3';
+  }
+
 }
 
 void perso_nettoyer(int x,int y)
 {
-    MLV_draw_filled_rectangle(x,y,40,40, MLV_COLOR_BLACK);
-    MLV_draw_rectangle(x,y,40,40, MLV_COLOR_WHITE);
-    MLV_actualise_window();
+  MLV_draw_filled_rectangle(x,y,40,40, MLV_COLOR_BLACK);
+  MLV_draw_rectangle(x,y,40,40, MLV_COLOR_WHITE);
+  MLV_actualise_window();
 }
 
 void perso_nettoyerAttaque(map m,int x,int y)
 {
-    int i;
-    for(i=1;i<=3;i++)
+  int i;
+  for(i=1;i<=3;i++)
+  {
+    if(m[y][x+i] == '3')
     {
-	if(m[y][x+i] == '3')
-	{
-	    MLV_draw_filled_rectangle((x+i)*40,y*40,40,40, MLV_COLOR_BLUE);
-	    MLV_actualise_window();
-	}
-      
-	if(m[y][x+i] == '2')
-	{
-	    m[y][x+i] = '0';
-	    perso_nettoyer((x+i)*40,y*40);
-	}
-	
-	if(m[y+i][x] == '3')
-	{
-	    MLV_draw_filled_rectangle(x*40,(y+i)*40,40,40, MLV_COLOR_BLUE);
-	    MLV_actualise_window();
-	}
-	
-	if(m[y+i][x] == '2')
-	{
-	    m[y+i][x] = '0';
-	    perso_nettoyer(x*40,(y+i)*40);
-	}
+      MLV_draw_filled_rectangle((x+i)*40,y*40,40,40, MLV_COLOR_BLUE);
+      MLV_actualise_window();
     }
-	
-    for(i=-3;i<0;i++)
+
+    if(m[y][x+i] == '2')
     {
-	if(m[y][x+i] == '3')
-	{
-	    MLV_draw_filled_rectangle((x+i)*40,y*40,40,40, MLV_COLOR_BLUE);
-	    MLV_actualise_window();
-	}
-      
-	if(m[y][x+i] == '2')
-	{
-	    m[y][x+i] = '0';
-	    perso_nettoyer((x+i)*40,y*40);
-	}
-	
-	if(m[y+i][x] == '3')
-	{
-	    MLV_draw_filled_rectangle(x*40,(y+i)*40,40,40, MLV_COLOR_BLUE);
-	    MLV_actualise_window();
-	}
-	
-	if(m[y+i][x] == '2')
-	{
-	    m[y+i][x] = '0';
-	    perso_nettoyer(x*40,(y+i)*40);
-	}
+      m[y][x+i] = '0';
+      perso_nettoyer((x+i)*40,y*40);
     }
+
+    if(m[y+i][x] == '3')
+    {
+      MLV_draw_filled_rectangle(x*40,(y+i)*40,40,40, MLV_COLOR_BLUE);
+      MLV_actualise_window();
+    }
+
+    if(m[y+i][x] == '2')
+    {
+      m[y+i][x] = '0';
+      perso_nettoyer(x*40,(y+i)*40);
+    }
+  }
+
+  for(i=-3;i<0;i++)
+  {
+    if(m[y][x+i] == '3')
+    {
+      MLV_draw_filled_rectangle((x+i)*40,y*40,40,40, MLV_COLOR_BLUE);
+      MLV_actualise_window();
+    }
+
+    if(m[y][x+i] == '2')
+    {
+      m[y][x+i] = '0';
+      perso_nettoyer((x+i)*40,y*40);
+    }
+
+    if(m[y+i][x] == '3')
+    {
+      MLV_draw_filled_rectangle(x*40,(y+i)*40,40,40, MLV_COLOR_BLUE);
+      MLV_actualise_window();
+    }
+
+    if(m[y+i][x] == '2')
+    {
+      m[y+i][x] = '0';
+      perso_nettoyer(x*40,(y+i)*40);
+    }
+  }
+  m[y][x] = '3';
+}
+
+void perso_attaqueA(map m, int x, int y)
+{
+  int i;
+  i = 1;
+  while(i <= 3 && m[y][x+i] != '1')
+  {
+    if(m[y][x+i] == '0')
+    {
+      m[y][x+i] = '2';
+      MLV_draw_filled_rectangle((x+i)*40,y*40,40,40,MLV_COLOR_GREEN);
+    }
+    if(m[y][x+i] == '3')
+    {
+      MLV_draw_rectangle((x+i)*40,y*40,40,40,MLV_COLOR_GREEN);
+      m[y][x+i] = '2';
+    }
+    i++;
+  }
+  i = 1;
+  while( i <= 3 && m[y+i][x] != '1')
+  {
+    if(m[y+i][x] == '0')
+    {
+      m[y+i][x] ='2';
+      MLV_draw_filled_rectangle(x*40,(y+i)*40,40,40,MLV_COLOR_GREEN);
+    }
+    if(m[y+i][x] == '3')
+    {
+      MLV_draw_rectangle(x*40,(y+i)*40,40,40,MLV_COLOR_GREEN);
+      m[y+i][x] = '2';
+    }
+    i++;
+  }
+  i = -1;
+  while(i >= -3 && m[y][x+i] != '1')
+  {
+    if(m[y][x+i] == '0')
+    {
+      m[y][x+i] = '2';
+      MLV_draw_filled_rectangle((x+i)*40,y*40,40,40,MLV_COLOR_GREEN);
+    }
+    if(m[y][x+i] == '3')
+    {
+      MLV_draw_rectangle((x+i)*40,y*40,40,40,MLV_COLOR_GREEN);
+      m[y][x+i] = '2';
+    }
+    i--;
+  }
+  i = -1;
+  while(i >= -3 && m[y+i][x] != '1')
+  {
+    if(m[y+i][x] == '0')
+    {
+      m[y+i][x] = '2';
+      MLV_draw_filled_rectangle(x*40,(y+i)*40,40,40,MLV_COLOR_GREEN);
+    }
+    if(m[y+i][x] == '3')
+    {
+      MLV_draw_rectangle(x*40,(y+i)*40,40,40,MLV_COLOR_GREEN);
+      m[y+i][x] = '2';
+    }
+    i--;
+  }
 }
