@@ -20,7 +20,6 @@ typedef struct
 } perso;
 
 // Pour avoir une liste des joueurs
-// Avec p[0] le nombre de joueurs
 typedef perso persoTab[TMAX];
 
 // Initialise un perso
