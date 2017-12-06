@@ -2,21 +2,23 @@
 
 void perso_creerPerso(map m,perso *p,coord *c, int vie, int dmg,persoTab joueurs,int numperso)
 {
-  p->pos.x = c->x;
-  p->pos.y = c->y;
-  p->vie = vie;
-  p->dmg = dmg;
+	MLV_Image *pers = MLV_load_image("../textures/knight/knight_walkdown1.png");
+  	p->pos.x = c->x;
+  	p->pos.y = c->y;
+  	p->vie = vie;
+  	p->dmg = dmg;
 
-  joueurs[numperso] = *p;
+  	joueurs[numperso] = *p;
 
-  MLV_draw_filled_rectangle( (p->pos.x)*40, (p->pos.y)*40,40,40, MLV_COLOR_BLUE );
-  m[p->pos.y][p->pos.x] = '3';
+	MLV_draw_image(pers,(p->pos.x)*40+5,(p->pos.y)*40-15);
+  	m[p->pos.y][p->pos.x] = '3';
 
 }
 
 
 int perso_deplacer(map m, perso *p, int numJ, persoTab joueur, int direction, int pm)
 {
+	MLV_Image *pers = MLV_load_image("../textures/knight/knight_walkdown1.png");
 
   m[p->pos.y][p->pos.x] = '0';
   if(direction == 0 && m[p->pos.y][p->pos.x -1] == '0')//gauche
@@ -47,7 +49,7 @@ int perso_deplacer(map m, perso *p, int numJ, persoTab joueur, int direction, in
     pm --;
   }
 
-  MLV_draw_filled_rectangle( (p->pos.x)*40, (p->pos.y)*40,40,40, MLV_COLOR_BLUE );
+	MLV_draw_image(pers,(p->pos.x)*40+5,(p->pos.y)*40-15);
   m[p->pos.y][p->pos.x] = '3';
   joueur[numJ].pos.x = p->pos.x;
   joueur[numJ].pos.y = p->pos.y;
@@ -74,6 +76,7 @@ void perso_nettoyer(int x,int y)
 	MLV_Image *sol;
 	sol = MLV_load_image("../textures/case_sol.png");
 	MLV_draw_image(sol,x,y);
+	MLV_draw_image(sol,x,y-40);
 	MLV_actualise_window();
 }
 
