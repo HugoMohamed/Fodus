@@ -71,9 +71,10 @@ void perso_attaque(map m,perso *p1,persoTab joueurs,int x,int y,int nbJoueurs)
 
 void perso_nettoyer(int x,int y)
 {
-  MLV_draw_filled_rectangle(x,y,40,40, MLV_COLOR_BLACK);
-  MLV_draw_rectangle(x,y,40,40, MLV_COLOR_WHITE);
-  MLV_actualise_window();
+	MLV_Image *sol;
+	sol = MLV_load_image("../textures/case_sol.png");
+	MLV_draw_image(sol,x,y);
+	MLV_actualise_window();
 }
 
 void perso_nettoyerAttaque(map m,int x,int y,persoTab joueurs,int nbJ)
