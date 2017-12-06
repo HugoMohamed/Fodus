@@ -50,6 +50,6 @@ Le jeu est néanmoins sympathique.
   
   https://openclassrooms.com/courses/tile-mapping
 
-- Pour la gestion des sauts :
+- Pour le design des personnages :
 
-  https://pub.phyks.me/sdz/sdz/les-sauts-2d-en-c.html
+  http://gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/
