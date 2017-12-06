@@ -2,7 +2,9 @@
 http://github.com/IhFisk/Smash-bros
 
 **[C][FR]** Projet de programmation de L2 Info UJM
+
 Un petit jeu de combat tour par tour LARGEMENT inspiré par Dofus, mais avec la classe en moins.
+
 Le jeu est néanmoins sympathique.
 
 ## Auteurs
