@@ -79,67 +79,73 @@ void perso_nettoyer(int x,int y)
 
 void perso_nettoyerAttaque(map m,int x,int y,persoTab joueurs,int nbJ)
 {
-  int i;
-  for(i=1;i<=3;i++)
+  int i,j;
+  for(i=0;i<17;i++)
   {
-    if(m[y][x+i] == '4')
+    for(j=0;j<27;j++)
     {
-      MLV_draw_filled_rectangle((x+i)*40,y*40,40,40, MLV_COLOR_BLUE);
-      m[y][x+i] = '3';
-      MLV_actualise_window();
-    }
-
-    if(m[y][x+i] == '2')
-    {
-      m[y][x+i] = '0';
-      perso_nettoyer((x+i)*40,y*40);
-    }
-
-
-    if(m[y+i][x] == '4')
-    {
-      MLV_draw_filled_rectangle(x*40,(y+i)*40,40,40, MLV_COLOR_BLUE);
-      m[y+i][x] = '3';
-      MLV_actualise_window();
-    }
-
-    if(m[y+i][x] == '2')
-    {
-      m[y+i][x] = '0';
-      perso_nettoyer(x*40,(y+i)*40);
-    }
-  }
-
-  for(i=-3;i<0;i++)
-  {
-    if(m[y][x+i] == '4')
-    {
-      MLV_draw_filled_rectangle((x+i)*40,y*40,40,40, MLV_COLOR_BLUE);
-      m[y][x+i] = '3';
-      MLV_actualise_window();
-    }
-
-    if(m[y][x+i] == '2')
-    {
-      m[y][x+i] = '0';
-      perso_nettoyer((x+i)*40,y*40);
-    }
-
-
-    if(m[y+i][x] == '4')
-    {
-      MLV_draw_filled_rectangle(x*40,(y+i)*40,40,40, MLV_COLOR_BLUE);
-      m[y+i][x] = '3';
-      MLV_actualise_window();
-    }
-
-    if(m[y+i][x] == '2')
-    {
-      m[y+i][x] = '0';
-      perso_nettoyer(x*40,(y+i)*40);
+      if(m[i][j]=='2')
+      {
+        m[i][j] = '0';
+        perso_nettoyer(j*40,i*40);
+      }
+      if(m[i][j]=='4')
+      {
+        m[i][j] = '3';
+        MLV_draw_filled_rectangle(j*40,i*40,40,40, MLV_COLOR_BLUE);
+      }
     }
   }
   m[y][x] = '3';
+}
+
+void perso_attaqueE(map m, int x, int y)
+{
+  int i = 6,j;
+  for(j=0;j<=i;j++)
+  {
+    if(m[y-j][x+i-j] == '0')
+    {
+      m[y-j][x+i-j] = '2';
+      MLV_draw_filled_rectangle((x+i-j)*40,(y-j)*40,40,40,MLV_COLOR_GREEN);
+    }
+    if(m[y-j][x+i-j] == '3')
+    {
+      m[y-j][x+i-j] = '4';
+      MLV_draw_rectangle((x+i-j)*40,(y-j)*40,40,40,MLV_COLOR_GREEN);
+    }
+    if(m[y-j][x-i+j] == '0')
+    {
+      m[y-j][x-i+j] = '2';
+      MLV_draw_filled_rectangle((x-i+j)*40,(y-j)*40,40,40,MLV_COLOR_GREEN);
+    }
+    if(m[y-j][x-i+j] == '3')
+    {
+      m[y-j][x-i+j] = '4';
+      MLV_draw_rectangle((x-i+j)*40,(y-j)*40,40,40,MLV_COLOR_GREEN);
+    }
+
+    if(m[y+j][x+i-j] == '0')
+    {
+      m[y+j][x+i-j] = '2';
+      MLV_draw_filled_rectangle((x+i-j)*40,(y+j)*40,40,40,MLV_COLOR_GREEN);
+    }
+    if(m[y+j][x+i-j] == '3')
+    {
+      m[y+j][x+i-j] = '4';
+      MLV_draw_rectangle((x+i-j)*40,(y+j)*40,40,40,MLV_COLOR_GREEN);
+    }
+    if(m[y+j][x-i+j] == '0')
+    {
+      m[y+j][x-i+j] = '2';
+      MLV_draw_filled_rectangle((x-i+j)*40,(y+j)*40,40,40,MLV_COLOR_GREEN);
+    }
+    if(m[y+j][x-i+j] == '3')
+    {
+      m[y+j][x-i+j] = '4';
+      MLV_draw_rectangle((x-i+j)*40,(y+j)*40,40,40,MLV_COLOR_GREEN);
+    }
+  }
 }
 
 void perso_attaqueA(map m, int x, int y)
