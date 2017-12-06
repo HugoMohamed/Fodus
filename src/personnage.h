@@ -38,4 +38,6 @@ void perso_nettoyer(int x,int y);
 void perso_nettoyerAttaque(map m,int x,int y,persoTab joeurs,int nbJ);
 
 void perso_attaqueA(map m, int x, int y);
+
+void perso_attaqueE(map m, int x, int y);
 #endif
