@@ -2,6 +2,7 @@
 #define MAIN_C
 
 #include "sauvegarde.h"
+#include "menu.h"
 
 int main()
 {
@@ -21,6 +22,8 @@ int main()
 
   // On crée et on affiche le terrain
   MLV_create_window("Fodus Ultimate Battle", "Fodus", 1040, 680);
+
+  menu_afficher();
 
   map_chargerMap("../map/map.txt",m);
   map_afficherMap(m);

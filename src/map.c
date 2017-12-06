@@ -32,7 +32,7 @@ void map_afficherMap(map m)
 	    if(m[i][j]=='1')
 		MLV_draw_rectangle(j*40,i*40,40,40,MLV_COLOR_BROWN);
 	    if(m[i][j]=='0')
-		MLV_draw_rectangle(j*40,i*40,40,40,MLV_COLOR_WHITE);
+		MLV_draw_rectangle(j*40,i*40,40,40,MLV_rgba(255,255,255,125));
 	    MLV_actualise_window();
 	}
 

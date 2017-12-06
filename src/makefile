@@ -18,8 +18,8 @@ LDLIBS=`pkg-config --libs-only-l MLV`
 ###############################################################################
 CC=gcc
 
-fodus: main.o map.o personnage.o jeux.o sauvegarde.o ia.o
-	$(CC) main.o map.o personnage.o jeux.o sauvegarde.o ia.o -o fodus $(LDFLAGS) $(LDLIBS)
+fodus: main.o map.o personnage.o jeux.o sauvegarde.o ia.o menu.o
+	$(CC) main.o map.o personnage.o jeux.o sauvegarde.o ia.o menu.o -o fodus $(LDFLAGS) $(LDLIBS)
 
 map.o: map.c map.h
 	$(CC) $(CFLAGS) -c map.c
@@ -35,6 +35,9 @@ sauvegarde.o: sauvegarde.c sauvegarde.h
 
 ia.o: ia.c ia.h
 	$(CC) $(CFLAGS) -c ia.c
+
+menu.o: menu.c menu.h
+	$(CC) $(CFLAGS) -c menu.c
 
 main.o: main.c
 	$(CC) $(CFLAGS) -c main.c
