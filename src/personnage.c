@@ -151,11 +151,11 @@ void perso_attaqueA(map m, int x, int y)
     if(m[y][x+i] == '0')
     {
       m[y][x+i] = '2';
-      MLV_draw_filled_rectangle((x+i)*40,y*40,40,40,MLV_COLOR_GREEN);
+      MLV_draw_filled_rectangle((x+i)*40,y*40,40,40,MLV_rgba(0,255,0,100));
     }
     if(m[y][x+i] == '3')
     {
-      MLV_draw_rectangle((x+i)*40,y*40,40,40,MLV_COLOR_GREEN);
+      MLV_draw_rectangle((x+i)*40,y*40,40,40,MLV_rgba(0,255,0,100));
       m[y][x+i] = '4';
     }
     i++;
@@ -166,11 +166,11 @@ void perso_attaqueA(map m, int x, int y)
     if(m[y+i][x] == '0')
     {
       m[y+i][x] ='2';
-      MLV_draw_filled_rectangle(x*40,(y+i)*40,40,40,MLV_COLOR_GREEN);
+      MLV_draw_filled_rectangle(x*40,(y+i)*40,40,40,MLV_rgba(0,255,0,100));
     }
     if(m[y+i][x] == '3')
     {
-      MLV_draw_rectangle(x*40,(y+i)*40,40,40,MLV_COLOR_GREEN);
+      MLV_draw_rectangle(x*40,(y+i)*40,40,40,MLV_rgba(0,255,0,100));
       m[y+i][x] = '4';
     }
     i++;
@@ -181,11 +181,11 @@ void perso_attaqueA(map m, int x, int y)
     if(m[y][x+i] == '0')
     {
       m[y][x+i] = '2';
-      MLV_draw_filled_rectangle((x+i)*40,y*40,40,40,MLV_COLOR_GREEN);
+      MLV_draw_filled_rectangle((x+i)*40,y*40,40,40,MLV_rgba(0,255,0,100));
     }
     if(m[y][x+i] == '3')
     {
-      MLV_draw_rectangle((x+i)*40,y*40,40,40,MLV_COLOR_GREEN);
+      MLV_draw_rectangle((x+i)*40,y*40,40,40,MLV_rgba(0,255,0,100));
       m[y][x+i] = '4';
     }
     i--;
@@ -196,11 +196,11 @@ void perso_attaqueA(map m, int x, int y)
     if(m[y+i][x] == '0')
     {
       m[y+i][x] = '2';
-      MLV_draw_filled_rectangle(x*40,(y+i)*40,40,40,MLV_COLOR_GREEN);
+      MLV_draw_filled_rectangle(x*40,(y+i)*40,40,40,MLV_rgba(0,255,0,100));
     }
     if(m[y+i][x] == '3')
     {
-      MLV_draw_rectangle(x*40,(y+i)*40,40,40,MLV_COLOR_GREEN);
+      MLV_draw_rectangle(x*40,(y+i)*40,40,40,MLV_rgba(0,255,0,100));
       m[y+i][x] = '4';
     }
     i--;

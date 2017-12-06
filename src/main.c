@@ -13,9 +13,11 @@ int main()
   	int nbJoueurs = 2;
   	int gagnant = 0;
   	int numJ;
-  	coord c1;
+	int choixMenu;
+	MLV_Music *mainTheme = MLV_load_music("../sounds/main.ogg");
+
+	coord c1;
   	coord c2;
-  	MLV_Music *mainTheme = MLV_load_music("../sounds/main.ogg");
   	c1.x = 15;
   	c1.y = 4;
   	c2.x = 2;
@@ -27,7 +29,7 @@ int main()
 	MLV_init_audio();
 	MLV_play_music(mainTheme,1.0,-1);
 
-  	menu_afficher();
+  	choixMenu = menu_afficher();
 
   	map_chargerMap("../map/map.txt",m);
   	map_afficherMap(m);
