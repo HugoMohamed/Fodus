@@ -77,11 +77,11 @@ void perso_nettoyer(int x,int y,map m)
 	MLV_Image *sol = MLV_load_image("../textures/case_sol.png");
 	MLV_Image *pers = MLV_load_image("../textures/knight/knight_walkdown1.png");
 	MLV_draw_image(sol,x,y);
-	if(m[y/40-1][(x/40)] == '1')
+	if(m[y/40-1	][(x/40)] == '1')
 	MLV_draw_image(mur,x,y-40);
 	else
 	{
-		if(m[y/40-1][(x/40)] == '3')
+		if(m[y/40-1	][(x/40)] == '3')
 		{
 			MLV_draw_image(pers,x*40+5,y*40-15);
 		}
@@ -108,7 +108,7 @@ void perso_nettoyerAttaque(map m,int x,int y,persoTab joueurs,int nbJ)
 			if(m[i][j]=='4')
 			{
 				m[i][j] = '3';
-				MLV_draw_filled_rectangle(j*40,i*40,40,40, MLV_COLOR_BLUE);
+				
 			}
 		}
 	}
@@ -164,5 +164,70 @@ void perso_attaqueE(map m, int x, int y)
 			m[y+j][x-i+j] = '4';
 			MLV_draw_rectangle((x-i+j)*40,(y+j)*40,40,40,MLV_COLOR_GREEN);
 		}
+	}
+}
+
+void perso_attaqueA(map m, int x, int y)
+{
+	int i;
+	i = 1;
+	while(i <= 3 && m[y][x+i] != '1')
+	{
+		if(m[y][x+i] == '0')
+		{
+			m[y][x+i] = '2';
+			MLV_draw_filled_rectangle((x+i)*40,y*40,40,40,MLV_rgba(0,255,0,100));
+		}
+		if(m[y][x+i] == '3')
+		{
+			MLV_draw_rectangle((x+i)*40,y*40,40,40,MLV_rgba(0,255,0,100));
+			m[y][x+i] = '4';
+		}
+		i++;
+	}
+	i = 1;
+	while( i <= 3 && m[y+i][x] != '1')
+	{
+		if(m[y+i][x] == '0')
+		{
+			m[y+i][x] ='2';
+			MLV_draw_filled_rectangle(x*40,(y+i)*40,40,40,MLV_rgba(0,255,0,100));
+		}
+		if(m[y+i][x] == '3')
+		{
+			MLV_draw_rectangle(x*40,(y+i)*40,40,40,MLV_rgba(0,255,0,100));
+			m[y+i][x] = '4';
+		}
+		i++;
+	}
+	i = -1;
+	while(i >= -3 && m[y][x+i] != '1')
+	{
+		if(m[y][x+i] == '0')
+		{
+			m[y][x+i] = '2';
+			MLV_draw_filled_rectangle((x+i)*40,y*40,40,40,MLV_rgba(0,255,0,100));
+		}
+		if(m[y][x+i] == '3')
+		{
+			MLV_draw_rectangle((x+i)*40,y*40,40,40,MLV_rgba(0,255,0,100));
+			m[y][x+i] = '4';
+		}
+		i--;
+	}
+	i = -1;
+	while(i >= -3 && m[y+i][x] != '1')
+	{
+		if(m[y+i][x] == '0')
+		{
+			m[y+i][x] = '2';
+			MLV_draw_filled_rectangle(x*40,(y+i)*40,40,40,MLV_rgba(0,255,0,100));
+		}
+		if(m[y+i][x] == '3')
+		{
+			MLV_draw_rectangle(x*40,(y+i)*40,40,40,MLV_rgba(0,255,0,100));
+			m[y+i][x] = '4';
+		}
+		i--;
 	}
 }
