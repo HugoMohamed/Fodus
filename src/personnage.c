@@ -76,7 +76,7 @@ void perso_nettoyer(int x,int y,map m)
 	MLV_Image *mur = MLV_load_image("../textures/case_mur.png");
 	MLV_Image *sol = MLV_load_image("../textures/case_sol.png");
 	MLV_draw_image(sol,x,y);
-	if(m[y/40-1][(x/40)] == '1')
+	if(m[y/40-1	][(x/40)] == '1')
 		MLV_draw_image(mur,x,y-40);
 	else
 		MLV_draw_image(sol,x,y-40);
