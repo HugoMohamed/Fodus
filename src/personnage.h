@@ -17,13 +17,14 @@ typedef struct
     int vie;
     int dmg;
     coord pos;
+	char classe;
 } perso;
 
 // Pour avoir une liste des joueurs
 typedef perso persoTab[TMAX];
 
 // Initialise un perso
-void perso_creerPerso(map m,perso *p,coord *c, int vie, int dmg,persoTab joueurs,int numperso);
+void perso_creerPerso(map m,perso *p,coord *c, int vie, int dmg,persoTab joueurs,int numperso, char classe);
 
 // Deplace le perso p d'une case a gauche/droite/haut/bas
 int perso_deplacer(map m, perso *p, int numJ, persoTab joueurs, int direction, int pm);
@@ -39,5 +40,4 @@ void perso_nettoyerAttaque(map m,int x,int y,persoTab joeurs,int nbJ);
 
 void perso_attaqueA(map m, int x, int y);
 
-void perso_attaqueE(map m, int x, int y);
 #endif

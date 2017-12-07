@@ -1,15 +1,15 @@
 #include "personnage.h"
 
-void perso_creerPerso(map m,perso *p,coord *c, int vie, int dmg,persoTab joueurs,int numperso)
+void perso_creerPerso(map m,perso *p,coord *c, int vie, int dmg,persoTab joueurs,int numperso,char classe)
 {
 	MLV_Image *pers = MLV_load_image("../textures/knight/knight_walkdown1.png");
 	p->pos.x = c->x;
 	p->pos.y = c->y;
 	p->vie = vie;
 	p->dmg = dmg;
-
+	p->classe = classe;
 	joueurs[numperso] = *p;
-
+	if(classe == 'k')
 	MLV_draw_image(pers,(p->pos.x)*40+5,(p->pos.y)*40-15);
 	m[p->pos.y][p->pos.x] = '3';
 
@@ -118,7 +118,7 @@ void perso_nettoyerAttaque(map m,int x,int y,persoTab joueurs,int nbJ)
 	m[y][x] = '3';
 }
 
-void perso_attaqueE(map m, int x, int y)
+void perso_attaqueA(map m, int x, int y)
 {
 	int i = 6,j;
 	for(j=0;j<=i;j++)
@@ -167,70 +167,5 @@ void perso_attaqueE(map m, int x, int y)
 			m[y+j][x-i+j] = '4';
 			MLV_draw_rectangle((x-i+j)*40,(y+j)*40,40,40,MLV_COLOR_GREEN);
 		}
-	}
-}
-
-void perso_attaqueA(map m, int x, int y)
-{
-	int i;
-	i = 1;
-	while(i <= 3 && m[y][x+i] != '1')
-	{
-		if(m[y][x+i] == '0')
-		{
-			m[y][x+i] = '2';
-			MLV_draw_filled_rectangle((x+i)*40,y*40,40,40,MLV_rgba(0,255,0,100));
-		}
-		if(m[y][x+i] == '3')
-		{
-			MLV_draw_rectangle((x+i)*40,y*40,40,40,MLV_rgba(0,255,0,100));
-			m[y][x+i] = '4';
-		}
-		i++;
-	}
-	i = 1;
-	while( i <= 3 && m[y+i][x] != '1')
-	{
-		if(m[y+i][x] == '0')
-		{
-			m[y+i][x] ='2';
-			MLV_draw_filled_rectangle(x*40,(y+i)*40,40,40,MLV_rgba(0,255,0,100));
-		}
-		if(m[y+i][x] == '3')
-		{
-			MLV_draw_rectangle(x*40,(y+i)*40,40,40,MLV_rgba(0,255,0,100));
-			m[y+i][x] = '4';
-		}
-		i++;
-	}
-	i = -1;
-	while(i >= -3 && m[y][x+i] != '1')
-	{
-		if(m[y][x+i] == '0')
-		{
-			m[y][x+i] = '2';
-			MLV_draw_filled_rectangle((x+i)*40,y*40,40,40,MLV_rgba(0,255,0,100));
-		}
-		if(m[y][x+i] == '3')
-		{
-			MLV_draw_rectangle((x+i)*40,y*40,40,40,MLV_rgba(0,255,0,100));
-			m[y][x+i] = '4';
-		}
-		i--;
-	}
-	i = -1;
-	while(i >= -3 && m[y+i][x] != '1')
-	{
-		if(m[y+i][x] == '0')
-		{
-			m[y+i][x] = '2';
-			MLV_draw_filled_rectangle(x*40,(y+i)*40,40,40,MLV_rgba(0,255,0,100));
-		}
-		if(m[y+i][x] == '3')
-		{
-			MLV_draw_rectangle(x*40,(y+i)*40,40,40,MLV_rgba(0,255,0,100));
-			m[y+i][x] = '4';
-		}
-		i--;
 	}
 }
