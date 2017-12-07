@@ -1,7 +1,7 @@
 #ifndef JEUX_H
 #define JEUX_H
 
-#include "personnage.h"
+#include "knight.h"
 #include "ia.h"
 
 // Gère le tour d'un joueur

@@ -41,7 +41,7 @@ void jeux_tour(perso *p,int numJ,persoTab joueurs,map m,int nbJoueurs)
       // s'il choisi d'attaquer
       if(pa > 0 && touche == MLV_KEYBOARD_a)
       {
-        perso_attaqueA(m,p->pos.x,p->pos.y);
+        knight_attaqueA(m,p->pos.x,p->pos.y);
         // On affiche en surbrillance les cases ou il peut attaquer
 
         MLV_actualise_window();
