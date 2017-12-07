@@ -31,6 +31,10 @@ int main()
 
   	choixMenu = menu_afficher();
 
+	if(choixMenu == 4)
+	{
+		exit(0);
+	}
   	map_chargerMap("../map/map.txt",m);
   	map_afficherMap(m);
 
@@ -46,8 +50,11 @@ int main()
     	if((gagnant = jeux_fin(joueurs,m,nbJoueurs)) != 0)
     		break;
     	numJ = 2;
-    	ia_approche(m,&p2,joueurs);
-    	//jeux_tour(&p2,numJ,joueurs,m,nbJoueurs);
+
+		if(choixMenu == 1)
+    		ia_approche(m,&p2,joueurs);
+		else if(choixMenu == 2)
+    		jeux_tour(&p2,numJ,joueurs,m,nbJoueurs);
   	}
 
   	jeux_afficherGagnant(numJ);

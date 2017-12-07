@@ -8,8 +8,8 @@ void sauvegarde(map m,persoTab joueurs,int nbJoueurs,int numJ)
 	int i,j;
 	FILE* saveMap = NULL;
 	FILE* savePers = NULL;
-	saveMap = fopen("../Save/saveMap.txt","w");
-	savePers = fopen("../Save/savePers.txt","w");
+	saveMap = fopen("../save/saveMap.txt","w");
+	savePers = fopen("../save/savePers.txt","w");
 
 	if(saveMap == NULL || savePers == NULL)
 	{
