@@ -8,7 +8,7 @@
 #define TMAX 100
 
 /* map est un tableau d'entier en 2 dimension avec :
-	0 les cases vide
+	0 les murs
 	1 le sol
 	2 les cases ou le joueur peut attaquer
 	(faudra ptet penser a utiliser des enum pour que ce soit plus propre)

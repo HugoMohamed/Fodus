@@ -32,7 +32,7 @@ int perso_deplacer(map m, perso *p, int numJ, persoTab joueurs, int direction, i
 void perso_attaque(map m,perso *p1,persoTab joueurs,int x, int y,int nbJoueurs);
 
 // Rend la couleur initiale à la case de coordonnées (x,y)
-void perso_nettoyer(int x,int y);
+void perso_nettoyer(int x,int y,map m);
 
 // Remet les cases ou le joueur pouvait attaquer a 0
 void perso_nettoyerAttaque(map m,int x,int y,persoTab joeurs,int nbJ);
