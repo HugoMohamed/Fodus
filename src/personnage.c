@@ -76,7 +76,7 @@ void perso_nettoyer(int x,int y,map m)
 	MLV_Image *mur = MLV_load_image("../textures/case_mur.png");
 	MLV_Image *sol = MLV_load_image("../textures/case_sol.png");
 	MLV_draw_image(sol,x,y);
-	if(m[x/40][(y/40)-1] == 1)
+	if(m[x/40][(y/40)-1] == '1')
 		MLV_draw_image(mur,x,y-40);
 	else
 		MLV_draw_image(sol,x,y-40);
@@ -133,8 +133,8 @@ void perso_attaqueE(map m, int x, int y)
 
     	if(m[y+j][x+i-j] == '0')
     	{
-      	m[y+j][x+i-j] = '2';
-      	MLV_draw_filled_rectangle((x+i-j)*40,(y+j)*40,40,40,MLV_COLOR_GREEN);
+      		m[y+j][x+i-j] = '2';
+      		MLV_draw_filled_rectangle((x+i-j)*40,(y+j)*40,40,40,MLV_COLOR_GREEN);
     	}
 
     	if(m[y+j][x+i-j] == '3')

@@ -19,7 +19,7 @@ int main()
 	coord c1;
   	coord c2;
   	c1.x = 15;
-  	c1.y = 4;
+  	c1.y = 15;
   	c2.x = 2;
   	c2.y = 14;
 
