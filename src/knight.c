@@ -16,7 +16,6 @@ void knight_attaqueA(map m, int x, int y)
 		}
 		if(m[y][x+i] == '3')
 		{
-			MLV_draw_rectangle((x+i)*40,y*40,40,40,MLV_rgba(0,255,0,100));
 			m[y][x+i] = '4';
 		}
 		i++;
@@ -31,7 +30,6 @@ void knight_attaqueA(map m, int x, int y)
 		}
 		if(m[y+i][x] == '3')
 		{
-			MLV_draw_rectangle(x*40,(y+i)*40,40,40,MLV_rgba(0,255,0,100));
 			m[y+i][x] = '4';
 		}
 		i++;
@@ -46,7 +44,6 @@ void knight_attaqueA(map m, int x, int y)
 		}
 		if(m[y][x+i] == '3')
 		{
-			MLV_draw_rectangle((x+i)*40,y*40,40,40,MLV_rgba(0,255,0,100));
 			m[y][x+i] = '4';
 		}
 		i--;
@@ -61,7 +58,6 @@ void knight_attaqueA(map m, int x, int y)
 		}
 		if(m[y+i][x] == '3')
 		{
-			MLV_draw_rectangle(x*40,(y+i)*40,40,40,MLV_rgba(0,255,0,100));
 			m[y+i][x] = '4';
 		}
 		i--;
