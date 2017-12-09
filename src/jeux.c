@@ -24,6 +24,8 @@ void jeux_tour(perso *p,int numJ,persoTab joueurs,map m,int nbJoueurs)
 				pa = 0;
 				pm = 0;
 			}
+			if(touche == MLV_KEYBOARD_ESCAPE)
+			menu_pause();
 			// on deplace le perso
 			// le pm n'est dépenser que si le déplacement est "réussi"
 			if(touche == MLV_KEYBOARD_q && pm >0)

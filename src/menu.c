@@ -35,19 +35,45 @@ int menu_afficher()
 
 		// Solo
 		if(x>=xBouton && x<xBouton+lnBouton && y>=ySolo && y<ySolo+wdBouton)
-			return 1;
+		return 1;
 
 		// Multi
 		if(x>=xBouton && x<xBouton+lnBouton && y>=yMulti && y<yMulti+wdBouton)
-			return 2;
+		return 2;
 
 		// Charger Partie
 		if(x>=xBouton && x<xBouton+lnBouton && y>=yLoad && y<yLoad+wdBouton)
-			return 3;
+		return 3;
 
 		// Quitter
 		if(x>=xBouton && x<xBouton+lnBouton && y>=yQuit && y<yQuit+wdBouton)
-			return 4;
+		return 4;
+	}
+}
+
+void menu_pause()
+{
+	// Longueur et Hauteur des boutons
+	int lnBouton = 340;
+	int wdBouton = 70;
+
+	// les positions nord-ouest des boutons
+	int xBouton = 350;
+	int yRes = 200;
+
+	int x = 0;
+	int y = 0;
+	MLV_Image *pause;
+
+	pause = MLV_load_image("../textures/pause.png");
+	MLV_draw_image(pause,0,0);
+	MLV_actualise_window();
+	while(1)
+	{
+		MLV_wait_mouse(&x,&y);
+
+		//Resume
+		//if(x>=xBouton && x<xBouton+lnBouton && y>=yRes && y<yRes+wdBouton)
 	}
 }
 

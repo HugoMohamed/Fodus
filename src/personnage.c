@@ -2,7 +2,8 @@
 
 void perso_creerPerso(map m,perso *p,coord *c, int vie, int dmg,persoTab joueurs,int numperso,char classe)
 {
-	MLV_Image *pers = MLV_load_image("../textures/knight/knight_walkdown1.png");
+	MLV_Image *knight = MLV_load_image("../textures/knight/knight_walkdown1.png");
+
 	p->pos.x = c->x;
 	p->pos.y = c->y;
 	p->vie = vie;
@@ -10,7 +11,9 @@ void perso_creerPerso(map m,perso *p,coord *c, int vie, int dmg,persoTab joueurs
 	p->classe = classe;
 	joueurs[numperso] = *p;
 	if(classe == 'k')
-	MLV_draw_image(pers,(p->pos.x)*40+5,(p->pos.y)*40-15);
+	MLV_draw_image(knight,(p->pos.x)*40+5,(p->pos.y)*40-15);
+	if(classe == 'm')
+	MLV_draw_image(knight,(p->pos.x)*40+5,(p->pos.y)*40-15);
 	m[p->pos.y][p->pos.x] = '3';
 
 }
@@ -96,7 +99,6 @@ void perso_nettoyer(int x,int y,map m)
 
 void perso_nettoyerAttaque(map m,int x,int y,persoTab joueurs,int nbJ)
 {
-	MLV_Image *sol = MLV_load_image("../textures/case_sol.png");
 	MLV_Image *pers = MLV_load_image("../textures/knight/knight_walkdown1.png");
 	int i,j;
 	for(i=0;i<17;i++)
