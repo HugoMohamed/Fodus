@@ -1,7 +1,7 @@
 #ifndef ARCHER_C
 #define KNIGHT_C
 
-#include "archer.h"
+#include "marksman.h"
 
 void marksman_attaqueA(map m, int x, int y)
 {
