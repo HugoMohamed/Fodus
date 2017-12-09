@@ -3,7 +3,7 @@
 
 #include "archer.h"
 
-void archer_attaqueA(map m, int x, int y)
+void marksman_attaqueA(map m, int x, int y)
 {
 	int i = 6,j;
 	for(j=0;j<=i;j++)

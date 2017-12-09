@@ -40,7 +40,7 @@ int main()
 
   	// On crée les différents personnages
   	perso_creerPerso(m,&p1,&c1,50,10,joueurs,1,'k');
-  	perso_creerPerso(m,&p2,&c2,50,10,joueurs,2,'a');
+  	perso_creerPerso(m,&p2,&c2,50,10,joueurs,2,'m');
   	MLV_actualise_window();
 
   	while((gagnant = jeux_fin(joueurs,m,nbJoueurs)) == 0)
