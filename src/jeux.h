@@ -2,6 +2,7 @@
 #define JEUX_H
 
 #include "knight.h"
+#include "archer.h"
 #include "ia.h"
 
 // Gère le tour d'un joueur

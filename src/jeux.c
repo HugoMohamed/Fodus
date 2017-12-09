@@ -45,7 +45,7 @@ void jeux_tour(perso *p,int numJ,persoTab joueurs,map m,int nbJoueurs)
 				knight_attaqueA(m,p->pos.x,p->pos.y);
 				// On affiche en surbrillance les cases ou il peut attaquer
 				if(p->classe == 'a')
-				perso_attaqueA(m,p->pos.x,p->pos.y);
+				archer_attaqueA(m,p->pos.x,p->pos.y);
 				MLV_actualise_window();
 
 				// On attend qu'il clique sur une des cases
