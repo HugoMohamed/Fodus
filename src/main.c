@@ -38,8 +38,24 @@ int main()
 		}
 		if(choixMenu == 3)
 		{
-			fprintf(stdout, "3\n");
-			sauvegarde_charger("../save/saveMap.txt","../save/savePers.txt",m,joueurs);
+			numJ = sauvegarde_charger("../save/saveMap.txt","../save/savePers.txt",m,joueurs);
+			//perso_creerPerso(m,&p1,&joueurs[1].pos,joueurs[1].vie,joueurs[1].dmg,joueurs,1,'k');
+			//perso_creerPerso(m,&p1,&joueurs[2].pos,joueurs[2].vie,joueurs[2].dmg,joueurs,2,'k');
+			while((gagnant = jeux_fin(joueurs,m,nbJoueurs)) == 0)
+			{
+				if(numJ == 1)
+				{
+					jeux_tour(&joueurs[1],numJ,joueurs,m,nbJoueurs);
+					if((gagnant = jeux_fin(joueurs,m,nbJoueurs)) != 0)
+					break;
+					numJ = 2;
+				}
+				else
+				{
+					jeux_tour(&joueurs[2],numJ,joueurs,m,nbJoueurs);
+					numJ = 1;
+				}
+			}
 		}
 		else
 		{

@@ -30,7 +30,7 @@ void sauvegarde(map m,persoTab joueurs,int nbJoueurs,int numJ)
 	fprintf(savePers,"%d %d\n",nbJoueurs,numJ);
 	// Chaque ligne correspond a un personnage
 	for(i=1;i<=nbJoueurs;i++)
-		fprintf(savePers,"%d %d %d %d \n",joueurs[i].vie,joueurs[i].dmg,joueurs[i].pos.x,joueurs[i].pos.y);
+		fprintf(savePers,"%d %d %d %d %c\n",joueurs[i].vie,joueurs[i].dmg,joueurs[i].pos.x,joueurs[i].pos.y,joueurs[i].classe);
 
 	fclose(saveMap);
 	fclose(savePers);
@@ -40,7 +40,7 @@ int sauvegarde_charger(char *cheminMap,char *cheminPers,map m,persoTab joueurs)
 {
 	int numJ;
 	int i = 1,vie,dmg,x,y,nbJoueurs;
-	char attributs[10];
+	char attributs[15],c;
 	FILE* savePers = fopen(cheminPers,"r");
 
 	if(savePers == NULL)
@@ -54,16 +54,18 @@ int sauvegarde_charger(char *cheminMap,char *cheminPers,map m,persoTab joueurs)
 	map_afficherMap(m);
 
 	// On charge les personnages
-	nbJoueurs = fgetc(savePers);
-	numJ = fgetc(savePers);
+	fgets(attributs,8,savePers);
+	sscanf(attributs,"%d %d",&nbJoueurs,&numJ);
 	while(i<=nbJoueurs)
 	{
-		fgets(attributs,8,savePers);
-		sscanf(attributs,"%d %d %d %d\n",&vie,&dmg,&x,&y);
+		fgets(attributs,15,savePers);
+		sscanf(attributs,"%d %d %d %d %c",&vie,&dmg,&x,&y,&c);
 		joueurs[i].vie = vie;
 		joueurs[i].dmg = dmg;
 		joueurs[i].pos.x = x;
 		joueurs[i].pos.y = y;
+		joueurs[i].classe = c;
+		i++;
 	}
 
 	fclose(savePers);
