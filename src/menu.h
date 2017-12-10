@@ -15,5 +15,4 @@
 */
 int menu_afficher();
 
-void menu_pause();
 #endif

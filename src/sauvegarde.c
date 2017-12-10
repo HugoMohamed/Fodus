@@ -20,7 +20,7 @@ void sauvegarde(map m,persoTab joueurs,int nbJoueurs,int numJ)
 	// Ecris l'état de la map actuelle dans un fichier.
 	for(i=0;i<17;i++)
 	{
-		for(j=0;j<27;j++)
+		for(j=0;j<26;j++)
 			fputc(m[i][j],saveMap);
 		fputc('\n',saveMap);
 	}
@@ -40,7 +40,7 @@ int sauvegarde_charger(char *cheminMap,char *cheminPers,map m,persoTab joueurs)
 {
 	int numJ;
 	int i = 1,vie,dmg,x,y,nbJoueurs;
-	char *attributs = "";
+	char attributs[10];
 	FILE* savePers = fopen(cheminPers,"r");
 
 	if(savePers == NULL)
@@ -51,6 +51,7 @@ int sauvegarde_charger(char *cheminMap,char *cheminPers,map m,persoTab joueurs)
 
 	// On charge la map
 	map_chargerMap(cheminMap,m);
+	map_afficherMap(m);
 
 	// On charge les personnages
 	nbJoueurs = fgetc(savePers);
@@ -66,6 +67,7 @@ int sauvegarde_charger(char *cheminMap,char *cheminPers,map m,persoTab joueurs)
 	}
 
 	fclose(savePers);
+	MLV_actualise_window();
 	return numJ;
 }
 
