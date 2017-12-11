@@ -10,6 +10,7 @@ void ia_approche(map m,perso *p,persoTab joueur,int pm)
 	double minD,d;
 	while(pm > 0)
 	{
+		dir = -1;
 		if(m[joueur[2].pos.y+i][joueur[2].pos.x] == '3' || m[joueur[2].pos.y-i][joueur[2].pos.x] == '3' || m[joueur[2].pos.y][joueur[2].pos.x+i] == '3' || m[joueur[2].pos.y][joueur[2].pos.x-i] == '3')
 		{
 			perso_attaque(m,p,joueur,joueur[1].pos.x,joueur[1].pos.y,2);
@@ -41,10 +42,18 @@ void ia_approche(map m,perso *p,persoTab joueur,int pm)
 			minD = d;
 			dir = 3;
 		}
+		if(dir == -1)
+		{
+			if(m[joueur[2].pos.y+1][joueur[2].pos.x] == '1' || m[joueur[2].pos.y-1][joueur[2].pos.x] == '1')
+			dir = 1;
+			if(m[joueur[2].pos.y][joueur[2].pos.x-1] == '1' || m[joueur[2].pos.y][joueur[2].pos.x+1] == '1')
+			dir = 3;
+		}
 		pm = perso_deplacer(m,p,2,joueur,dir,pm);
-
 	}
+
 }
+
 
 
 #endif
