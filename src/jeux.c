@@ -138,6 +138,7 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ)
 	int yRes = 200;
 	int yExit = 405;
 	int ySave = 310;
+	int ySaveEx = 520;
 	int x = 0;
 	int y = 0;
 	MLV_Image *pause;
@@ -152,6 +153,14 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ)
 	}
 	if(x>=xBouton && x<xBouton+lnBouton && y>=yExit && y<yExit+wdBouton)
 	{
+		joueurs[1].vie = 0;
+		jeux_fin(joueurs,m,nbJoueurs);
+		MLV_clear_window(MLV_COLOR_BLACK);
+		MLV_actualise_window();
+	}
+	if(x>=xBouton && x<xBouton+lnBouton && y>=ySaveEx && y<ySaveEx+wdBouton)
+	{
+		sauvegarde(m,joueurs,nbJoueurs,numJ);
 		joueurs[1].vie = 0;
 		jeux_fin(joueurs,m,nbJoueurs);
 		MLV_clear_window(MLV_COLOR_BLACK);
