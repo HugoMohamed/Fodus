@@ -12,6 +12,8 @@
 	1 les murs
 	2 les cases ou le joueur peut attaquer
 	(faudra ptet penser a utiliser des enum pour que ce soit plus propre)
+	3 perso
+	4 perso attaquable
 */
 typedef int map[TMAX][TMAX];
 
