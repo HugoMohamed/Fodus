@@ -155,6 +155,9 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 	if(x>=xBouton && x<xBouton+lnBouton && y>=ySave && y<ySave+wdBouton)
 	{
 		sauvegarde(m,joueurs,nbJoueurs,numJ,papm);
+		MLV_clear_window(MLV_COLOR_BLACK);
+		MLV_actualise_window();
+		sauvegarde_charger("../save/saveMap.txt","../save/savePers.txt",m,joueurs,papm);
 	}
 	//Exit
 	if(x>=xBouton && x<xBouton+lnBouton && y>=yExit && y<yExit+wdBouton)
@@ -176,7 +179,10 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 	//Resume
 	if(x>=xBouton && x<xBouton+lnBouton && y>=yRes && y<yRes+wdBouton)
 	{
-
+		sauvegarde(m,joueurs,nbJoueurs,numJ,papm);
+		MLV_clear_window(MLV_COLOR_BLACK);
+		MLV_actualise_window();
+		sauvegarde_charger("../save/saveMap.txt","../save/savePers.txt",m,joueurs,papm);
 	}
 }
 #endif

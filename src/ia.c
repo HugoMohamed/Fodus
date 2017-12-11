@@ -8,8 +8,6 @@ void ia_approche(map m,perso *p,persoTab joueur,int pm)
 {
 	int i =1, dir;
 	double minD,d;
-	fprintf(stdout,"%d %d\n",joueur[2].pos.x,joueur[2].pos.y);
-	fprintf(stdout,"%d %d\n",joueur[1].pos.x,joueur[1].pos.y);
 	while(pm > 0)
 	{
 		if(m[joueur[2].pos.y+i][joueur[2].pos.x] == '3' || m[joueur[2].pos.y-i][joueur[2].pos.x] == '3' || m[joueur[2].pos.y][joueur[2].pos.x+i] == '3' || m[joueur[2].pos.y][joueur[2].pos.x-i] == '3')

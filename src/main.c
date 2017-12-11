@@ -70,6 +70,8 @@ int main()
 
 			while((gagnant = jeux_fin(joueurs,m,nbJoueurs)) == 0)
 			{
+				papm[0] = 1;
+				papm[1] = 6;
 				numJ = 1;
 				jeux_tour(&p1,numJ,joueurs,m,nbJoueurs,papm);
 				if((gagnant = jeux_fin(joueurs,m,nbJoueurs)) != 0)
