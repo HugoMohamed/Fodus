@@ -7,7 +7,6 @@ void jeux_tour(perso *p,int numJ,persoTab joueurs,map m,int nbJoueurs,int papm[2
 {
 	int pa = papm[0];//Point d'attaque du joueur
 	int pm = papm[1];//Points de dédéplacement du joueur
-	int mouseX, mouseY;
 	MLV_Keyboard_button touche;
 	fprintf(stdout,"%d\n",numJ);
 	jeux_hud(joueurs,numJ,pa,pm);
@@ -44,33 +43,24 @@ void jeux_tour(perso *p,int numJ,persoTab joueurs,map m,int nbJoueurs,int papm[2
 			if(touche == MLV_KEYBOARD_s && pm >0)
 			pm = perso_deplacer(m,p,numJ,joueurs,3,pm);
 
-			// s'il choisi d'attaquer
+			// s'il choisi l'attaque A
 			if(pa > 0 && touche == MLV_KEYBOARD_a)
 			{
 				if(p->classe == 'k')
-				knight_attaqueA(m,p->pos.x,p->pos.y);
-				// On affiche en surbrillance les cases ou il peut attaquer
+				knight_attaqueA(p,m,p->pos.x,p->pos.y,joueurs,nbJoueurs,pa);
 				if(p->classe == 'm')
 				marksman_attaqueA(m,p->pos.x,p->pos.y);
 				MLV_actualise_window();
+			}
 
-				// On attend qu'il clique sur une des cases
-
-				MLV_wait_mouse(&mouseX,&mouseY);
-				mouseX /= 40;
-				mouseY /= 40;
-				if(m[mouseY][mouseX] == '2' || m[mouseY][mouseX] == '4')
-				{
-					fprintf(stdout,"Attaque !\n");
-					perso_attaque(m,p,joueurs,mouseX,mouseY,nbJoueurs);
-					pa --;
-					perso_nettoyerAttaque(m,p->pos.x,p->pos.y,joueurs,nbJoueurs);
-
-				}
-				else
-				perso_nettoyerAttaque(m,p->pos.x,p->pos.y,joueurs,nbJoueurs);
-
-				// Le perso attaque sur la case selectionnée
+			// S'il choisi l'attaque E
+			if(pa > 0 && touche == MLV_KEYBOARD_e)
+			{
+				if(p->classe == 'k')
+				knight_atkE(p,m,p->pos.x,p->pos.y,joueurs,nbJoueurs,pa);
+				/*if(p->classe == 'm')
+				marksman_atkE(m,p->pos.x,p->pos.y); */
+				MLV_actualise_window();
 			}
 
 			// on repete l'operation tant qu'il a le droit de bouger
