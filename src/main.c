@@ -14,6 +14,7 @@ int main()
 	int gagnant = 0;
 	int numJ,conti = 1;
 	int choixMenu;
+	int papm[2] = {1,6};
 	MLV_Music *mainTheme = MLV_load_music("../sounds/main.ogg");
 
 	coord c1;
@@ -38,23 +39,23 @@ int main()
 		}
 		if(choixMenu == 3)
 		{
-			numJ = sauvegarde_charger("../save/saveMap.txt","../save/savePers.txt",m,joueurs);
-			//perso_creerPerso(m,&p1,&joueurs[1].pos,joueurs[1].vie,joueurs[1].dmg,joueurs,1,'k');
-			//perso_creerPerso(m,&p1,&joueurs[2].pos,joueurs[2].vie,joueurs[2].dmg,joueurs,2,'k');
+			numJ = sauvegarde_charger("../save/saveMap.txt","../save/savePers.txt",m,joueurs,papm);
 			while((gagnant = jeux_fin(joueurs,m,nbJoueurs)) == 0)
 			{
 				if(numJ == 1)
 				{
-					jeux_tour(&joueurs[1],numJ,joueurs,m,nbJoueurs);
+					jeux_tour(&joueurs[1],numJ,joueurs,m,nbJoueurs,papm);
 					if((gagnant = jeux_fin(joueurs,m,nbJoueurs)) != 0)
 					break;
 					numJ = 2;
 				}
 				else
 				{
-					jeux_tour(&joueurs[2],numJ,joueurs,m,nbJoueurs);
+					jeux_tour(&joueurs[2],numJ,joueurs,m,nbJoueurs,papm);
 					numJ = 1;
 				}
+				papm[0] = 1;
+				papm[1] = 6;
 			}
 		}
 		else
@@ -70,15 +71,15 @@ int main()
 			while((gagnant = jeux_fin(joueurs,m,nbJoueurs)) == 0)
 			{
 				numJ = 1;
-				jeux_tour(&p1,numJ,joueurs,m,nbJoueurs);
+				jeux_tour(&p1,numJ,joueurs,m,nbJoueurs,papm);
 				if((gagnant = jeux_fin(joueurs,m,nbJoueurs)) != 0)
 				break;
 				numJ = 2;
 
 				if(choixMenu == 1)
-				ia_approche(m,&p2,joueurs);
+				ia_approche(m,&p2,joueurs,6);
 				else if(choixMenu == 2)
-				jeux_tour(&p2,numJ,joueurs,m,nbJoueurs);
+				jeux_tour(&p2,numJ,joueurs,m,nbJoueurs,papm);
 			}
 		}
 		jeux_afficherGagnant(numJ);

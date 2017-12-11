@@ -3,10 +3,10 @@
 
 #include "jeux.h"
 
-void jeux_tour(perso *p,int numJ,persoTab joueurs,map m,int nbJoueurs)
+void jeux_tour(perso *p,int numJ,persoTab joueurs,map m,int nbJoueurs,int papm[2])
 {
-	int pm = 6; // Les points de mouvement du joueur
-	int pa = 1; // Les points d'action du joueur
+	int pa = papm[0];//Point d'attaque du joueur
+	int pm = papm[1];//Points de dédéplacement du joueur
 	int mouseX, mouseY;
 	MLV_Keyboard_button touche;
 	fprintf(stdout,"%d\n",numJ);
@@ -25,7 +25,11 @@ void jeux_tour(perso *p,int numJ,persoTab joueurs,map m,int nbJoueurs)
 				pm = 0;
 			}
 			if(touche == MLV_KEYBOARD_ESCAPE)
-			jeux_pause(joueurs,m,nbJoueurs,numJ);
+			{
+				papm[0] = pa;
+				papm[1] = pm;
+				jeux_pause(joueurs,m,nbJoueurs,numJ,papm);
+			}
 			// on deplace le perso
 			// le pm n'est dépenser que si le déplacement est "réussi"
 			if(touche == MLV_KEYBOARD_q && pm >0)
@@ -127,7 +131,7 @@ void jeux_hud(persoTab joueurs, int numJ, int pa, int pm)
 	MLV_actualise_window();
 }
 
-void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ)
+void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 {
 	// Longueur et Hauteur des boutons
 	int lnBouton = 340;
@@ -147,10 +151,12 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ)
 	MLV_draw_image(pause,0,0);
 	MLV_actualise_window();
 	MLV_wait_mouse(&x,&y);
+	//Save
 	if(x>=xBouton && x<xBouton+lnBouton && y>=ySave && y<ySave+wdBouton)
 	{
-		sauvegarde(m,joueurs,nbJoueurs,numJ);
+		sauvegarde(m,joueurs,nbJoueurs,numJ,papm);
 	}
+	//Exit
 	if(x>=xBouton && x<xBouton+lnBouton && y>=yExit && y<yExit+wdBouton)
 	{
 		joueurs[1].vie = 0;
@@ -158,16 +164,19 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ)
 		MLV_clear_window(MLV_COLOR_BLACK);
 		MLV_actualise_window();
 	}
+	//Save & exit
 	if(x>=xBouton && x<xBouton+lnBouton && y>=ySaveEx && y<ySaveEx+wdBouton)
 	{
-		sauvegarde(m,joueurs,nbJoueurs,numJ);
+		sauvegarde(m,joueurs,nbJoueurs,numJ,papm);
 		joueurs[1].vie = 0;
 		jeux_fin(joueurs,m,nbJoueurs);
 		MLV_clear_window(MLV_COLOR_BLACK);
 		MLV_actualise_window();
 	}
-
 	//Resume
-	//if(x>=xBouton && x<xBouton+lnBouton && y>=yRes && y<yRes+wdBouton)
+	if(x>=xBouton && x<xBouton+lnBouton && y>=yRes && y<yRes+wdBouton)
+	{
+
+	}
 }
 #endif

@@ -3,7 +3,7 @@
 
 #include "sauvegarde.h"
 
-void sauvegarde(map m,persoTab joueurs,int nbJoueurs,int numJ)
+void sauvegarde(map m,persoTab joueurs,int nbJoueurs,int numJ,int papm[2])
 {
 	int i,j;
 	FILE* saveMap = NULL;
@@ -28,6 +28,8 @@ void sauvegarde(map m,persoTab joueurs,int nbJoueurs,int numJ)
 	// Ecris les attributs des personnages dans un fichier
 	// La première ligne correspond au nombre de joueurs et quel joueur doit jouer.
 	fprintf(savePers,"%d %d\n",nbJoueurs,numJ);
+	// Le deuxième ligne correspond aux pa et pm du joueur dont c'est le tour
+	fprintf(savePers,"%d %d\n",papm[0],papm[1]);
 	// Chaque ligne correspond a un personnage
 	for(i=1;i<=nbJoueurs;i++)
 		fprintf(savePers,"%d %d %d %d %c\n",joueurs[i].vie,joueurs[i].dmg,joueurs[i].pos.x,joueurs[i].pos.y,joueurs[i].classe);
@@ -36,7 +38,7 @@ void sauvegarde(map m,persoTab joueurs,int nbJoueurs,int numJ)
 	fclose(savePers);
 }
 
-int sauvegarde_charger(char *cheminMap,char *cheminPers,map m,persoTab joueurs)
+int sauvegarde_charger(char *cheminMap,char *cheminPers,map m,persoTab joueurs,int papm[2])
 {
 	int numJ;
 	int i = 1,vie,dmg,x,y,nbJoueurs;
@@ -56,6 +58,8 @@ int sauvegarde_charger(char *cheminMap,char *cheminPers,map m,persoTab joueurs)
 	// On charge les personnages
 	fgets(attributs,8,savePers);
 	sscanf(attributs,"%d %d",&nbJoueurs,&numJ);
+	fgets(attributs,8,savePers);
+	sscanf(attributs,"%d %d",&papm[0],&papm[1]);
 	while(i<=nbJoueurs)
 	{
 		fgets(attributs,15,savePers);

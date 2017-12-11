@@ -4,9 +4,9 @@
 #include "ia.h"
 #include <math.h>
 
-void ia_approche(map m,perso *p,persoTab joueur)
+void ia_approche(map m,perso *p,persoTab joueur,int pm)
 {
-	int i =1, dir, pm =6;
+	int i =1, dir;
 	double minD,d;
 	fprintf(stdout,"%d %d\n",joueur[2].pos.x,joueur[2].pos.y);
 	fprintf(stdout,"%d %d\n",joueur[1].pos.x,joueur[1].pos.y);
