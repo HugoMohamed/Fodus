@@ -42,7 +42,6 @@ void ia_approche(map m,perso *p,persoTab joueur,int pm)
 			minD = d;
 			dir = 3;
 		}
-		fprintf(stdout,"%d\n",dir);
 		if(dir == -1)
 		{
 			if(m[joueur[2].pos.y+1][joueur[2].pos.x] == '1' || m[joueur[2].pos.y-1][joueur[2].pos.x] == '1')
