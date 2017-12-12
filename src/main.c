@@ -83,9 +83,8 @@ int main()
 				if((gagnant = jeux_fin(joueurs,m,nbJoueurs)) != 0)
 				break;
 				numJ = 2;
-
 				if(choixMenu == 1)
-				ia_approche(m,&p2,joueurs,6);
+				ia_approche(m,&joueurs[2],joueurs,6);
 				else if(choixMenu == 2)
 				jeux_tour(&joueurs[2],numJ,joueurs,m,nbJoueurs,papm);
 			}

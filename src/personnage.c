@@ -99,6 +99,7 @@ void perso_nettoyer(int x,int y,map m)
 void perso_nettoyerAttaque(map m,int x,int y,persoTab joueurs,int nbJ)
 {
 	MLV_Image *pers = MLV_load_image("../textures/knight/knight_walkdown1.png");
+	MLV_Image *sol = MLV_load_image("../textures/case_sol.png");
 	int i,j;
 	for(i=0;i<17;i++)
 	{
@@ -112,6 +113,7 @@ void perso_nettoyerAttaque(map m,int x,int y,persoTab joueurs,int nbJ)
 			if(m[i][j]=='4')
 			{
 				m[i][j] = '3';
+				MLV_draw_image(sol,j*40,i*40);
 				MLV_draw_image(pers,j*40+5,i*40-15);
 			}
 		}
