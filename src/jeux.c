@@ -2,6 +2,7 @@
 #define JEUX_C
 
 #include "jeux.h"
+#include "menu.h"
 
 void jeux_tour(perso *p,int numJ,persoTab joueurs,map m,int nbJoueurs,int papm[2])
 {
@@ -137,11 +138,13 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 	int y = 0;
 	MLV_Image *pause;
 
+	// On affiche le menu pause
 	pause = MLV_load_image("../textures/pause.png");
 	MLV_draw_image(pause,0,0);
 	MLV_actualise_window();
 	MLV_wait_mouse(&x,&y);
-	//Save
+
+	// Save
 	if(x>=xBouton && x<xBouton+lnBouton && y>=ySave && y<ySave+wdBouton)
 	{
 		sauvegarde(m,joueurs,nbJoueurs,numJ,papm);
@@ -149,7 +152,7 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 		MLV_actualise_window();
 		sauvegarde_charger("../save/saveMap.txt","../save/savePers.txt",m,joueurs,papm);
 	}
-	//Exit
+	// Exit
 	if(x>=xBouton && x<xBouton+lnBouton && y>=yExit && y<yExit+wdBouton)
 	{
 		joueurs[1].vie = 0;
@@ -157,16 +160,17 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 		MLV_clear_window(MLV_COLOR_BLACK);
 		MLV_actualise_window();
 	}
-	//Save & exit
+	// Save & exit
 	if(x>=xBouton && x<xBouton+lnBouton && y>=ySaveEx && y<ySaveEx+wdBouton)
 	{
 		sauvegarde(m,joueurs,nbJoueurs,numJ,papm);
+
 		joueurs[1].vie = 0;
 		jeux_fin(joueurs,m,nbJoueurs);
 		MLV_clear_window(MLV_COLOR_BLACK);
 		MLV_actualise_window();
 	}
-	//Resume
+	// Resume
 	if(x>=xBouton && x<xBouton+lnBouton && y>=yRes && y<yRes+wdBouton)
 	{
 		sauvegarde(m,joueurs,nbJoueurs,numJ,papm);

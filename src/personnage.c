@@ -64,13 +64,12 @@ int perso_deplacer(map m, perso *p, int numJ, persoTab joueur, int direction, in
 void perso_attaque(map m,perso *p1,persoTab joueurs,int x,int y,int nbJoueurs)
 {
 	int i;
-	// animation d'attaque au coordonnées c a ajouter
 	for(i=1;i<=nbJoueurs;i++)
-	if(x == joueurs[i].pos.x && y == joueurs[i].pos.y)
-	{
-		joueurs[i].vie -= p1->dmg;
-		m[joueurs[i].pos.y][joueurs[i].pos.x] = '3';
-	}
+		if(x == joueurs[i].pos.x && y == joueurs[i].pos.y)
+		{
+			joueurs[i].vie -= p1->dmg;
+			m[joueurs[i].pos.y][joueurs[i].pos.x] = '3';
+		}
 
 }
 

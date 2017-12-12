@@ -20,11 +20,6 @@ int menu_afficher()
 	int y = 0;
 	MLV_Image *menu;
 
-	menu = MLV_load_image("../textures/mm_studios.png");
-	MLV_draw_image(menu,0,0);
-	MLV_actualise_window();
-	MLV_wait_seconds(2);
-
 	menu = MLV_load_image("../textures/test_menu.png");
 	MLV_draw_image(menu,0,0);
 	MLV_actualise_window();

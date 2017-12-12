@@ -143,33 +143,37 @@ int knight_atkE(perso *p,map m, int x, int y,persoTab joueurs,int nbJoueurs,int 
 			// On regarde sur quel joueur il a cliqué
 			for(i=1;i<=nbJoueurs;i++)
 			{
-				if(mouseX/40 == joueurs[i].pos.x && mouseY/40 == joueurs[i].pos.y)
+				if(mouseX == joueurs[i].pos.x && mouseY == joueurs[i].pos.y)
 				{
 					// On ramène le joueur ciblé vers le joueur qui attaque
 					if(m[y][x+1] != '1' && m[y][x+1] != '3')
 					{
-						m[mouseY/40][mouseX/40] = '2';
+						perso_nettoyer(joueurs[i].pos.x,joueurs[i].pos.y,m);
+						m[mouseY][mouseX] = '2';
 						m[y][x+1] = '4';
 						joueurs[i].pos.x = x+1;
 						joueurs[i].pos.y = y;
 					}
 					else if(m[y-1][x] != '1' && m[y-1][x] != '3')
 					{
-						m[mouseY/40][mouseX/40] = '2';
+						perso_nettoyer(joueurs[i].pos.x,joueurs[i].pos.y,m);
+						m[mouseY][mouseX] = '2';
 						m[y-1][x] = '4';
 						joueurs[i].pos.x = x;
 						joueurs[i].pos.y = y-1;
 					}
 					else if(m[y+1][x] != '1' && m[y+1][x] != '3')
 					{
-						m[mouseY/40][mouseX/40] = '2';
+						perso_nettoyer(joueurs[i].pos.x,joueurs[i].pos.y,m);
+						m[mouseY][mouseX] = '2';
 						m[y+1][x] = '4';
 						joueurs[i].pos.x = x;
 						joueurs[i].pos.y = y+1;
 					}
 					else if(m[y][x-1] != '1' && m[y][x-1] != '3')
 					{
-						m[mouseY/40][mouseX/40] = '2';
+						perso_nettoyer(joueurs[i].pos.x,joueurs[i].pos.y,m);
+						m[mouseY][mouseX] = '2';
 						m[y][x-1] = '4';
 						joueurs[i].pos.x = x-1;
 						joueurs[i].pos.y = y;

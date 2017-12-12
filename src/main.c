@@ -16,6 +16,7 @@ int main()
 	int choixMenu;
 	int papm[2] = {1,6};
 	MLV_Music *mainTheme = MLV_load_music("../sounds/main.ogg");
+	MLV_Image *menu;
 
 	coord c1;
 	coord c2;
@@ -26,6 +27,11 @@ int main()
 
 	// On crée et on affiche le terrain
 	MLV_create_window("Fodus Ultimate Battle", "Fodus", 1040, 680);
+	MLV_load_image("../textures/test_menu.png");
+	menu = MLV_load_image("../textures/mm_studios.png");
+	MLV_draw_image(menu,0,0);
+	MLV_actualise_window();
+	MLV_wait_seconds(2);
 	while(conti)
 	{
 		MLV_init_audio();

@@ -15,7 +15,9 @@ int jeux_fin(persoTab joueurs, map m,int nbJoueurs);
 // Affiche le vainqueur
 void jeux_afficherGagnant(int gagnant);
 
+// Affiche les différentes information sur les joueurs
 void jeux_hud(persoTab joueurs, int numJ, int pa, int pm);
 
+// Met le jeu en pause
 void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ,int papm[2]);
 #endif
