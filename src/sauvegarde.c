@@ -62,10 +62,8 @@ int sauvegarde_charger(char *cheminMap,char *cheminPers,map m,persoTab joueurs,i
 	sscanf(attributs,"%d %d",&papm[0],&papm[1]);
 	while(i<=nbJoueurs)
 	{
-		fprintf(stdout,"%d %d\n",nbJoueurs,i);
 		fgets(attributs,20,savePers);
 		sscanf(attributs,"%d %d %d %d %c",&vie,&dmg,&x,&y,&c);
-		fprintf(stdout,"%d %d\n",x,y);
 		joueurs[i].vie = vie;
 		joueurs[i].dmg = dmg;
 		joueurs[i].pos.x = x;

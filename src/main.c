@@ -46,8 +46,6 @@ int main()
 		if(choixMenu == 3)
 		{
 			numJ = sauvegarde_charger("../save/saveMap.txt","../save/savePers.txt",m,joueurs,papm);
-			fprintf(stdout,"%d %d %d\n",joueurs[1].pos.x,joueurs[1].pos.y,joueurs[1].vie);
-			fprintf(stdout,"%d %d %d\n",joueurs[2].pos.x,joueurs[2].pos.y,joueurs[2].vie);
 			while((gagnant = jeux_fin(joueurs,m,nbJoueurs)) == 0)
 			{
 				if(numJ == 1)
