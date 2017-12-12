@@ -46,6 +46,8 @@ int main()
 		if(choixMenu == 3)
 		{
 			numJ = sauvegarde_charger("../save/saveMap.txt","../save/savePers.txt",m,joueurs,papm);
+			fprintf(stdout,"%d %d %d\n",joueurs[1].pos.x,joueurs[1].pos.y,joueurs[1].vie);
+			fprintf(stdout,"%d %d %d\n",joueurs[2].pos.x,joueurs[2].pos.y,joueurs[2].vie);
 			while((gagnant = jeux_fin(joueurs,m,nbJoueurs)) == 0)
 			{
 				if(numJ == 1)
@@ -82,6 +84,8 @@ int main()
 				jeux_tour(&joueurs[1],numJ,joueurs,m,nbJoueurs,papm);
 				if((gagnant = jeux_fin(joueurs,m,nbJoueurs)) != 0)
 				break;
+				papm[0] = 1;
+				papm[1] = 6;
 				numJ = 2;
 				if(choixMenu == 1)
 				ia_approche(m,&joueurs[2],joueurs,6);
