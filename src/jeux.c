@@ -50,7 +50,7 @@ void jeux_tour(perso *p,int numJ,persoTab joueurs,map m,int nbJoueurs,int papm[2
 				if(p->classe == 'k')
 				pa = knight_attaqueA(p,m,p->pos.x,p->pos.y,joueurs,nbJoueurs,pa);
 				if(p->classe == 'm')
-				marksman_attaqueA(m,p->pos.x,p->pos.y);
+				pa = marksman_attaqueA(p,m,p->pos.x,p->pos.y,joueurs,nbJoueurs,pa);
 				MLV_actualise_window();
 			}
 

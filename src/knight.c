@@ -78,7 +78,7 @@ int knight_attaqueA(perso *p,map m, int x, int y,persoTab joueurs,int nbJoueurs,
 		pa --;
 	}
 	else
-		perso_nettoyerAttaque(m,p->pos.x,p->pos.y,joueurs,nbJoueurs);
+	perso_nettoyerAttaque(m,p->pos.x,p->pos.y,joueurs,nbJoueurs);
 	return pa;
 
 }
@@ -93,18 +93,18 @@ int knight_atkE(perso *p,map m, int x, int y,persoTab joueurs,int nbJoueurs,int 
 		if(m[y-i][x] != '1')
 		{
 			if(m[y-i][x] == '0')
-				m[y-i][x] = '2';
+			m[y-i][x] = '2';
 			if(m[y-i][x] == '3')
-				m[y-i][x] = '4';
+			m[y-i][x] = '4';
 
 			MLV_draw_filled_rectangle(x*40,(y-i)*40,40,40,MLV_rgba(0,255,0,100));
 		}
 		if(m[y][x-i] != '1')
 		{
 			if(m[y][x-i] == '0')
-				m[y][x-i] = '2';
+			m[y][x-i] = '2';
 			if(m[y][x-i] == '3')
-				m[y][x-i] = '4';
+			m[y][x-i] = '4';
 			MLV_draw_filled_rectangle((x-i)*40,y*40,40,40,MLV_rgba(0,255,0,100));
 		}
 	}
@@ -113,18 +113,18 @@ int knight_atkE(perso *p,map m, int x, int y,persoTab joueurs,int nbJoueurs,int 
 		if(m[y+i][x] != '1')
 		{
 			if(m[y+i][x] == '0')
-				m[y+i][x] = '2';
+			m[y+i][x] = '2';
 			if(m[y+i][x] == '3')
-				m[y+i][x] = '4';
+			m[y+i][x] = '4';
 
 			MLV_draw_filled_rectangle(x*40,(y+i)*40,40,40,MLV_rgba(0,255,0,100));
 		}
 		if(m[y][x+i] != '1')
 		{
 			if(m[y][x+i] == '0')
-				m[y][x+i] = '2';
+			m[y][x+i] = '2';
 			if(m[y][x+i] == '3')
-				m[y][x+i] = '4';
+			m[y][x+i] = '4';
 			MLV_draw_filled_rectangle((x+i)*40,y*40,40,40,MLV_rgba(0,255,0,100));
 		}
 	}
