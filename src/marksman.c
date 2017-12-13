@@ -1,5 +1,5 @@
-#ifndef ARCHER_C
-#define KNIGHT_C
+#ifndef MARKSMAN_C
+#define MARKSMAN_C
 
 #include "marksman.h"
 

@@ -3,6 +3,7 @@
 void perso_creerPerso(map m,perso *p,coord *c, int vie, int dmg,persoTab joueurs,int numperso,char classe)
 {
 	MLV_Image *knight = MLV_load_image("../textures/knight/knight_walkdown1.png");
+	MLV_Image *marksman = MLV_load_image("../textures/marksman/marksman.png");
 
 	p->pos.x = c->x;
 	p->pos.y = c->y;
@@ -11,48 +12,52 @@ void perso_creerPerso(map m,perso *p,coord *c, int vie, int dmg,persoTab joueurs
 	p->classe = classe;
 	joueurs[numperso] = *p;
 	if(classe == 'k')
-	MLV_draw_image(knight,(p->pos.x)*40+5,(p->pos.y)*40-15);
+		MLV_draw_image(knight,(p->pos.x)*40+5,(p->pos.y)*40-15);
 	if(classe == 'm')
-	MLV_draw_image(knight,(p->pos.x)*40+5,(p->pos.y)*40-15);
+		MLV_draw_image(marksman,(p->pos.x)*40+5,(p->pos.y)*40-15);
 	m[p->pos.y][p->pos.x] = '3';
 
 }
 
 
-int perso_deplacer(map m, perso *p, int numJ, persoTab joueur, int direction, int pm)
+int perso_deplacer(map m, perso *p, int numJ, persoTab joueur, int direction, int pm,int nbJoueurs)
 {
-	MLV_Image *pers = MLV_load_image("../textures/knight/knight_walkdown1.png");
+	MLV_Image *knight = MLV_load_image("../textures/knight/knight_walkdown1.png");
+	MLV_Image *marksman = MLV_load_image("../textures/marksman/marksman.png");
 
 	m[p->pos.y][p->pos.x] = '0';
 	if(direction == 0 && m[p->pos.y][p->pos.x -1] == '0')//gauche
 	{
-		perso_nettoyer((p->pos.x)*40,(p->pos.y)*40,m);
+		perso_nettoyer((p->pos.x)*40,(p->pos.y)*40,m,joueur,nbJoueurs);
 		p->pos.x --;
 		pm --;
 	}
 
 	if(direction == 1 && m[p->pos.y][p->pos.x +1] == '0') //droite
 	{
-		perso_nettoyer((p->pos.x)*40,(p->pos.y)*40,m);
+		perso_nettoyer((p->pos.x)*40,(p->pos.y)*40,m,joueur,nbJoueurs);
 		p->pos.x ++;
 		pm --;
 	}
 
 	if(direction == 2 && m[p->pos.y - 1][p->pos.x] == '0') //haut
 	{
-		perso_nettoyer((p->pos.x)*40,(p->pos.y)*40,m);
+		perso_nettoyer((p->pos.x)*40,(p->pos.y)*40,m,joueur,nbJoueurs);
 		p->pos.y --;
 		pm --;
 	}
 
 	if(direction == 3 && m[p->pos.y + 1][p->pos.x] == '0') //bas
 	{
-		perso_nettoyer((p->pos.x)*40,(p->pos.y)*40,m);
+		perso_nettoyer((p->pos.x)*40,(p->pos.y)*40,m,joueur,nbJoueurs);
 		p->pos.y ++;
 		pm --;
 	}
 
-	MLV_draw_image(pers,(p->pos.x)*40+5,(p->pos.y)*40-15);
+	if(p->classe == 'k')
+		MLV_draw_image(knight,(p->pos.x)*40+5,(p->pos.y)*40-15);
+	else if(p->classe == 'm')
+		MLV_draw_image(marksman,(p->pos.x)*40+5,(p->pos.y)*40-15);
 	m[p->pos.y][p->pos.x] = '3';
 	joueur[numJ].pos.x = p->pos.x;
 	joueur[numJ].pos.y = p->pos.y;
@@ -73,11 +78,14 @@ void perso_attaque(map m,perso *p1,persoTab joueurs,int x,int y,int nbJoueurs)
 
 }
 
-void perso_nettoyer(int x,int y,map m)
+void perso_nettoyer(int x,int y,map m,persoTab joueurs,int nbJoueurs)
 {
+	int i;
 	MLV_Image *mur = MLV_load_image("../textures/case_mur.png");
 	MLV_Image *sol = MLV_load_image("../textures/case_sol.png");
-	MLV_Image *pers = MLV_load_image("../textures/knight/knight_walkdown1.png");
+	MLV_Image *knight = MLV_load_image("../textures/knight/knight_walkdown1.png");
+	MLV_Image *marksman = MLV_load_image("../textures/marksman/marksman.png");
+
 	MLV_draw_image(sol,x,y);
 	if(m[y/40-1	][(x/40)] == '1')
 	MLV_draw_image(mur,x,y-40);
@@ -86,7 +94,16 @@ void perso_nettoyer(int x,int y,map m)
 		if(m[y/40-1	][(x/40)] == '3')
 		{
 			MLV_draw_image(sol,x,y-40);
-			MLV_draw_image(pers,x+5,y-15-40);
+			for(i=1;i<=nbJoueurs;i++)
+			{
+				if(y/40 == joueurs[i].pos.y && x/40 == joueurs[i].pos.x)
+				{
+					if(joueurs[i].classe == 'k')
+						MLV_draw_image(knight,x+5,y-15-40);
+					else if(joueurs[i].classe == 'm')
+						MLV_draw_image(marksman,x+5,y-15-40);
+				}
+			}
 		}
 		else
 		{
@@ -98,9 +115,10 @@ void perso_nettoyer(int x,int y,map m)
 
 void perso_nettoyerAttaque(map m,persoTab joueurs,int nbJ)
 {
-	MLV_Image *pers = MLV_load_image("../textures/knight/knight_walkdown1.png");
+	MLV_Image *marksman = MLV_load_image("../textures/marksman/marksman.png");
+	MLV_Image *knight = MLV_load_image("../textures/knight/knight_walkdown1.png");
 	MLV_Image *sol = MLV_load_image("../textures/case_sol.png");
-	int i,j;
+	int i,j,k;
 	for(i=0;i<17;i++)
 	{
 		for(j=0;j<27;j++)
@@ -108,13 +126,22 @@ void perso_nettoyerAttaque(map m,persoTab joueurs,int nbJ)
 			if(m[i][j]=='2')
 			{
 				m[i][j] = '0';
-				perso_nettoyer(j*40,i*40,m);
+				perso_nettoyer(j*40,i*40,m,joueurs,nbJ);
 			}
 			if(m[i][j]=='4')
 			{
 				m[i][j] = '3';
 				MLV_draw_image(sol,j*40,i*40);
-				MLV_draw_image(pers,j*40+5,i*40-15);
+				for(k=1;k<=nbJ;k++)
+				{
+					if(i == joueurs[k].pos.y && j == joueurs[k].pos.x)
+					{
+						if(joueurs[k].classe == 'k')
+							MLV_draw_image(knight,(j*40)+5,(i*40)-15-40);
+						else if(joueurs[k].classe == 'm')
+							MLV_draw_image(marksman,(j*40)+5,(i*40)-15-40);
+					}
+				}
 			}
 		}
 	}

@@ -1,5 +1,5 @@
-#ifndef ARCHER_H
-#define ARCHER_H
+#ifndef MARKSMAN_H
+#define MARKSMAN_H
 
 #include "personnage.h"
 
