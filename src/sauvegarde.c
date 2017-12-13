@@ -3,14 +3,17 @@
 
 #include "sauvegarde.h"
 
-void sauvegarde(map m,persoTab joueurs,int nbJoueurs,int numJ,int papm[2])
+void sauvegarde(map m,persoTab joueurs,int nbJoueurs,int numJ,int papm[2],int numG)
 {
 	int i,j;
 	FILE* saveMap = NULL;
 	FILE* savePers = NULL;
-	saveMap = fopen("../save/saveMap.txt","w");
-	savePers = fopen("../save/savePers.txt","w");
+	char saMap[100],saPers[100];
 
+	sprintf(saMap,"../save/saveMap%d.txt",numG);
+	sprintf(saPers,"../save/savePers%d.txt",numG);
+	saveMap = fopen(saMap,"w");
+	savePers = fopen(saPers,"w");
 	if(saveMap == NULL || savePers == NULL)
 	{
 		fprintf(stderr,"Impossible de créer une sauvegarde.");
@@ -38,13 +41,17 @@ void sauvegarde(map m,persoTab joueurs,int nbJoueurs,int numJ,int papm[2])
 	fclose(savePers);
 }
 
-int sauvegarde_charger(char *cheminMap,char *cheminPers,map m,persoTab joueurs,int papm[2])
+int sauvegarde_charger(map m,persoTab joueurs,int papm[2],int numG)
 {
 	int numJ;
 	int i = 1,vie,dmg,x,y,nbJoueurs;
 	char attributs[15],c;
-	FILE* savePers = fopen(cheminPers,"r");
-
+	FILE* savePers;
+	char cheminMap[100], cheminPers[100];
+	// On choisit les saveMap et savePers de numéro numG
+	sprintf(cheminMap,"../save/saveMap%d.txt",numG);
+	sprintf(cheminPers,"../save/savePers%d.txt",numG);
+	savePers = fopen(cheminPers,"r");
 	if(savePers == NULL)
 	{
 		fprintf(stderr,"Impossible de charger la partie :\nFichier %s manquant.\n",cheminPers);
@@ -77,4 +84,55 @@ int sauvegarde_charger(char *cheminMap,char *cheminPers,map m,persoTab joueurs,i
 	return numJ;
 }
 
+int sauvegarde_choseSave()
+{
+	MLV_Image *choix;
+	// Longueur et Hauteur des boutons
+	int lnBouton = 340;
+	int wdBouton = 70;
+
+	// les positions nord-ouest des boutons
+	int xBouton = 350;
+	int x,y;
+	int y1 = 200;
+	int y2 = 405;
+	int y3 = 310;
+	int y4 = 520;
+	int y5 = 600;
+
+	// On affiche le choix des sauvegardes
+	//choix = MLV_load_image("../textures/choixSauv.png");
+	//MLV_draw_image(choix,0,0);
+	MLV_actualise_window();
+	while(1)
+	{
+		MLV_wait_mouse(&x,&y);
+
+		// Sauvegarde 1
+		if(x>=xBouton && x<xBouton+lnBouton && y>=y1 && y<y1+wdBouton)
+		{
+			return 1;
+		}
+		// Sauvegarde 2
+		if(x>=xBouton && x<xBouton+lnBouton && y>=y2 && y<y2+wdBouton)
+		{
+			return 2;
+		}
+		// Sauvegarde 3
+		if(x>=xBouton && x<xBouton+lnBouton && y>=y3 && y<y3+wdBouton)
+		{
+			return 3;
+		}
+		// Sauvegarde 4
+		if(x>=xBouton && x<xBouton+lnBouton && y>=y4 && y<y4+wdBouton)
+		{
+			return 4;
+		}
+		// Sauvegarde 5
+		if(x>=xBouton && x<xBouton+lnBouton && y>=y5 && y<y5+wdBouton)
+		{
+			return 5;
+		}
+	}
+}
 #endif

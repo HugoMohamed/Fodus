@@ -14,7 +14,8 @@ int main()
 	int gagnant = 0;
 	int numJ,conti = 1;
 	int choixMenu;
-	int papm[2] = {1,6};
+	int numG; // Choix de la sauvegarde 
+	int papm[3] = {1,6};
 	MLV_Music *mainTheme = MLV_load_music("../sounds/main.ogg");
 	MLV_Image *menu;
 
@@ -45,7 +46,8 @@ int main()
 		}
 		if(choixMenu == 3)
 		{
-			numJ = sauvegarde_charger("../save/saveMap.txt","../save/savePers.txt",m,joueurs,papm);
+			numG = sauvegarde_choseSave();
+			numJ = sauvegarde_charger(m,joueurs,papm,numG);
 			while((gagnant = jeux_fin(joueurs,m,nbJoueurs)) == 0)
 			{
 				if(numJ == 1)
