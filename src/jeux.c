@@ -136,6 +136,7 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 	int ySaveEx = 520;
 	int x = 0;
 	int y = 0;
+	int numG; // Numéro de la partie à sauvegarder
 	MLV_Image *pause;
 
 	// On affiche le menu pause
@@ -147,10 +148,11 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 	// Save
 	if(x>=xBouton && x<xBouton+lnBouton && y>=ySave && y<ySave+wdBouton)
 	{
-		sauvegarde(m,joueurs,nbJoueurs,numJ,papm);
+		numG = sauvegarde_choseSave();
+		sauvegarde(m,joueurs,nbJoueurs,numJ,papm,numG);
 		MLV_clear_window(MLV_COLOR_BLACK);
 		MLV_actualise_window();
-		sauvegarde_charger("../save/saveMap.txt","../save/savePers.txt",m,joueurs,papm);
+		sauvegarde_charger(m,joueurs,papm,numG);
 	}
 	// Exit
 	if(x>=xBouton && x<xBouton+lnBouton && y>=yExit && y<yExit+wdBouton)
@@ -163,8 +165,8 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 	// Save & exit
 	if(x>=xBouton && x<xBouton+lnBouton && y>=ySaveEx && y<ySaveEx+wdBouton)
 	{
-		sauvegarde(m,joueurs,nbJoueurs,numJ,papm);
-
+		numG = sauvegarde_choseSave();
+		sauvegarde(m,joueurs,nbJoueurs,numJ,papm,numG);
 		joueurs[1].vie = 0;
 		jeux_fin(joueurs,m,nbJoueurs);
 		MLV_clear_window(MLV_COLOR_BLACK);
@@ -173,10 +175,11 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 	// Resume
 	if(x>=xBouton && x<xBouton+lnBouton && y>=yRes && y<yRes+wdBouton)
 	{
-		sauvegarde(m,joueurs,nbJoueurs,numJ,papm);
+		numG = sauvegarde_choseSave();
+		sauvegarde(m,joueurs,nbJoueurs,numJ,papm,numG);
 		MLV_clear_window(MLV_COLOR_BLACK);
 		MLV_actualise_window();
-		sauvegarde_charger("../save/saveMap.txt","../save/savePers.txt",m,joueurs,papm);
+		sauvegarde_charger(m,joueurs,papm,numG);
 	}
 }
 #endif
