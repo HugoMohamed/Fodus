@@ -136,6 +136,7 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 	int ySaveEx = 520;
 	int x = 0;
 	int y = 0;
+	int done = 0;
 	int numG; // Numéro de la partie à sauvegarder
 	MLV_Image *pause;
 
@@ -143,7 +144,7 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 	pause = MLV_load_image("../textures/pause.png");
 	MLV_draw_image(pause,0,0);
 	MLV_actualise_window();
-	while(1)
+	while(!done)
 	{
 		MLV_wait_mouse(&x,&y);
 
@@ -155,6 +156,7 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 			MLV_clear_window(MLV_COLOR_BLACK);
 			MLV_actualise_window();
 			sauvegarde_charger(m,joueurs,papm,numG);
+			done = 1;
 		}
 		// Exit
 		if(x>=xBouton && x<xBouton+lnBouton && y>=yExit && y<yExit+wdBouton)
@@ -163,6 +165,7 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 			jeux_fin(joueurs,m,nbJoueurs);
 			MLV_clear_window(MLV_COLOR_BLACK);
 			MLV_actualise_window();
+			done = 1;
 		}
 		// Save & exit
 		if(x>=xBouton && x<xBouton+lnBouton && y>=ySaveEx && y<ySaveEx+wdBouton)
@@ -173,6 +176,7 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 			jeux_fin(joueurs,m,nbJoueurs);
 			MLV_clear_window(MLV_COLOR_BLACK);
 			MLV_actualise_window();
+			done = 1;
 		}
 		// Resume
 		if(x>=xBouton && x<xBouton+lnBouton && y>=yRes && y<yRes+wdBouton)
@@ -181,6 +185,7 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 			MLV_clear_window(MLV_COLOR_BLACK);
 			MLV_actualise_window();
 			sauvegarde_charger(m,joueurs,papm,0);
+			done = 1;
 		}
 	}
 }
