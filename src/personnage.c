@@ -96,7 +96,7 @@ void perso_nettoyer(int x,int y,map m)
 	MLV_actualise_window();
 }
 
-void perso_nettoyerAttaque(map m,int x,int y,persoTab joueurs,int nbJ)
+void perso_nettoyerAttaque(map m,persoTab joueurs,int nbJ)
 {
 	MLV_Image *pers = MLV_load_image("../textures/knight/knight_walkdown1.png");
 	MLV_Image *sol = MLV_load_image("../textures/case_sol.png");
@@ -118,5 +118,4 @@ void perso_nettoyerAttaque(map m,int x,int y,persoTab joueurs,int nbJ)
 			}
 		}
 	}
-	m[y][x] = '3';
 }

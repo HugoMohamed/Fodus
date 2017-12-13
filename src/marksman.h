@@ -2,6 +2,11 @@
 #define ARCHER_H
 
 #include "personnage.h"
-int marksman_attaqueA(perso *p,map m, int x, int y,persoTab joueurs,int nbJoueurs,int pa);
+
+// Attaque de base
+int marksman_attaqueA(perso *p,map m,persoTab joueurs,int nbJoueurs,int pa);
+
+// Condamnation
+int marksman_atkE(perso *p,map m,persoTab joueurs,int nbJoueurs,int pa);
 
 #endif

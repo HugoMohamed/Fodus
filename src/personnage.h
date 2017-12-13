@@ -36,6 +36,6 @@ void perso_attaque(map m,perso *p1,persoTab joueurs,int x, int y,int nbJoueurs);
 void perso_nettoyer(int x,int y,map m);
 
 // Remet les cases ou le joueur pouvait attaquer a 0
-void perso_nettoyerAttaque(map m,int x,int y,persoTab joeurs,int nbJ);
+void perso_nettoyerAttaque(map m,persoTab joueurs,int nbJ);
 
 #endif

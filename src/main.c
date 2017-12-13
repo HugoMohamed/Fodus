@@ -14,7 +14,7 @@ int main()
 	int gagnant = 0;
 	int numJ,conti = 1;
 	int choixMenu;
-	int numG; // Choix de la sauvegarde 
+	int numG; // Choix de la sauvegarde
 	int papm[3] = {1,6};
 	MLV_Music *mainTheme = MLV_load_music("../sounds/main.ogg");
 	MLV_Image *menu;
@@ -73,7 +73,7 @@ int main()
 
 			// On crée les différents personnages
 			perso_creerPerso(m,&p1,&c1,100,20,joueurs,1,'k');
-			perso_creerPerso(m,&p2,&c2,50,10,joueurs,2,'k');
+			perso_creerPerso(m,&p2,&c2,50,10,joueurs,2,'m');
 			MLV_actualise_window();
 
 			while((gagnant = jeux_fin(joueurs,m,nbJoueurs)) == 0)

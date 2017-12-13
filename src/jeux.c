@@ -48,9 +48,9 @@ void jeux_tour(perso *p,int numJ,persoTab joueurs,map m,int nbJoueurs,int papm[2
 			if(pa > 0 && touche == MLV_KEYBOARD_a)
 			{
 				if(p->classe == 'k')
-				pa = knight_attaqueA(p,m,p->pos.x,p->pos.y,joueurs,nbJoueurs,pa);
+					pa = knight_attaqueA(p,m,joueurs,nbJoueurs,pa);
 				if(p->classe == 'm')
-				pa = marksman_attaqueA(p,m,p->pos.x,p->pos.y,joueurs,nbJoueurs,pa);
+					pa = marksman_attaqueA(p,m,joueurs,nbJoueurs,pa);
 				MLV_actualise_window();
 			}
 
@@ -58,9 +58,9 @@ void jeux_tour(perso *p,int numJ,persoTab joueurs,map m,int nbJoueurs,int papm[2
 			if(pa > 0 && touche == MLV_KEYBOARD_e)
 			{
 				if(p->classe == 'k')
-				pa = knight_atkE(p,m,p->pos.x,p->pos.y,joueurs,nbJoueurs,pa);
-				/*if(p->classe == 'm')
-				marksman_atkE(m,p->pos.x,p->pos.y); */
+					pa = knight_atkE(p,m,joueurs,nbJoueurs,pa);
+				if(p->classe == 'm')
+					pa = marksman_atkE(p,m,joueurs,nbJoueurs,pa);
 				MLV_actualise_window();
 			}
 

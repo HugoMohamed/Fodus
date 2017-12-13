@@ -4,11 +4,14 @@
 #include "knight.h"
 #include "personnage.h"
 
-int knight_attaqueA(perso *p,map m, int x, int y,persoTab joueurs,int nbJoueurs,int pa)
+int knight_attaqueA(perso *p,map m,persoTab joueurs,int nbJoueurs,int pa)
 {
+	int x = p->pos.x;
+	int y = p->pos.y;
 	int i = 1;
 	int mouseX, mouseY;
 
+	// On affiche les cases attaquables
 	while(i <= 3 && m[y][x+i] != '1')
 	{
 		if(m[y][x+i] == '0')
@@ -73,6 +76,7 @@ int knight_attaqueA(perso *p,map m, int x, int y,persoTab joueurs,int nbJoueurs,
 	mouseY /= 40;
 	if(m[mouseY][mouseX] == '2' || m[mouseY][mouseX] == '4')
 	{
+		// On attaque
 		perso_attaque(m,p,joueurs,mouseX,mouseY,nbJoueurs);
 		perso_nettoyerAttaque(m,p->pos.x,p->pos.y,joueurs,nbJoueurs);
 		pa --;
@@ -83,8 +87,10 @@ int knight_attaqueA(perso *p,map m, int x, int y,persoTab joueurs,int nbJoueurs,
 
 }
 
-int knight_atkE(perso *p,map m, int x, int y,persoTab joueurs,int nbJoueurs,int pa)
+int knight_atkE(perso *p,map m,persoTab joueurs,int nbJoueurs,int pa)
 {
+	int x = p->pos.x;
+	int y = p->pos.y;
 	int i;
 	int mouseX, mouseY;
 	// On affiche les cases attaquables
@@ -148,7 +154,6 @@ int knight_atkE(perso *p,map m, int x, int y,persoTab joueurs,int nbJoueurs,int 
 					// On ramène le joueur ciblé vers le joueur qui attaque
 					if(m[y][x+1] != '1' && m[y][x+1] != '3')
 					{
-						perso_nettoyer(joueurs[i].pos.x,joueurs[i].pos.y,m);
 						m[mouseY][mouseX] = '2';
 						m[y][x+1] = '4';
 						joueurs[i].pos.x = x+1;
@@ -156,7 +161,6 @@ int knight_atkE(perso *p,map m, int x, int y,persoTab joueurs,int nbJoueurs,int 
 					}
 					else if(m[y-1][x] != '1' && m[y-1][x] != '3')
 					{
-						perso_nettoyer(joueurs[i].pos.x,joueurs[i].pos.y,m);
 						m[mouseY][mouseX] = '2';
 						m[y-1][x] = '4';
 						joueurs[i].pos.x = x;
@@ -164,7 +168,6 @@ int knight_atkE(perso *p,map m, int x, int y,persoTab joueurs,int nbJoueurs,int 
 					}
 					else if(m[y+1][x] != '1' && m[y+1][x] != '3')
 					{
-						perso_nettoyer(joueurs[i].pos.x,joueurs[i].pos.y,m);
 						m[mouseY][mouseX] = '2';
 						m[y+1][x] = '4';
 						joueurs[i].pos.x = x;
@@ -172,7 +175,6 @@ int knight_atkE(perso *p,map m, int x, int y,persoTab joueurs,int nbJoueurs,int 
 					}
 					else if(m[y][x-1] != '1' && m[y][x-1] != '3')
 					{
-						perso_nettoyer(joueurs[i].pos.x,joueurs[i].pos.y,m);
 						m[mouseY][mouseX] = '2';
 						m[y][x-1] = '4';
 						joueurs[i].pos.x = x-1;
