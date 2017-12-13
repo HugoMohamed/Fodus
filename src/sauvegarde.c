@@ -78,7 +78,7 @@ int sauvegarde_charger(map m,persoTab joueurs,int papm[2],int numG)
 		joueurs[i].classe = c;
 		i++;
 	}
-
+	personnage_afficherPer(m,joueurs,nbJoueurs);
 	fclose(savePers);
 	MLV_actualise_window();
 	return numJ;

@@ -38,4 +38,7 @@ void perso_nettoyer(int x,int y,map m,persoTab joueurs,int nbJoueurs);
 // Remet les cases ou le joueur pouvait attaquer a 0
 void perso_nettoyerAttaque(map m,persoTab joueurs,int nbJ);
 
+// Affiche les perso
+void personnage_afficherPer(map m,persoTab joueurs,int nbJoueurs);
+
 #endif
