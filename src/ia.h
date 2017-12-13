@@ -3,6 +3,6 @@
 
 #include "personnage.h"
 
-void ia_approche(map m,perso *p,persoTab joueur,int pm);
+void ia_approche(map m,perso *p,persoTab joueur,int pm,int nbJoueurs);
 
 #endif

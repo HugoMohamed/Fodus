@@ -4,7 +4,7 @@
 #include "ia.h"
 #include <math.h>
 
-void ia_approche(map m,perso *p,persoTab joueur,int pm)
+void ia_approche(map m,perso *p,persoTab joueur,int pm,int nbJoueurs)
 {
 	int i =1, dir;
 	double minD,d;
@@ -49,7 +49,7 @@ void ia_approche(map m,perso *p,persoTab joueur,int pm)
 			if(m[joueur[2].pos.y][joueur[2].pos.x-1] == '1' || m[joueur[2].pos.y][joueur[2].pos.x+1] == '1')
 			dir = 3;
 		}
-		pm = perso_deplacer(m,p,2,joueur,dir,pm);
+		pm = perso_deplacer(m,p,2,joueur,dir,pm,nbJoueurs);
 	}
 
 }

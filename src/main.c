@@ -97,7 +97,7 @@ int main()
 				papm[1] = 6;
 				numJ = 2;
 				if(choixMenu == 1)
-				ia_approche(m,&joueurs[2],joueurs,6);
+				ia_approche(m,&joueurs[2],joueurs,6,nbJoueurs);
 				else if(choixMenu == 2)
 				jeux_tour(&joueurs[2],numJ,joueurs,m,nbJoueurs,papm);
 			}
