@@ -100,6 +100,8 @@ int sauvegarde_choseSave()
 	int y3 = 345;
 	int y4 = 456;
 	int y5 = 567;
+	int xBack = 860;
+	int yBack = 625;
 
 	// On affiche le choix des sauvegardes
 	choix = MLV_load_image("../textures/loadmenu.png");
@@ -133,6 +135,11 @@ int sauvegarde_choseSave()
 		if(x>=xBouton && x<xBouton+lnBouton && y>=y5 && y<y5+wdBouton)
 		{
 			return 5;
+		}
+		// Back
+		if(x>=xBack && x<xBack+158 && y>=yBack && y<yBack+41)
+		{
+			return 0;
 		}
 	}
 }

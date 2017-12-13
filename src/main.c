@@ -49,23 +49,30 @@ int main()
 		if(choixMenu == 3)
 		{
 			numG = sauvegarde_choseSave();
-			numJ = sauvegarde_charger(m,joueurs,papm,numG);
-			while((gagnant = jeux_fin(joueurs,m,nbJoueurs)) == 0)
+			if(numG != 0)
 			{
-				if(numJ == 1)
+				numJ = sauvegarde_charger(m,joueurs,papm,numG);
+				while((gagnant = jeux_fin(joueurs,m,nbJoueurs)) == 0)
 				{
-					jeux_tour(&joueurs[1],numJ,joueurs,m,nbJoueurs,papm);
-					if((gagnant = jeux_fin(joueurs,m,nbJoueurs)) != 0)
-					break;
-					numJ = 2;
+					if(numJ == 1)
+					{
+						jeux_tour(&joueurs[1],numJ,joueurs,m,nbJoueurs,papm);
+						if((gagnant = jeux_fin(joueurs,m,nbJoueurs)) != 0)
+						break;
+						numJ = 2;
+					}
+					else
+					{
+						jeux_tour(&joueurs[2],numJ,joueurs,m,nbJoueurs,papm);
+						numJ = 1;
+					}
+					papm[0] = 1;
+					papm[1] = 6;
 				}
-				else
-				{
-					jeux_tour(&joueurs[2],numJ,joueurs,m,nbJoueurs,papm);
-					numJ = 1;
-				}
-				papm[0] = 1;
-				papm[1] = 6;
+				jeux_afficherGagnant(numJ);
+				MLV_clear_window(MLV_COLOR_BLACK);
+				MLV_actualise_window();
+				MLV_stop_music(mainTheme);
 			}
 		}
 		if(choixMenu == 1 || choixMenu == 2)
