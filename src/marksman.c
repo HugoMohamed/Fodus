@@ -148,23 +148,66 @@ int marksman_atkE(perso *p,map m,persoTab joueurs,int nbJoueurs,int pa)
 			// On regarde sur quel joueur on a cliqué
 			for(a=1;a<=nbJoueurs;a++)
 			{
-				if(mouseX == joueurs[i].pos.x && mouseY == joueurs[i].pos.y)
+				if(mouseX == joueurs[a].pos.x && mouseY == joueurs[a].pos.y)
 				{
 					// Si le joueur ciblé est au dessus
-					if(p->pos.x == joueurs[i].pos.x && joueurs[i].pos.y < p->pos.y)
+					if(p->pos.x == joueurs[a].pos.x && joueurs[a].pos.y < p->pos.y)
 					{
 						// On le déplace de 3 cases vers le haut tant qu'il n'y a pas d'obstacles
 						for(j=1;j<=3;j++)
 						{
-							if(m[joueurs[i].pos.y-1][joueurs[i].pos.x] == '0' ||  m[joueurs[i].pos.y-1][joueurs[i].pos.x] == '2')
+							if(m[joueurs[a].pos.y-1][joueurs[a].pos.x] == '0' ||  m[joueurs[a].pos.y-1][joueurs[a].pos.x] == '2')
 							{
-								m[joueurs[i].pos.y][joueurs[i].pos.x] = '2';
-								m[joueurs[i].pos.y-1][joueurs[i].pos.x] = '4';
-								joueurs[i].pos.y --;
+								m[joueurs[a].pos.y][joueurs[a].pos.x] = '2';
+								m[joueurs[a].pos.y-1][joueurs[a].pos.x] = '4';
+								joueurs[a].pos.y --;
+							}
+						}
+					}
+					// Si le joueur ciblé est au dessous
+					if(p->pos.x == joueurs[a].pos.x && joueurs[a].pos.y > p->pos.y)
+					{
+						// On le déplace de 3 cases vers le haut tant qu'il n'y a pas d'obstacles
+						for(j=1;j<=3;j++)
+						{
+							if(m[joueurs[a].pos.y+1][joueurs[a].pos.x] == '0' ||  m[joueurs[a].pos.y+1][joueurs[a].pos.x] == '2')
+							{
+								m[joueurs[a].pos.y][joueurs[a].pos.x] = '2';
+								m[joueurs[a].pos.y+1][joueurs[a].pos.x] = '4';
+								joueurs[a].pos.y ++;
+							}
+						}
+					}
+					// Si le joueur est à gauche
+					if(p->pos.x > joueurs[a].pos.x && joueurs[a].pos.y == p->pos.y)
+					{
+						// On le déplace de 3 cases vers le haut tant qu'il n'y a pas d'obstacles
+						for(j=1;j<=3;j++)
+						{
+							if(m[joueurs[a].pos.y][joueurs[a].pos.x-1] == '0' ||  m[joueurs[a].pos.y][joueurs[a].pos.x-1] == '2')
+							{
+								m[joueurs[a].pos.y][joueurs[a].pos.x] = '2';
+								m[joueurs[a].pos.y][joueurs[a].pos.x-1] = '4';
+								joueurs[a].pos.x --;
+							}
+						}
+					}
+					// Si le joueur ciblé est à droite
+					if(p->pos.x < joueurs[a].pos.x && joueurs[a].pos.y == p->pos.y)
+					{
+						// On le déplace de 3 cases vers le haut tant qu'il n'y a pas d'obstacles
+						for(j=1;j<=3;j++)
+						{
+							if(m[joueurs[a].pos.y][joueurs[a].pos.x+1] == '0' ||  m[joueurs[a].pos.y][joueurs[a].pos.x+1] == '2')
+							{
+								m[joueurs[a].pos.y][joueurs[a].pos.x] = '2';
+								m[joueurs[a].pos.y][joueurs[a].pos.x+1] = '4';
+								joueurs[a].pos.x ++;
 							}
 						}
 					}
 				}
+
 			}
 		}
 		pa--;

@@ -175,11 +175,10 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 	// Resume
 	if(x>=xBouton && x<xBouton+lnBouton && y>=yRes && y<yRes+wdBouton)
 	{
-		numG = sauvegarde_choseSave();
-		sauvegarde(m,joueurs,nbJoueurs,numJ,papm,numG);
+		sauvegarde(m,joueurs,nbJoueurs,numJ,papm,0);
 		MLV_clear_window(MLV_COLOR_BLACK);
 		MLV_actualise_window();
-		sauvegarde_charger(m,joueurs,papm,numG);
+		sauvegarde_charger(m,joueurs,papm,0);
 	}
 }
 #endif

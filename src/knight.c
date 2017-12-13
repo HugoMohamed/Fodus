@@ -78,11 +78,11 @@ int knight_attaqueA(perso *p,map m,persoTab joueurs,int nbJoueurs,int pa)
 	{
 		// On attaque
 		perso_attaque(m,p,joueurs,mouseX,mouseY,nbJoueurs);
-		perso_nettoyerAttaque(m,p->pos.x,p->pos.y,joueurs,nbJoueurs);
+		perso_nettoyerAttaque(m,joueurs,nbJoueurs);
 		pa --;
 	}
 	else
-	perso_nettoyerAttaque(m,p->pos.x,p->pos.y,joueurs,nbJoueurs);
+	perso_nettoyerAttaque(m,joueurs,nbJoueurs);
 	return pa;
 
 }
@@ -185,7 +185,7 @@ int knight_atkE(perso *p,map m,persoTab joueurs,int nbJoueurs,int pa)
 		}
 		pa --;
 	}
-	perso_nettoyerAttaque(m,p->pos.x,p->pos.y,joueurs,nbJoueurs);
+	perso_nettoyerAttaque(m,joueurs,nbJoueurs);
 	return pa;
 
 }

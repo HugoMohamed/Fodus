@@ -99,6 +99,7 @@ int sauvegarde_choseSave()
 	int y3 = 310;
 	int y4 = 520;
 	int y5 = 600;
+	int y0 = 123;
 
 	// On affiche le choix des sauvegardes
 	//choix = MLV_load_image("../textures/choixSauv.png");
