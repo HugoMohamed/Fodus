@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "personnage.h"
 #include "MLV/MLV_all.h"
 
 #define TMAX 100
@@ -22,5 +23,5 @@ typedef int map[TMAX][TMAX];
 void map_chargerMap(char *chemin,map m);
 
 // Permet d'afficher la map
-void map_afficherMap(map m);
+void map_afficherMap(map m,persoTab joueurs,int nbJoueurs);
 #endif
