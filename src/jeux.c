@@ -48,9 +48,9 @@ void jeux_tour(perso *p,int numJ,persoTab joueurs,map m,int nbJoueurs,int papm[2
 			if(pa > 0 && touche == MLV_KEYBOARD_a)
 			{
 				if(p->classe == 'k')
-					pa = knight_attaqueA(p,m,joueurs,nbJoueurs,pa);
+				pa = knight_attaqueA(p,m,joueurs,nbJoueurs,pa);
 				if(p->classe == 'm')
-					pa = marksman_attaqueA(p,m,joueurs,nbJoueurs,pa);
+				pa = marksman_attaqueA(p,m,joueurs,nbJoueurs,pa);
 				MLV_actualise_window();
 			}
 
@@ -58,9 +58,9 @@ void jeux_tour(perso *p,int numJ,persoTab joueurs,map m,int nbJoueurs,int papm[2
 			if(pa > 0 && touche == MLV_KEYBOARD_e)
 			{
 				if(p->classe == 'k')
-					pa = knight_atkE(p,m,joueurs,nbJoueurs,pa);
+				pa = knight_atkE(p,m,joueurs,nbJoueurs,pa);
 				if(p->classe == 'm')
-					pa = marksman_atkE(p,m,joueurs,nbJoueurs,pa);
+				pa = marksman_atkE(p,m,joueurs,nbJoueurs,pa);
 				MLV_actualise_window();
 			}
 
@@ -143,42 +143,45 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 	pause = MLV_load_image("../textures/pause.png");
 	MLV_draw_image(pause,0,0);
 	MLV_actualise_window();
-	MLV_wait_mouse(&x,&y);
+	while(1)
+	{
+		MLV_wait_mouse(&x,&y);
 
-	// Save
-	if(x>=xBouton && x<xBouton+lnBouton && y>=ySave && y<ySave+wdBouton)
-	{
-		numG = sauvegarde_choseSave();
-		sauvegarde(m,joueurs,nbJoueurs,numJ,papm,numG);
-		MLV_clear_window(MLV_COLOR_BLACK);
-		MLV_actualise_window();
-		sauvegarde_charger(m,joueurs,papm,numG);
-	}
-	// Exit
-	if(x>=xBouton && x<xBouton+lnBouton && y>=yExit && y<yExit+wdBouton)
-	{
-		joueurs[1].vie = 0;
-		jeux_fin(joueurs,m,nbJoueurs);
-		MLV_clear_window(MLV_COLOR_BLACK);
-		MLV_actualise_window();
-	}
-	// Save & exit
-	if(x>=xBouton && x<xBouton+lnBouton && y>=ySaveEx && y<ySaveEx+wdBouton)
-	{
-		numG = sauvegarde_choseSave();
-		sauvegarde(m,joueurs,nbJoueurs,numJ,papm,numG);
-		joueurs[1].vie = 0;
-		jeux_fin(joueurs,m,nbJoueurs);
-		MLV_clear_window(MLV_COLOR_BLACK);
-		MLV_actualise_window();
-	}
-	// Resume
-	if(x>=xBouton && x<xBouton+lnBouton && y>=yRes && y<yRes+wdBouton)
-	{
-		sauvegarde(m,joueurs,nbJoueurs,numJ,papm,0);
-		MLV_clear_window(MLV_COLOR_BLACK);
-		MLV_actualise_window();
-		sauvegarde_charger(m,joueurs,papm,0);
+		// Save
+		if(x>=xBouton && x<xBouton+lnBouton && y>=ySave && y<ySave+wdBouton)
+		{
+			numG = sauvegarde_choseSave();
+			sauvegarde(m,joueurs,nbJoueurs,numJ,papm,numG);
+			MLV_clear_window(MLV_COLOR_BLACK);
+			MLV_actualise_window();
+			sauvegarde_charger(m,joueurs,papm,numG);
+		}
+		// Exit
+		if(x>=xBouton && x<xBouton+lnBouton && y>=yExit && y<yExit+wdBouton)
+		{
+			joueurs[1].vie = 0;
+			jeux_fin(joueurs,m,nbJoueurs);
+			MLV_clear_window(MLV_COLOR_BLACK);
+			MLV_actualise_window();
+		}
+		// Save & exit
+		if(x>=xBouton && x<xBouton+lnBouton && y>=ySaveEx && y<ySaveEx+wdBouton)
+		{
+			numG = sauvegarde_choseSave();
+			sauvegarde(m,joueurs,nbJoueurs,numJ,papm,numG);
+			joueurs[1].vie = 0;
+			jeux_fin(joueurs,m,nbJoueurs);
+			MLV_clear_window(MLV_COLOR_BLACK);
+			MLV_actualise_window();
+		}
+		// Resume
+		if(x>=xBouton && x<xBouton+lnBouton && y>=yRes && y<yRes+wdBouton)
+		{
+			sauvegarde(m,joueurs,nbJoueurs,numJ,papm,0);
+			MLV_clear_window(MLV_COLOR_BLACK);
+			MLV_actualise_window();
+			sauvegarde_charger(m,joueurs,papm,0);
+		}
 	}
 }
 #endif
