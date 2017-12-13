@@ -37,9 +37,11 @@ int main()
 	{
 		MLV_init_audio();
 		MLV_play_music(mainTheme,1.0,-1);
-
 		choixMenu = menu_afficher();
-
+		if(choixMenu == 5)
+		{
+			jeux_credits();
+		}
 		if(choixMenu == 4)
 		{
 			exit(0);
@@ -66,7 +68,7 @@ int main()
 				papm[1] = 6;
 			}
 		}
-		else
+		if(choixMenu == 1 || choixMenu == 2)
 		{
 			map_chargerMap("../map/map.txt",m);
 			map_afficherMap(m);
@@ -92,11 +94,11 @@ int main()
 				else if(choixMenu == 2)
 				jeux_tour(&joueurs[2],numJ,joueurs,m,nbJoueurs,papm);
 			}
+			jeux_afficherGagnant(numJ);
+			MLV_clear_window(MLV_COLOR_BLACK);
+			MLV_actualise_window();
+			MLV_stop_music(mainTheme);
 		}
-		jeux_afficherGagnant(numJ);
-		MLV_clear_window(MLV_COLOR_BLACK);
-		MLV_actualise_window();
-		MLV_stop_music(mainTheme);
 	}
 	MLV_clear_window(MLV_COLOR_BLACK);
 	MLV_free_music(mainTheme);

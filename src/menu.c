@@ -11,6 +11,8 @@ int menu_afficher()
 
 	// les positions nord-ouest des boutons
 	int xBouton = 350;
+	int xCredits = 860;
+	int yCredits = 625;
 	int ySolo = 234;
 	int yMulti = 345;
 	int yLoad = 456;
@@ -43,6 +45,12 @@ int menu_afficher()
 		// Quitter
 		if(x>=xBouton && x<xBouton+lnBouton && y>=yQuit && y<yQuit+wdBouton)
 		return 4;
+
+		//Credits
+		if(x>=xCredits && x<xCredits+158 && y>=yCredits && y<yCredits+41)
+		{
+			return 5;
+		}
 	}
 }
 

@@ -184,4 +184,24 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 		}
 	}
 }
+
+void jeux_credits()
+{
+	MLV_Image *credit;
+	int exit = 1;
+	int x,y;
+	int xCredits = 860;
+	int yCredits = 625;
+	credit = MLV_load_image("../textures/credits.png");
+	MLV_draw_image(credit,0,0);
+	MLV_actualise_window();
+	while(exit)
+	{
+		MLV_wait_mouse(&x,&y);
+		if(x>=xCredits && x<xCredits+158 && y>=yCredits && y<yCredits+41)
+		{
+			exit = 0;
+		}
+	}
+}
 #endif
