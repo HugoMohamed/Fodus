@@ -96,7 +96,7 @@ void perso_nettoyer(int x,int y,map m,persoTab joueurs,int nbJoueurs)
 			MLV_draw_image(sol,x,y-40);
 			for(i=1;i<=nbJoueurs;i++)
 			{
-				if(y/40 == joueurs[i].pos.y && x/40 == joueurs[i].pos.x)
+				if((y/40)-1 == joueurs[i].pos.y && x/40 == joueurs[i].pos.x)
 				{
 					if(joueurs[i].classe == 'k')
 					MLV_draw_image(knight,x+5,y-15-40);
@@ -108,6 +108,20 @@ void perso_nettoyer(int x,int y,map m,persoTab joueurs,int nbJoueurs)
 		else
 		{
 			MLV_draw_image(sol,x,y-40);
+		}
+	}
+	if(m[y/40+1	][(x/40)] == '3')
+	{
+		MLV_draw_image(sol,x,y-40);
+		for(i=1;i<=nbJoueurs;i++)
+		{
+			if((y/40)+1 == joueurs[i].pos.y && x/40 == joueurs[i].pos.x)
+			{
+				if(joueurs[i].classe == 'k')
+				MLV_draw_image(knight,x+5,y-15+40);
+				else if(joueurs[i].classe == 'm')
+				MLV_draw_image(marksman,x+5,y-15+40);
+			}
 		}
 	}
 	MLV_actualise_window();
