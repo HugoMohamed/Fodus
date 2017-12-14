@@ -77,11 +77,12 @@ int main()
 		}
 		if(choixMenu == 1 || choixMenu == 2)
 		{
+
+			map_chargerMap("../map/map.txt",m);
+			map_afficherMap(m);
 			// On crée les différents personnages
 			perso_creerPerso(m,&p1,&c1,100,20,joueurs,1,'k');
 			perso_creerPerso(m,&p2,&c2,50,10,joueurs,2,'m');
-			map_chargerMap("../map/map.txt",m);
-			map_afficherMap(m);
 			personnage_afficherPer(m,joueurs,nbJoueurs);
 			MLV_actualise_window();
 

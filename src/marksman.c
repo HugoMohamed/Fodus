@@ -76,6 +76,8 @@ int marksman_atkE(perso *p,map m,persoTab joueurs,int nbJoueurs,int pa)
 	int j;
 	int a;
 	int mouseX, mouseY;
+	MLV_Image *marksman = MLV_load_image("../textures/marksman/marksman.png");
+	
 
 	// On affiche les cases attaquables
 	while(i <= 3 && m[y][x+i] != '1')
@@ -213,6 +215,7 @@ int marksman_atkE(perso *p,map m,persoTab joueurs,int nbJoueurs,int pa)
 		pa--;
 	}
 	perso_nettoyerAttaque(m,joueurs,nbJoueurs);
+	MLV_draw_image(marksman,(p->pos.x*40)+5,(p->pos.y*40)-15);
 	return pa;
 }
 #endif

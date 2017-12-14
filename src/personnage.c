@@ -130,6 +130,7 @@ void perso_nettoyerAttaque(map m,persoTab joueurs,int nbJ)
 			}
 			if(m[i][j]=='4')
 			{
+
 				m[i][j] = '3';
 				MLV_draw_image(sol,j*40,i*40);
 				for(k=1;k<=nbJ;k++)
@@ -137,9 +138,9 @@ void perso_nettoyerAttaque(map m,persoTab joueurs,int nbJ)
 					if(i == joueurs[k].pos.y && j == joueurs[k].pos.x)
 					{
 						if(joueurs[k].classe == 'k')
-						MLV_draw_image(knight,(j*40)+5,(i*40)-15-40);
-						else if(joueurs[k].classe == 'm')
-						MLV_draw_image(marksman,(j*40)+5,(i*40)-15-40);
+						MLV_draw_image(knight,(j*40)+5,(i*40)-15);
+						if(joueurs[k].classe == 'm')
+						MLV_draw_image(marksman,(j*40)+5,(i*40)-15);
 					}
 				}
 			}
@@ -164,9 +165,9 @@ void personnage_afficherPer(map m,persoTab joueurs,int nbJoueurs)
 				if(i == joueurs[k].pos.y && j == joueurs[k].pos.x)
 				{
 					if(joueurs[k].classe == 'm')
-					MLV_draw_image(marksman,(j*40)+5,(i*40)-15-40);
+					MLV_draw_image(marksman,(j*40)+5,(i*40)-15);
 					if(joueurs[k].classe == 'k')
-					MLV_draw_image(knight,(j*40)+5,(i*40)-15-40);
+					MLV_draw_image(knight,(j*40)+5,(i*40)-15);
 				}
 			}
 		}

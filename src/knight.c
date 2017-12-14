@@ -10,6 +10,7 @@ int knight_attaqueA(perso *p,map m,persoTab joueurs,int nbJoueurs,int pa)
 	int y = p->pos.y;
 	int i = 1;
 	int mouseX, mouseY;
+	MLV_Image *knight = MLV_load_image("../textures/knight/knight_walkdown1.png");
 
 	// On affiche les cases attaquables
 	while(i <= 3 && m[y][x+i] != '1')
@@ -83,6 +84,7 @@ int knight_attaqueA(perso *p,map m,persoTab joueurs,int nbJoueurs,int pa)
 	}
 	else
 	perso_nettoyerAttaque(m,joueurs,nbJoueurs);
+	MLV_draw_image(knight,(p->pos.x*40)+5,(p->pos.y*40)-15);
 	return pa;
 
 }
@@ -93,6 +95,8 @@ int knight_atkE(perso *p,map m,persoTab joueurs,int nbJoueurs,int pa)
 	int y = p->pos.y;
 	int i;
 	int mouseX, mouseY;
+	MLV_Image *knight = MLV_load_image("../textures/knight/knight_walkdown1.png");
+	
 	// On affiche les cases attaquables
 	for(i=1;i<=5;i++)
 	{
@@ -186,6 +190,7 @@ int knight_atkE(perso *p,map m,persoTab joueurs,int nbJoueurs,int pa)
 		pa --;
 	}
 	perso_nettoyerAttaque(m,joueurs,nbJoueurs);
+	MLV_draw_image(knight,(p->pos.x*40)+5,(p->pos.y*40)-15);
 	return pa;
 
 }
