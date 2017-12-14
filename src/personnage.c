@@ -110,6 +110,7 @@ void perso_nettoyer(int x,int y,map m,persoTab joueurs,int nbJoueurs)
 			MLV_draw_image(sol,x,y-40);
 		}
 	}
+	// S'il y a un personnage en dessous, on le réaffiche correctement
 	if(m[y/40+1	][(x/40)] == '3')
 	{
 		MLV_draw_image(sol,x,y-40);
