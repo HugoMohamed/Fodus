@@ -173,7 +173,7 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 		// Save
 		if(x>=xBouton && x<xBouton+lnBouton && y>=ySave && y<ySave+wdBouton)
 		{
-			numG = sauvegarde_choseSave();
+			numG = sauvegarde_choseSave(0);
 			sauvegarde(m,joueurs,nbJoueurs,numJ,papm,numG);
 			MLV_clear_window(MLV_COLOR_BLACK);
 			MLV_actualise_window();
@@ -194,7 +194,7 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 		// Save & exit
 		if(x>=xBouton && x<xBouton+lnBouton && y>=ySaveEx && y<ySaveEx+wdBouton)
 		{
-			numG = sauvegarde_choseSave();
+			numG = sauvegarde_choseSave(0);
 			sauvegarde(m,joueurs,nbJoueurs,numJ,papm,numG);
 			for(i=1;i<nbJoueurs;i++)
 			joueurs[i].vie = -100;

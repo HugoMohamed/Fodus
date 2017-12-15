@@ -43,7 +43,7 @@ int main()
 		}
 		if(choixMenu == 3)
 		{
-			numG = sauvegarde_choseSave();
+			numG = sauvegarde_choseSave(1);
 			if(numG != 0)
 			{
 				numJ = sauvegarde_charger(m,joueurs,papm,numG);

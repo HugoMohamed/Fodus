@@ -85,10 +85,11 @@ int sauvegarde_charger(map m,persoTab joueurs,int papm[2],int numG)
 	return numJ;
 }
 
-int sauvegarde_choseSave()
+int sauvegarde_choseSave(int image)
 {
 
-	MLV_Image *choix = MLV_load_image("../textures/loadmenu.png");
+	MLV_Image *choix1 = MLV_load_image("../textures/loadmenu.png");
+	MLV_Image *choix0 = MLV_load_image("../textures/save.png");
 	// Longueur et Hauteur des boutons
 	int lnBouton = 340;
 	int wdBouton = 70;
@@ -105,8 +106,10 @@ int sauvegarde_choseSave()
 	int yBack = 625;
 
 	// On affiche le choix des sauvegardes
-	choix = MLV_load_image("../textures/loadmenu.png");
-	MLV_draw_image(choix,0,0);
+	if(image == 1)
+	MLV_draw_image(choix1,0,0);
+	if(image == 0)
+	MLV_draw_image(choix0,0,0);
 	MLV_actualise_window();
 	while(1)
 	{
