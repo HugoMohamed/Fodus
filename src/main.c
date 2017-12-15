@@ -128,6 +128,8 @@ int main()
 					papm[1] = 6;
 					numJ = 1;
 					jeux_tour(&joueurs[1],numJ,joueurs,m,nbJoueurs,papm);
+					if((gagnant = jeux_fin(joueurs,m,nbJoueurs)) != 0)
+					break;
 					numJ = 2;
 					ia_approche(m,&joueurs[2],joueurs,6,nbJoueurs);
 				}
