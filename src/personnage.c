@@ -106,11 +106,11 @@ void perso_nettoyer(int x,int y,map m,persoTab joueurs,int nbJoueurs)
 	MLV_Image *marksman = MLV_load_image("../textures/marksman/marksman.png");
 
 	MLV_draw_image(sol,x,y);
-	if(m[y/40-1	][(x/40)] == '1')
+	if(m[(y/40)-1][(x/40)] == '1')
 	MLV_draw_image(mur,x,y-40);
 	else
 	{
-		if(m[y/40-1	][(x/40)] == '3')
+		if(m[(y/40)-1][(x/40)] == '3')
 		{
 			MLV_draw_image(sol,x,y-40);
 			for(i=1;i<=nbJoueurs;i++)
@@ -124,15 +124,15 @@ void perso_nettoyer(int x,int y,map m,persoTab joueurs,int nbJoueurs)
 				}
 			}
 		}
-		else
+		else if(m[y/40-1][(x/40)] == '0')
 		{
 			MLV_draw_image(sol,x,y-40);
 		}
 	}
 	// S'il y a un personnage en dessous, on le réaffiche correctement
-	if(m[y/40+1	][(x/40)] == '3')
+	if(m[y/40+1][(x/40)] == '3')
 	{
-		MLV_draw_image(sol,x,y-40);
+		MLV_draw_image(sol,x,y+40);
 		for(i=1;i<=nbJoueurs;i++)
 		{
 			if((y/40)+1 == joueurs[i].pos.y && x/40 == joueurs[i].pos.x)

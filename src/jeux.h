@@ -21,6 +21,4 @@ void jeux_hud(persoTab joueurs, int numJ, int pa, int pm,int nbJoueurs);
 // Met le jeu en pause
 void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ,int papm[2]);
 
-// Affiche les crédits
-void jeux_credits();
 #endif

@@ -35,7 +35,7 @@ int main()
 		choixMenu = menu_afficher();
 		if(choixMenu == 5)
 		{
-			jeux_credits();
+			menu_credits();
 		}
 		if(choixMenu == 4)
 		{

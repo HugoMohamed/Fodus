@@ -89,7 +89,11 @@ int jeux_fin(persoTab joueurs, map m,int nbJoueurs)
 		if(joueurs[i].vie <= 0)
 		{
 			joueurs[i].etat = 'm';
-			m[joueurs[i].pos.y][joueurs[i].pos.x] = 0;
+			perso_nettoyer((joueurs[i].pos.x)*40,(joueurs[i].pos.y)*40,m,joueurs,nbJoueurs);
+			m[joueurs[i].pos.y][joueurs[i].pos.x] = '0';
+			joueurs[i].pos.x = i;
+			joueurs[i].pos.y = 40;
+
 		}
 	}
 	if(nbVivant > 1)
@@ -141,6 +145,7 @@ void jeux_hud(persoTab joueurs, int numJ, int pa, int pm,int nbJoueurs)
 
 void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 {
+	int i;
 	// Longueur et Hauteur des boutons
 	int lnBouton = 340;
 	int wdBouton = 70;
@@ -179,8 +184,8 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 		if(x>=xBouton && x<xBouton+lnBouton && y>=yExit && y<yExit+wdBouton)
 		{
 			// On crée une conditon d'arrêt de la partie
-			joueurs[1].vie = -100;
-
+			for(i=1;i<nbJoueurs;i++)
+			joueurs[i].vie = -100;
 			jeux_fin(joueurs,m,nbJoueurs);
 			MLV_clear_window(MLV_COLOR_BLACK);
 			MLV_actualise_window();
@@ -191,7 +196,8 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 		{
 			numG = sauvegarde_choseSave();
 			sauvegarde(m,joueurs,nbJoueurs,numJ,papm,numG);
-			joueurs[1].vie = 0;
+			for(i=1;i<nbJoueurs;i++)
+			joueurs[i].vie = -100;
 			jeux_fin(joueurs,m,nbJoueurs);
 			MLV_clear_window(MLV_COLOR_BLACK);
 			MLV_actualise_window();
@@ -209,23 +215,4 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 	}
 }
 
-void jeux_credits()
-{
-	MLV_Image *credit;
-	int exit = 1;
-	int x,y;
-	int xCredits = 860;
-	int yCredits = 625;
-	credit = MLV_load_image("../textures/credits.png");
-	MLV_draw_image(credit,0,0);
-	MLV_actualise_window();
-	while(exit)
-	{
-		MLV_wait_mouse(&x,&y);
-		if(x>=xCredits && x<xCredits+158 && y>=yCredits && y<yCredits+41)
-		{
-			exit = 0;
-		}
-	}
-}
 #endif

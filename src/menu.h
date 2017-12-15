@@ -15,4 +15,7 @@
 */
 int menu_afficher();
 
+// Affiche les crédits
+void menu_credits();
+
 #endif
