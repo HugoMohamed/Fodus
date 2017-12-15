@@ -100,10 +100,12 @@ void jeux_afficherGagnant(int gagnant)
 
 void jeux_hud(persoTab joueurs, int numJ, int pa, int pm)
 {
+	MLV_Image *hud = MLV_load_image("../textures/hud.png");
 	char papm[TMAX],vie[TMAX];
 	sprintf(papm,"%d\n%d",pa,pm);
-	sprintf(vie,"%d / %d",joueurs[numJ].vie,VIE);
-	MLV_draw_text_box(
+	sprintf(vie,"%d / %d",joueurs[numJ].vie,VIE_K);
+	MLV_draw_image(hud,0,0);
+	/*MLV_draw_text_box(
 		500,640,
 		50,40,
 		papm,5,
@@ -118,7 +120,7 @@ void jeux_hud(persoTab joueurs, int numJ, int pa, int pm)
 		MLV_COLOR_RED, MLV_COLOR_GREEN, MLV_COLOR_BLACK,
 		MLV_TEXT_LEFT,
 		MLV_HORIZONTAL_CENTER, MLV_VERTICAL_CENTER
-	);
+	);*/
 	MLV_actualise_window();
 }
 
@@ -163,7 +165,7 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 		{
 			// On crée une conditon d'arrêt de la partie
 			joueurs[1].vie = -100;
-			
+
 			jeux_fin(joueurs,m,nbJoueurs);
 			MLV_clear_window(MLV_COLOR_BLACK);
 			MLV_actualise_window();

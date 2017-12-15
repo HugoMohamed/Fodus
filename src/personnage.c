@@ -2,21 +2,39 @@
 
 void perso_creerPerso(map m,perso *p,coord *c, int vie, int dmg,persoTab joueurs,int numperso,char classe)
 {
-	MLV_Image *knight = MLV_load_image("../textures/knight/knight_walkdown1.png");
-	MLV_Image *marksman = MLV_load_image("../textures/marksman/marksman.png");
-
 	p->pos.x = c->x;
 	p->pos.y = c->y;
 	p->vie = vie;
 	p->dmg = dmg;
 	p->classe = classe;
-	joueurs[numperso] = *p;
-	if(classe == 'k')
-	MLV_draw_image(knight,(p->pos.x)*40+5,(p->pos.y)*40-15);
-	if(classe == 'm')
-	MLV_draw_image(marksman,(p->pos.x)*40+5,(p->pos.y)*40-15);
 	m[p->pos.y][p->pos.x] = '3';
+}
 
+char perso_choixClasse()
+{
+	int x,y;
+	int xM = 12;
+	int yM = 202;
+	int xK = 283;
+	int yK = 202;
+	MLV_Image *choixP = MLV_load_image("../textures/choix_perso.png");
+
+	MLV_draw_image(choixP,0,0);
+	MLV_actualise_window();
+	while(1)
+	{
+		MLV_wait_mouse(&x,&y);
+		// knight
+		if(x>=xK && x<xK+192 && y>=yK && y<yK+301 )
+		{
+			return 'k';
+		}
+		// Marksman
+		if(x>=xM && x<xM+192 && y>=yM && y<yM+301 )
+		{
+			return 'm';
+		}
+	}
 }
 
 

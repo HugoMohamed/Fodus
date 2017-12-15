@@ -8,8 +8,8 @@ int main()
 {
 	map m;
 	persoTab joueurs;
-	perso p1;
-	perso p2;
+	char classe;
+	int i;
 	int nbJoueurs = 2;
 	int gagnant = 0;
 	int numJ,conti = 1;
@@ -79,31 +79,61 @@ int main()
 		{
 
 			map_chargerMap("../map/map.txt",m);
-			map_afficherMap(m);
 			// On crée les différents personnages
-			perso_creerPerso(m,&p1,&c1,100,20,joueurs,1,'k');
-			perso_creerPerso(m,&p2,&c2,50,10,joueurs,2,'m');
+			if(choixMenu == 1)
+			{
+				perso_creerPerso(m,&joueurs[1],&c2,100,20,joueurs,2,'k');
+				classe = perso_choixClasse();
+				if(classe == 'k')
+				perso_creerPerso(m,&joueurs[2],&c1,100,20,joueurs,2,'k');
+				if(classe == 'm')
+				perso_creerPerso(m,&joueurs[2],&c2,50,10,joueurs,2,'m');
+			}
+			if(choixMenu == 2)
+			{
+				for(i=1;i<=nbJoueurs;i++)
+				{
+					classe = perso_choixClasse();
+					if(classe == 'k')
+					perso_creerPerso(m,&joueurs[i],&c1,100,20,joueurs,1,'k');
+					if(classe == 'm')
+					perso_creerPerso(m,&joueurs[i],&c2,50,10,joueurs,2,'m');
+				}
+			}
+			map_afficherMap(m);
 			personnage_afficherPer(m,joueurs,nbJoueurs);
 			MLV_actualise_window();
-
-			while((gagnant = jeux_fin(joueurs,m,nbJoueurs)) == 0)
+			if(choixMenu == 2)
 			{
-				papm[0] = 1;
-				papm[1] = 6;
-				numJ = 1;
-				jeux_tour(&joueurs[1],numJ,joueurs,m,nbJoueurs,papm);
-				if((gagnant = jeux_fin(joueurs,m,nbJoueurs)) != 0)
-				break;
-				papm[0] = 1;
-				papm[1] = 6;
-				numJ = 2;
-				if(choixMenu == 1)
-				ia_approche(m,&joueurs[2],joueurs,6,nbJoueurs);
-				else if(choixMenu == 2)
-				jeux_tour(&joueurs[2],numJ,joueurs,m,nbJoueurs,papm);
+				while((gagnant = jeux_fin(joueurs,m,nbJoueurs)) == 0)
+				{
+					numJ = 1;
+					while(numJ <= nbJoueurs && (gagnant = jeux_fin(joueurs,m,nbJoueurs)) == 0)
+					{
+						papm[0] = 1;
+						papm[1] = 6;
+						jeux_tour(&joueurs[numJ],numJ,joueurs,m,nbJoueurs,papm);
+						numJ++;
+					}
+				}
+				numJ--;
 			}
+			if(choixMenu == 1)
+			{
+				while((gagnant = jeux_fin(joueurs,m,nbJoueurs)) == 0)
+				{
+					papm[0] = 1;
+					papm[1] = 6;
+					numJ = 1;
+					jeux_tour(&joueurs[1],numJ,joueurs,m,nbJoueurs,papm);
+					numJ = 2;
+					ia_approche(m,&joueurs[2],joueurs,6,nbJoueurs);
+					papm[0] = 1;
+					papm[1] = 6;
 
-			if(joueurs[1].vie != -100) //En cas de fin normale 
+				}
+			}
+			if(joueurs[1].vie != -100) //En cas de fin normale
 			{
 				jeux_afficherGagnant(numJ);
 			}

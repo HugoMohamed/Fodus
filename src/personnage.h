@@ -3,7 +3,8 @@
 #include "map.h"
 #include <MLV/MLV_all.h>
 
-#define VIE 100
+#define VIE_K 100
+#define VIE_M 50
 #define DEGAT 10
 
 typedef struct
@@ -25,6 +26,9 @@ typedef perso persoTab[TMAX];
 
 // Initialise un perso
 void perso_creerPerso(map m,perso *p,coord *c, int vie, int dmg,persoTab joueurs,int numperso, char classe);
+
+// Le joueur choisit sa classe
+char perso_choixClasse();
 
 // Deplace le perso p d'une case a gauche/droite/haut/bas
 int perso_deplacer(map m, perso *p, int numJ, persoTab joueur, int direction, int pm,int nbJoueurs);
