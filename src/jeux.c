@@ -161,7 +161,9 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 		// Exit
 		if(x>=xBouton && x<xBouton+lnBouton && y>=yExit && y<yExit+wdBouton)
 		{
-			joueurs[1].vie = 0;
+			// On crée une conditon d'arrêt de la partie
+			joueurs[1].vie = -100;
+			
 			jeux_fin(joueurs,m,nbJoueurs);
 			MLV_clear_window(MLV_COLOR_BLACK);
 			MLV_actualise_window();

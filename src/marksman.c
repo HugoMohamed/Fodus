@@ -7,50 +7,53 @@ int marksman_attaqueA(perso *p,map m,persoTab joueurs,int nbJoueurs,int pa)
 {
 	int x = p->pos.x;
 	int y= p->pos.y;
-	int i = 6,j;
+	int i,j;
 	int mouseX, mouseY;
-	for(j=0;j<=i;j++)
+	for(i=1;i<=5;i++)
 	{
-		if(m[y-j][x+i-j] == '0')
+		for(j=0;j<=i;j++)
 		{
-			m[y-j][x+i-j] = '2';
-			MLV_draw_filled_rectangle((x+i-j)*40,(y-j)*40,40,40,MLV_rgba(0,255,0,100));
-		}
-		if(m[y-j][x+i-j] == '3')
-		{
-			m[y-j][x+i-j] = '4';
-		}
-		if(m[y-j][x-i+j] == '0')
-		{
-			m[y-j][x-i+j] = '2';
-			MLV_draw_filled_rectangle((x-i+j)*40,(y-j)*40,40,40,MLV_rgba(0,255,0,100));
+			if(m[y-j][x+i-j] == '0')
+			{
+				m[y-j][x+i-j] = '2';
+				MLV_draw_filled_rectangle((x+i-j)*40,(y-j)*40,40,40,MLV_rgba(0,255,0,100));
+			}
+			if(m[y-j][x+i-j] == '3')
+			{
+				m[y-j][x+i-j] = '4';
+			}
+			if(m[y-j][x-i+j] == '0')
+			{
+				m[y-j][x-i+j] = '2';
+				MLV_draw_filled_rectangle((x-i+j)*40,(y-j)*40,40,40,MLV_rgba(0,255,0,100));
 
-		}
-		if(m[y-j][x-i+j] == '3')
-		{
-			m[y-j][x-i+j] = '4';
-		}
+			}
+			if(m[y-j][x-i+j] == '3')
+			{
+				m[y-j][x-i+j] = '4';
+			}
 
-		if(m[y+j][x+i-j] == '0')
-		{
-			m[y+j][x+i-j] = '2';
-			MLV_draw_filled_rectangle((x+i-j)*40,(y+j)*40,40,40,MLV_rgba(0,255,0,100));
-		}
+			if(m[y+j][x+i-j] == '0')
+			{
+				m[y+j][x+i-j] = '2';
+				MLV_draw_filled_rectangle((x+i-j)*40,(y+j)*40,40,40,MLV_rgba(0,255,0,100));
+			}
 
-		if(m[y+j][x+i-j] == '3')
-		{
-			m[y+j][x+i-j] = '4';
-		}
+			if(m[y+j][x+i-j] == '3')
+			{
+				m[y+j][x+i-j] = '4';
+			}
 
-		if(m[y+j][x-i+j] == '0')
-		{
-			m[y+j][x-i+j] = '2';
-			MLV_draw_filled_rectangle((x-i+j)*40,(y+j)*40,40,40,MLV_rgba(0,255,0,100));
-		}
+			if(m[y+j][x-i+j] == '0')
+			{
+				m[y+j][x-i+j] = '2';
+				MLV_draw_filled_rectangle((x-i+j)*40,(y+j)*40,40,40,MLV_rgba(0,255,0,100));
+			}
 
-		if(m[y+j][x-i+j] == '3')
-		{
-			m[y+j][x-i+j] = '4';
+			if(m[y+j][x-i+j] == '3')
+			{
+				m[y+j][x-i+j] = '4';
+			}
 		}
 	}
 	MLV_actualise_window();
@@ -77,7 +80,7 @@ int marksman_atkE(perso *p,map m,persoTab joueurs,int nbJoueurs,int pa)
 	int a;
 	int mouseX, mouseY;
 	MLV_Image *marksman = MLV_load_image("../textures/marksman/marksman.png");
-	
+
 
 	// On affiche les cases attaquables
 	while(i <= 3 && m[y][x+i] != '1')

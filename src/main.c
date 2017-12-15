@@ -102,7 +102,11 @@ int main()
 				else if(choixMenu == 2)
 				jeux_tour(&joueurs[2],numJ,joueurs,m,nbJoueurs,papm);
 			}
-			jeux_afficherGagnant(numJ);
+
+			if(joueurs[1].vie != -100) //En cas de fin normale 
+			{
+				jeux_afficherGagnant(numJ);
+			}
 			MLV_clear_window(MLV_COLOR_BLACK);
 			MLV_actualise_window();
 			MLV_stop_music(mainTheme);
