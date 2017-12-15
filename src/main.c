@@ -9,8 +9,8 @@ int main()
 	map m;
 	persoTab joueurs;
 	char classe;
-	int i;
-	int nbJoueurs = 2;
+	int i,g;
+	int nbJoueurs = 3;
 	int gagnant = 0;
 	int numJ,conti = 1;
 	int choixMenu;
@@ -20,11 +20,6 @@ int main()
 	MLV_Image *menu;
 
 	coord c1;
-	coord c2;
-	c1.x = 15;
-	c1.y = 15;
-	c2.x = 2;
-	c2.y = 14;
 
 	// On crée et on affiche le terrain
 	MLV_create_window("Fodus Ultimate Battle", "Fodus", 1040, 680);
@@ -54,27 +49,27 @@ int main()
 				numJ = sauvegarde_charger(m,joueurs,papm,numG);
 				while((gagnant = jeux_fin(joueurs,m,nbJoueurs)) == 0)
 				{
-					if(numJ == 1)
+					while(numJ <= nbJoueurs && (gagnant = jeux_fin(joueurs,m,nbJoueurs)) == 0)
 					{
-						jeux_tour(&joueurs[1],numJ,joueurs,m,nbJoueurs,papm);
-						if((gagnant = jeux_fin(joueurs,m,nbJoueurs)) != 0)
-						break;
-						numJ = 2;
+						if(joueurs[numJ].etat == 'v')
+						jeux_tour(&joueurs[numJ],numJ,joueurs,m,nbJoueurs,papm);
+						papm[0] = 1;
+						papm[1] = 6;
+						numJ++;
 					}
-					else
-					{
-						jeux_tour(&joueurs[2],numJ,joueurs,m,nbJoueurs,papm);
-						numJ = 1;
-					}
-					papm[0] = 1;
-					papm[1] = 6;
+					g = numJ - 1;
+					numJ = 1;
 				}
-				jeux_afficherGagnant(numJ);
+				if(joueurs[1].vie != -100) //En cas de fin normale
+				{
+					jeux_afficherGagnant(g);
+				}
 				MLV_clear_window(MLV_COLOR_BLACK);
 				MLV_actualise_window();
 				MLV_stop_music(mainTheme);
 			}
 		}
+
 		if(choixMenu == 1 || choixMenu == 2)
 		{
 
@@ -82,22 +77,28 @@ int main()
 			// On crée les différents personnages
 			if(choixMenu == 1)
 			{
-				perso_creerPerso(m,&joueurs[1],&c2,100,20,joueurs,2,'k');
+				c1.x = 3;
+				c1.y = 3;
+				perso_creerPerso(m,&joueurs[1],&c1,100,20,joueurs,2,'k');
 				classe = perso_choixClasse();
+				c1.x = 10;
+				c1.y = 10;
 				if(classe == 'k')
 				perso_creerPerso(m,&joueurs[2],&c1,100,20,joueurs,2,'k');
 				if(classe == 'm')
-				perso_creerPerso(m,&joueurs[2],&c2,50,10,joueurs,2,'m');
+				perso_creerPerso(m,&joueurs[2],&c1,100,10,joueurs,2,'m');
 			}
 			if(choixMenu == 2)
 			{
 				for(i=1;i<=nbJoueurs;i++)
 				{
+					c1.x = (3*i) % 20;
+					c1.y = (3*i) % 20;
 					classe = perso_choixClasse();
 					if(classe == 'k')
 					perso_creerPerso(m,&joueurs[i],&c1,100,20,joueurs,1,'k');
 					if(classe == 'm')
-					perso_creerPerso(m,&joueurs[i],&c2,50,10,joueurs,2,'m');
+					perso_creerPerso(m,&joueurs[i],&c1,100,10,joueurs,2,'m');
 				}
 			}
 			map_afficherMap(m);
@@ -112,6 +113,7 @@ int main()
 					{
 						papm[0] = 1;
 						papm[1] = 6;
+						if(joueurs[numJ].etat == 'v')
 						jeux_tour(&joueurs[numJ],numJ,joueurs,m,nbJoueurs,papm);
 						numJ++;
 					}
@@ -128,9 +130,6 @@ int main()
 					jeux_tour(&joueurs[1],numJ,joueurs,m,nbJoueurs,papm);
 					numJ = 2;
 					ia_approche(m,&joueurs[2],joueurs,6,nbJoueurs);
-					papm[0] = 1;
-					papm[1] = 6;
-
 				}
 			}
 			if(joueurs[1].vie != -100) //En cas de fin normale

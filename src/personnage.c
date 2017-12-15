@@ -7,6 +7,7 @@ void perso_creerPerso(map m,perso *p,coord *c, int vie, int dmg,persoTab joueurs
 	p->vie = vie;
 	p->dmg = dmg;
 	p->classe = classe;
+	p->etat = 'v';   // Vivant
 	m[p->pos.y][p->pos.x] = '3';
 }
 

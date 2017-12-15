@@ -3,8 +3,7 @@
 #include "map.h"
 #include <MLV/MLV_all.h>
 
-#define VIE_K 100
-#define VIE_M 50
+#define VIE 100
 #define DEGAT 10
 
 typedef struct
@@ -19,6 +18,7 @@ typedef struct
     int dmg;
     coord pos;
 	char classe;
+	char etat;
 } perso;
 
 // Pour avoir une liste des joueurs

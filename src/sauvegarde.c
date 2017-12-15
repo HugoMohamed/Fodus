@@ -35,7 +35,7 @@ void sauvegarde(map m,persoTab joueurs,int nbJoueurs,int numJ,int papm[2],int nu
 	fprintf(savePers,"%d %d\n",papm[0],papm[1]);
 	// Chaque ligne correspond a un personnage
 	for(i=1;i<=nbJoueurs;i++)
-	fprintf(savePers,"%d %d %d %d %c\n",joueurs[i].vie,joueurs[i].dmg,joueurs[i].pos.x,joueurs[i].pos.y,joueurs[i].classe);
+	fprintf(savePers,"%d %d %d %d %c %c\n",joueurs[i].vie,joueurs[i].dmg,joueurs[i].pos.x,joueurs[i].pos.y,joueurs[i].classe,joueurs[i].etat);
 
 	fclose(saveMap);
 	fclose(savePers);
@@ -45,7 +45,7 @@ int sauvegarde_charger(map m,persoTab joueurs,int papm[2],int numG)
 {
 	int numJ;
 	int i = 1,vie,dmg,x,y,nbJoueurs;
-	char attributs[15],c;
+	char attributs[15],c,e;
 	FILE* savePers;
 	char cheminMap[100], cheminPers[100];
 	// On choisit les saveMap et savePers de numéro numG
@@ -69,13 +69,14 @@ int sauvegarde_charger(map m,persoTab joueurs,int papm[2],int numG)
 	sscanf(attributs,"%d %d",&papm[0],&papm[1]);
 	while(i<=nbJoueurs)
 	{
-		fgets(attributs,20,savePers);
-		sscanf(attributs,"%d %d %d %d %c",&vie,&dmg,&x,&y,&c);
+		fgets(attributs,30,savePers);
+		sscanf(attributs,"%d %d %d %d %c %c",&vie,&dmg,&x,&y,&c,&e);
 		joueurs[i].vie = vie;
 		joueurs[i].dmg = dmg;
 		joueurs[i].pos.x = x;
 		joueurs[i].pos.y = y;
 		joueurs[i].classe = c;
+		joueurs[i].etat = e;
 		i++;
 	}
 	personnage_afficherPer(m,joueurs,nbJoueurs);

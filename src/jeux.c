@@ -10,7 +10,7 @@ void jeux_tour(perso *p,int numJ,persoTab joueurs,map m,int nbJoueurs,int papm[2
 	int pm = papm[1];//Points de dédéplacement du joueur
 	MLV_Keyboard_button touche;
 	fprintf(stdout,"%d\n",numJ);
-	jeux_hud(joueurs,numJ,pa,pm);
+	jeux_hud(joueurs,numJ,pa,pm,nbJoueurs);
 	// Tant que le joueur peut se déplacer
 	while(pm > 0 || pa > 0)
 	{
@@ -71,19 +71,30 @@ void jeux_tour(perso *p,int numJ,persoTab joueurs,map m,int nbJoueurs,int papm[2
 			pa = 0;
 			pm = 0;
 		}
-		jeux_hud(joueurs,numJ,pa,pm);
+		jeux_hud(joueurs,numJ,pa,pm,nbJoueurs);
 	}
-	jeux_hud(joueurs,numJ,pa,pm);
+	jeux_hud(joueurs,numJ,pa,pm,nbJoueurs);
 }
 
 
 int jeux_fin(persoTab joueurs, map m,int nbJoueurs)
 {
-	int i;
+	int i,nbVivant = 0;
 	for(i=1;i<=nbJoueurs;i++)
-	if(joueurs[i].vie <= 0)
-	return i;
+	{
+		if(joueurs[i].vie > 0)
+		{
+			nbVivant ++;
+		}
+		if(joueurs[i].vie <= 0)
+		{
+			joueurs[i].etat = 'm';
+			m[joueurs[i].pos.y][joueurs[i].pos.x] = 0;
+		}
+	}
+	if(nbVivant > 1)
 	return 0;
+	else return i;
 }
 
 void jeux_afficherGagnant(int gagnant)
@@ -98,29 +109,33 @@ void jeux_afficherGagnant(int gagnant)
 	MLV_wait_seconds(3);
 }
 
-void jeux_hud(persoTab joueurs, int numJ, int pa, int pm)
+void jeux_hud(persoTab joueurs, int numJ, int pa, int pm,int nbJoueurs)
 {
 	MLV_Image *hud = MLV_load_image("../textures/hud.png");
-	char papm[TMAX],vie[TMAX];
-	sprintf(papm,"%d\n%d",pa,pm);
-	sprintf(vie,"%d / %d",joueurs[numJ].vie,VIE_K);
+	char tpa[TMAX],tpm[TMAX],vie[TMAX];
+	int i;
+	sprintf(tpa,"%d",pa);
+	sprintf(tpm,"%d",pm);
+	sprintf(vie,"%d / 100",joueurs[numJ].vie);
 	MLV_draw_image(hud,0,0);
-	/*MLV_draw_text_box(
-		500,640,
-		50,40,
-		papm,5,
-		MLV_COLOR_RED, MLV_COLOR_GREEN, MLV_COLOR_BLACK,
-		MLV_TEXT_LEFT,
-		MLV_HORIZONTAL_CENTER, MLV_VERTICAL_CENTER
-	);
-	MLV_draw_text_box(
-		550,640,
-		150,40,
-		vie,5,
-		MLV_COLOR_RED, MLV_COLOR_GREEN, MLV_COLOR_BLACK,
-		MLV_TEXT_LEFT,
-		MLV_HORIZONTAL_CENTER, MLV_VERTICAL_CENTER
-	);*/
+	for(i=1;i<=nbJoueurs;i++)
+	{
+		sprintf(vie,"%d / 100",joueurs[i].vie);
+		if(i == 1)
+		MLV_draw_text(369,12,vie,MLV_COLOR_WHITE);
+		if(i == 2)
+		MLV_draw_text(842,12,vie,MLV_COLOR_WHITE);
+	}
+	if(numJ == 1)
+	{
+		MLV_draw_text(306,2,tpm,MLV_COLOR_WHITE);
+		MLV_draw_text(306,24,tpa,MLV_COLOR_WHITE);
+	}
+	if(numJ == 2)
+	{
+		MLV_draw_text(779,2,tpm,MLV_COLOR_WHITE);
+		MLV_draw_text(779,24,tpa,MLV_COLOR_WHITE);
+	}
 	MLV_actualise_window();
 }
 
