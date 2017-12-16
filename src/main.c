@@ -84,14 +84,14 @@ int main()
 				nbJoueurs = 2;
 				c1.x = 3;
 				c1.y = 3;
-				perso_creerPerso(m,&joueurs[1],&c1,100,20,joueurs,2,'k');
-				classe = perso_choixClasse();
+				perso_creerPerso(m,&joueurs[2],&c1,100,20,joueurs,2,'k');
+				classe = perso_choixClasse(1);
 				c1.x = 10;
 				c1.y = 10;
 				if(classe == 'k')
-				perso_creerPerso(m,&joueurs[2],&c1,100,20,joueurs,2,'k');
+				perso_creerPerso(m,&joueurs[1],&c1,100,20,joueurs,2,'k');
 				if(classe == 'm')
-				perso_creerPerso(m,&joueurs[2],&c1,100,10,joueurs,2,'m');
+				perso_creerPerso(m,&joueurs[1],&c1,100,10,joueurs,2,'m');
 			}
 			// Multiplayer
 			if(choixMenu == 2)
@@ -101,7 +101,7 @@ int main()
 				{
 					c1.x = 3*i;
 					c1.y = 3*i;
-					classe = perso_choixClasse();
+					classe = perso_choixClasse(i);
 					if(classe == 'k')
 					perso_creerPerso(m,&joueurs[i],&c1,100,20,joueurs,1,'k');
 					if(classe == 'm')

@@ -11,16 +11,18 @@ void perso_creerPerso(map m,perso *p,coord *c, int vie, int dmg,persoTab joueurs
 	m[p->pos.y][p->pos.x] = '3';
 }
 
-char perso_choixClasse()
+char perso_choixClasse(int numJ)
 {
+	char text[100];
 	int x,y;
 	int xM = 12;
 	int yM = 202;
 	int xK = 283;
 	int yK = 202;
 	MLV_Image *choixP = MLV_load_image("../textures/choix_perso.png");
-
+	sprintf(text,"Joueur %d",numJ);
 	MLV_draw_image(choixP,0,0);
+	MLV_draw_text(500,610,text,MLV_COLOR_BLACK);
 	MLV_actualise_window();
 	while(1)
 	{
