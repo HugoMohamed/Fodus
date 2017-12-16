@@ -215,4 +215,38 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 	}
 }
 
+int jeux_nbJoueurs()
+{
+	int x,y;
+	int wBouton = 70;
+	int lnBouton =  360;
+	int xBouton = 351;
+	int y2 = 234;
+	int y3 = 345;
+	int y4 = 456;
+	MLV_Image *nbJ = MLV_load_image("../textures/nbJoueurs.png");
+
+	MLV_draw_image(nbJ,0,0);
+	MLV_actualise_window();
+	while(1)
+	{
+		MLV_wait_mouse(&x,&y);
+		// 2
+		if(x>=xBouton && x<xBouton+lnBouton && y>=y2 && y<y2+wBouton )
+		{
+			return 2;
+		}
+		// 3
+		if(x>=xBouton && x<xBouton+lnBouton && y>=y3 && y<y3+wBouton )
+		{
+			return 3;
+		}
+		// 4
+		if(x>=xBouton && x<xBouton+lnBouton && y>=y4 && y<y4+wBouton )
+		{
+			return 4;
+		}
+	}
+}
+
 #endif

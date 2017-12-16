@@ -21,4 +21,6 @@ void jeux_hud(persoTab joueurs, int numJ, int pa, int pm,int nbJoueurs);
 // Met le jeu en pause
 void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ,int papm[2]);
 
+// Choix du nombre de joueurs en multijoueurs
+int jeux_nbJoueurs();
 #endif

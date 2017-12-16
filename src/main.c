@@ -10,7 +10,7 @@ int main()
 	persoTab joueurs;
 	char classe;
 	int i,g;
-	int nbJoueurs = 3;
+	int nbJoueurs;
 	int gagnant = 0;
 	int numJ,conti = 1;
 	int choixMenu;
@@ -20,6 +20,7 @@ int main()
 	MLV_Image *menu;
 
 	coord c1;
+	coord nb;
 
 	// On crée et on affiche le terrain
 	MLV_create_window("Fodus Ultimate Battle", "Fodus", 1040, 680);
@@ -46,7 +47,9 @@ int main()
 			numG = sauvegarde_choseSave(1);
 			if(numG != 0)
 			{
-				numJ = sauvegarde_charger(m,joueurs,papm,numG);
+				nb = sauvegarde_charger(m,joueurs,papm,numG);
+				numJ = nb.x;
+				nbJoueurs = nb.y;
 				while((gagnant = jeux_fin(joueurs,m,nbJoueurs)) == 0)
 				{
 					while(numJ <= nbJoueurs && (gagnant = jeux_fin(joueurs,m,nbJoueurs)) == 0)
@@ -75,8 +78,10 @@ int main()
 
 			map_chargerMap("../map/map.txt",m);
 			// On crée les différents personnages
+			// Singleplayer
 			if(choixMenu == 1)
 			{
+				nbJoueurs = 2;
 				c1.x = 3;
 				c1.y = 3;
 				perso_creerPerso(m,&joueurs[1],&c1,100,20,joueurs,2,'k');
@@ -88,12 +93,14 @@ int main()
 				if(classe == 'm')
 				perso_creerPerso(m,&joueurs[2],&c1,100,10,joueurs,2,'m');
 			}
+			// Multiplayer
 			if(choixMenu == 2)
 			{
+				nbJoueurs = jeux_nbJoueurs();
 				for(i=1;i<=nbJoueurs;i++)
 				{
-					c1.x = (3*i) % 20;
-					c1.y = (3*i) % 20;
+					c1.x = 3*i;
+					c1.y = 3*i;
 					classe = perso_choixClasse();
 					if(classe == 'k')
 					perso_creerPerso(m,&joueurs[i],&c1,100,20,joueurs,1,'k');

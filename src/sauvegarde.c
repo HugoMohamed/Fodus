@@ -41,10 +41,11 @@ void sauvegarde(map m,persoTab joueurs,int nbJoueurs,int numJ,int papm[2],int nu
 	fclose(savePers);
 }
 
-int sauvegarde_charger(map m,persoTab joueurs,int papm[2],int numG)
+coord sauvegarde_charger(map m,persoTab joueurs,int papm[2],int numG)
 {
-	int numJ;
-	int i = 1,vie,dmg,x,y,nbJoueurs;
+	int numJ,nbJoueurs;
+	coord nb; // contiendra numJ et nbJoueurs pour permettre de renvoyer plusieurs entiers
+	int i = 1,vie,dmg,x,y;
 	char attributs[15],c,e;
 	FILE* savePers;
 	char cheminMap[100], cheminPers[100];
@@ -82,7 +83,9 @@ int sauvegarde_charger(map m,persoTab joueurs,int papm[2],int numG)
 	personnage_afficherPer(m,joueurs,nbJoueurs);
 	fclose(savePers);
 	MLV_actualise_window();
-	return numJ;
+	nb.x = numJ;
+	nb.y = nbJoueurs;
+	return nb;
 }
 
 int sauvegarde_choseSave(int image)
