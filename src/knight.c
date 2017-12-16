@@ -18,12 +18,12 @@ int knight_attaqueA(perso *p,map m,persoTab joueurs,int nbJoueurs,int pa)
 		if(m[y][x+i] == '0')
 		{
 			m[y][x+i] = '2';
-			MLV_draw_filled_rectangle((x+i)*40,y*40,40,40,MLV_rgba(0,255,0,100));
 		}
 		if(m[y][x+i] == '3')
 		{
 			m[y][x+i] = '4';
 		}
+		MLV_draw_filled_rectangle((x+i)*40,y*40,40,40,MLV_rgba(0,255,0,100));
 		i++;
 	}
 	i = 1;
@@ -32,12 +32,12 @@ int knight_attaqueA(perso *p,map m,persoTab joueurs,int nbJoueurs,int pa)
 		if(m[y+i][x] == '0')
 		{
 			m[y+i][x] ='2';
-			MLV_draw_filled_rectangle(x*40,(y+i)*40,40,40,MLV_rgba(0,255,0,100));
 		}
 		if(m[y+i][x] == '3')
 		{
 			m[y+i][x] = '4';
 		}
+		MLV_draw_filled_rectangle(x*40,(y+i)*40,40,40,MLV_rgba(0,255,0,100));
 		i++;
 	}
 	i = -1;
@@ -46,12 +46,12 @@ int knight_attaqueA(perso *p,map m,persoTab joueurs,int nbJoueurs,int pa)
 		if(m[y][x+i] == '0')
 		{
 			m[y][x+i] = '2';
-			MLV_draw_filled_rectangle((x+i)*40,y*40,40,40,MLV_rgba(0,255,0,100));
 		}
 		if(m[y][x+i] == '3')
 		{
 			m[y][x+i] = '4';
 		}
+		MLV_draw_filled_rectangle((x+i)*40,y*40,40,40,MLV_rgba(0,255,0,100));
 		i--;
 	}
 	i = -1;
@@ -60,12 +60,12 @@ int knight_attaqueA(perso *p,map m,persoTab joueurs,int nbJoueurs,int pa)
 		if(m[y+i][x] == '0')
 		{
 			m[y+i][x] = '2';
-			MLV_draw_filled_rectangle(x*40,(y+i)*40,40,40,MLV_rgba(0,255,0,100));
 		}
 		if(m[y+i][x] == '3')
 		{
 			m[y+i][x] = '4';
 		}
+		MLV_draw_filled_rectangle(x*40,(y+i)*40,40,40,MLV_rgba(0,255,0,100));
 		i--;
 	}
 
@@ -79,10 +79,8 @@ int knight_attaqueA(perso *p,map m,persoTab joueurs,int nbJoueurs,int pa)
 	{
 		// On attaque
 		perso_attaque(m,p,joueurs,mouseX,mouseY,nbJoueurs);
-		perso_nettoyerAttaque(m,joueurs,nbJoueurs);
 		pa --;
 	}
-	else
 	perso_nettoyerAttaque(m,joueurs,nbJoueurs);
 	MLV_draw_image(knight,(p->pos.x*40)+5,(p->pos.y*40)-15);
 	return pa;
@@ -96,7 +94,7 @@ int knight_atkE(perso *p,map m,persoTab joueurs,int nbJoueurs,int pa)
 	int i;
 	int mouseX, mouseY;
 	MLV_Image *knight = MLV_load_image("../textures/knight/knight_walkdown1.png");
-	
+
 	// On affiche les cases attaquables
 	for(i=1;i<=5;i++)
 	{

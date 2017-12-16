@@ -92,7 +92,6 @@ void perso_attaque(map m,perso *p1,persoTab joueurs,int x,int y,int nbJoueurs)
 	if(x == joueurs[i].pos.x && y == joueurs[i].pos.y)
 	{
 		joueurs[i].vie -= p1->dmg;
-		m[joueurs[i].pos.y][joueurs[i].pos.x] = '3';
 	}
 
 }

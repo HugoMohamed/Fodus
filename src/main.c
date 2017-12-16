@@ -15,7 +15,7 @@ int main()
 	int numJ,conti = 1;
 	int choixMenu;
 	int numG; // Choix de la sauvegarde
-	int papm[3] = {1,6};
+	int papm[3] = {2,6};
 	MLV_Music *mainTheme = MLV_load_music("../sounds/main.ogg");
 	MLV_Image *menu;
 
@@ -56,7 +56,7 @@ int main()
 					{
 						if(joueurs[numJ].etat == 'v')
 						jeux_tour(&joueurs[numJ],numJ,joueurs,m,nbJoueurs,papm);
-						papm[0] = 1;
+						papm[0] = 2;
 						papm[1] = 6;
 						numJ++;
 					}
@@ -118,7 +118,7 @@ int main()
 					numJ = 1;
 					while(numJ <= nbJoueurs && (gagnant = jeux_fin(joueurs,m,nbJoueurs)) == 0)
 					{
-						papm[0] = 1;
+						papm[0] = 2;
 						papm[1] = 6;
 						if(joueurs[numJ].etat == 'v')
 						jeux_tour(&joueurs[numJ],numJ,joueurs,m,nbJoueurs,papm);
@@ -131,7 +131,7 @@ int main()
 			{
 				while((gagnant = jeux_fin(joueurs,m,nbJoueurs)) == 0)
 				{
-					papm[0] = 1;
+					papm[0] = 2;
 					papm[1] = 6;
 					numJ = 1;
 					jeux_tour(&joueurs[1],numJ,joueurs,m,nbJoueurs,papm);

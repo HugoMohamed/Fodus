@@ -9,7 +9,6 @@ void jeux_tour(perso *p,int numJ,persoTab joueurs,map m,int nbJoueurs,int papm[2
 	int pa = papm[0];//Point d'attaque du joueur
 	int pm = papm[1];//Points de dédéplacement du joueur
 	MLV_Keyboard_button touche;
-	fprintf(stdout,"%d\n",numJ);
 	jeux_hud(joueurs,numJ,pa,pm,nbJoueurs);
 	// Tant que le joueur peut se déplacer
 	while(pm > 0 || pa > 0)
@@ -120,7 +119,6 @@ void jeux_hud(persoTab joueurs, int numJ, int pa, int pm,int nbJoueurs)
 	int i;
 	sprintf(tpa,"%d",pa);
 	sprintf(tpm,"%d",pm);
-	sprintf(vie,"%d / 100",joueurs[numJ].vie);
 	MLV_draw_image(hud,0,0);
 	for(i=1;i<=nbJoueurs;i++)
 	{
@@ -129,6 +127,10 @@ void jeux_hud(persoTab joueurs, int numJ, int pa, int pm,int nbJoueurs)
 		MLV_draw_text(369,12,vie,MLV_COLOR_WHITE);
 		if(i == 2)
 		MLV_draw_text(842,12,vie,MLV_COLOR_WHITE);
+		if(i == 3)
+		MLV_draw_text(369,615,vie,MLV_COLOR_WHITE);
+		if(i == 4)
+		MLV_draw_text(842,615,vie,MLV_COLOR_WHITE);
 	}
 	if(numJ == 1)
 	{
@@ -139,6 +141,16 @@ void jeux_hud(persoTab joueurs, int numJ, int pa, int pm,int nbJoueurs)
 	{
 		MLV_draw_text(779,2,tpm,MLV_COLOR_WHITE);
 		MLV_draw_text(779,24,tpa,MLV_COLOR_WHITE);
+	}
+	if(numJ == 3)
+	{
+		MLV_draw_text(306,603,tpm,MLV_COLOR_WHITE);
+		MLV_draw_text(306,625,tpa,MLV_COLOR_WHITE);
+	}
+	if(numJ == 4)
+	{
+		MLV_draw_text(779,603,tpm,MLV_COLOR_WHITE);
+		MLV_draw_text(779,625,tpa,MLV_COLOR_WHITE);
 	}
 	MLV_actualise_window();
 }
