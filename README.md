@@ -8,9 +8,9 @@ Un petit jeu de combat tour par tour en vue de dessus.
 De 1 à 4 joueurs.
 
 ## Auteurs
-**MARNAT Lorenzo**
+**MARNAT Lorenzo** : https://github.com/Sicilien
 
-**MOHAMED Hugo**
+**MOHAMED Hugo** : https://twitter.com/IhFisk
 
 ## Téléchargement
 `git clone https://github.com/IhFisk/Smash-Bros.git`
