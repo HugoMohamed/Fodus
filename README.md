@@ -50,6 +50,12 @@ De 1 à 4 joueurs.
 - Pour le design des personnages :
 
   http://gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/
+  
+  
+- Arrière plan du menu principal :
+
+  https://www.istockphoto.com/fr
+
 
 - Musique : Sabaton - To Hell and Back ~ 8 bits version
 
