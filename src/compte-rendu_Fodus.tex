@@ -1,0 +1,91 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[OT1]{fontenc}
+\usepackage[french]{babel}
+
+\pagestyle{headings}
+
+\title{Projet de programmation L2}
+\author{MOHAMED Hugo & MARNAT Lorenzo}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\section{Introduction}
+Fodus est un jeu de combat au tour par tour, adoptant une vue de dessus. Le jeu est largement inspiré par des jeux comme les Final Fantasy Tactics, les premiers Zelda, ou encore Dofus. Fodus peut se jouer seul (combat contre une IA) ou en multijoueur jusqu'a 4 joueurs.
+
+\section{Déroulement d'une partie}
+Une partie de Fodus en multijoueurs se deroule en plusieurs étapes :
+\begin{enumerate}
+\item On commence par choisir le nombre de joueur (entre 2 et 4)
+\item Chaque joueur choisis la classe qu'il souhaite incarner parmis les 2 disponibles actuellement :
+  \begin{itemize}
+  \item Chevalier, un combattant puissant, corps à corps, qui peut ramner ses ennemis vers lui
+  \item Archer, qui attaque a distance, et ayant la capacité de repousser ses ennemis.
+  \end{itemize}
+\item Le premier joueur entame son tour. Il peut se déplacer, chaque déplacement lui coute un PM (point de mouvement). Il peut également attaquer, ce qui lui consomme un PA (point d'attaque). Le tour d'un joueur se termine lorsqu'il presse la touche 'P', qui passe le tour, ou automatiquement lorsque ses PA et ses PM arrivent à 0.
+\item La partie se termine lorsqu'il ne reste plus qu'un joueur en vie, celui ci remporte alors la partie.
+\end{enumerate}
+
+A noté que la partie peut être mise en pause a tout moment, permettant aux joueurs de sauvegarder la partie, ou simplement d'y mettre fin.
+
+\section{Les différents module}
+Le programme à été divisé en plusieurs modules que voici :
+\subsection{Map}
+Ce module permet de charger la map et l'afficher. La map est un tableau d'entier a 2 dimensions, avec :
+\begin{itemize}
+\item 0 les cases de sol (la ou le perso peut se déplacer)
+\item 1 les murs (cases non atteignable par les joueurs)
+\item 2 les cases ou le joueur peut attaquer, ces cases apparaissent lorsqu'un personnage lance une attaque.
+\item 3 les cases contenant un personnage.
+\item 4 les personnages qu'un joueur peut attaquer, ces cases apparaissent lorsqu'un personnage lance une attaque.
+\end{itemize}
+
+\subsection{Personnage}
+Un personnage est définit par :
+\begin{itemize}
+\item Sa vie
+\item Ses dégats
+\item Sa position sur la map
+\item Sa classe
+\item Son état (mort ou vivant)
+\end{itemize}
+
+Le module personnage permet de :
+\begin{itemize}
+\item Initialiser un personnage en lui donnant toutes ses caractéristiques.
+\item Choisir la classe d'un joueur.
+\item Déplacer un personnage d'une case.
+\item Afficher/réafficher/supprimer correctement les textures des personnages.
+\end{itemize}
+
+\subsection{Jeux}
+Ce module permet de gérer entièrement le tour d'un personnage, de gérer si une partie peut continuer et, le cas échéant, d'afficher le vainqueur. Il permet d'afficher les différentes informations sur les joueurs au cours de la partie, a savoir les PA,PM du joueur qui joue, et la vie de tout les personnages.
+Ce module gère également la mise en pause du jeu, c'est dans ce menu que l'on peut sauvegarder une partie.
+
+\subsection{Sauvegarde}
+Ce module gère la sauvegarde et le chargement d'une partie. Sauvegarder une partie reviens a stocké l'état de la map dans un fichier, et dans un autre fichier toutes les informations sur les personnages.
+On peut sauvegarder jusqu'a 5 parties différentes.
+
+\subsection{Les modules de classe}
+Un module à été créer pour chaque classe. Il contient les fonctions gérant les attaques propres a chaques classes.
+
+\subsection{IA}
+L'IA que le joueur affronte en mode solo est un chevalier, dont le but est de se rapprocher du joueur jusqu'a être à porté d'attaque.
+
+\subsection{Menu}
+Ce module permet l'affichage du menu principal, possédant différents boutons :
+\begin{itemize}
+\item Singleplayer, qui permet de lancer une partie contre l'IA.
+\item Multiplayer, pour lancer une partie a 2, 3 ou 4 joueurs.
+\item Load Game, permettant de charger une partie préalablement sauvegardée.
+\item Exit, pour quitter le jeu.
+\item Credits, pour afficher les crédits.
+\end{itemize}
+
+
+\end{document}

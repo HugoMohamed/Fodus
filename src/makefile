@@ -1,4 +1,3 @@
-#
 # Mettre ici vos options de compilation.
 #
 CFLAGS= -DDEBUG -g -Wall `pkg-config --cflags MLV`
@@ -15,7 +14,16 @@ LDFLAGS = `pkg-config --libs-only-other --libs-only-L MLV`
 #
 LDLIBS=`pkg-config --libs-only-l MLV`
 
-###############################################################################
+########################################################################
+#
+# Pour compiler le latex
+#
+pdf: latex
+
+latex: compte-rendu_Fodus.tex
+	pdflatex compte-rendu_Fodus.tex
+
+########################################################################
 CC=gcc
 
 fodus: main.o map.o personnage.o jeux.o sauvegarde.o ia.o menu.o knight.o marksman.o
@@ -49,4 +57,4 @@ main.o: main.c
 	$(CC) $(CFLAGS) -c main.c
 
 clean:
-	rm -rf *.o *.~ fodus
+	rm -rf *.o *.~ fodus *.aux *.fdb_latexmk *.fls *.log *.synctex.gz *~ *.pdf *.out

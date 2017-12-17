@@ -197,7 +197,7 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 		{
 			// On crée une conditon d'arrêt de la partie
 			for(i=1;i<nbJoueurs;i++)
-			joueurs[i].vie = -100;
+				joueurs[i].vie = -100;
 			jeux_fin(joueurs,m,nbJoueurs);
 			MLV_clear_window(MLV_COLOR_BLACK);
 			MLV_actualise_window();
@@ -209,7 +209,7 @@ void jeux_pause(persoTab joueurs,map m, int nbJoueurs, int numJ, int papm[2])
 			numG = sauvegarde_choseSave(0);
 			sauvegarde(m,joueurs,nbJoueurs,numJ,papm,numG);
 			for(i=1;i<nbJoueurs;i++)
-			joueurs[i].vie = -100;
+				joueurs[i].vie = -100;
 			jeux_fin(joueurs,m,nbJoueurs);
 			MLV_clear_window(MLV_COLOR_BLACK);
 			MLV_actualise_window();
