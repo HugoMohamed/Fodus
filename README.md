@@ -36,7 +36,7 @@ De 1 à 4 joueurs.
     
     $ make
     
-  - Pour lancer le jeu lancer la commande :
+  - Pour lancer le jeu, lancer la commande :
     
     `fodus`
     
