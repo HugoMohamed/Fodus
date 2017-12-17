@@ -3,9 +3,9 @@ http://github.com/IhFisk/Smash-bros
 
 **[C][FR]** Projet de programmation de L2 Info UJM
 
-Un petit jeu de combat tour par tour LARGEMENT inspiré de Dofus, mais avec la classe en moins.
+Un petit jeu de combat tour par tour en vue de dessus.
 
-Le jeu est néanmoins sympathique.
+De 1 à 4 joueurs.
 
 ## Auteurs
 **MARNAT Lorenzo** : *met tes infos la si t'as envie*
@@ -46,10 +46,11 @@ Le jeu est néanmoins sympathique.
 
   http://www-igm.univ-mlv.fr/~boussica/mlv/api/French/html/index.html
 
-- Pour le Tile Mapping (entre autre) :
-  
-  https://openclassrooms.com/courses/tile-mapping
 
 - Pour le design des personnages :
 
   http://gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/
+
+- Musique : Sabaton - To Hell and Back ~ 8 bits version
+
+  https://www.youtube.com/watch?v=V3u1iISWNwc
