@@ -1,5 +1,5 @@
 # FODUS
-http://github.com/IhFisk/Smash-bros
+http://github.com/IhFisk/Fodus
 
 **[C][FR]** Projet de programmation de L2 Info UJM
 
